@@ -1,0 +1,17 @@
+.idea
+.vs
+*.log
+venv
+.venv
+env
+.env
+.mypy_cache
+*.pyc
+__pycache__/
+.python-version
+
+.env
+.coverage
+
+# Folder for locally generated documentation
+local-docs/

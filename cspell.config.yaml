@@ -1,0 +1,69 @@
+ignorePaths:
+  - docs/_static/diagrams
+  - docs/Makefile
+  - docs/make.bat
+  - .git/
+words:
+    # Package-specific words
+  - saritasa
+  - pomcorn
+  - autotest
+  - autotests
+  - autotesting
+  - chromedriver
+  - pypi
+  - testid
+  - webelement
+  - Oboleninov
+
+    # Tools
+  - snok
+  - pyenv
+  - mypy
+  - pytest
+  - isort
+  - xpath
+  - choco
+  - virtualenv
+  - virtualenvs
+  - venv
+  - xdist
+  - gitlint
+  - ipdb
+  - ipython
+  - docformatter
+  - yaspeller
+
+    # Code words
+  - docstrings
+  - conftest
+  - kwargs
+  - classmethod
+  - pyproject
+  - iframe
+  - iframes
+  - pycache
+  - LOCALFOLDER
+  - FIRSTPARTY
+  - THIRDPARTY
+  - STDLIB
+  - pydocstyle
+  - redef
+
+    # RST blocks
+  - autodoc
+  - automodule
+  - autoclass
+  - toctree
+  - literalinclude
+  - undoc
+
+    # Sphinx
+  - bysource
+  - searchbox
+  - globaltoc
+  - viewcode
+  - intersphinx
+  - autosectionlabel
+  - bugname
+  - borderless
