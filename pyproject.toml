@@ -44,7 +44,7 @@ python = ">= 3.11, < 4.0"
 # https://selenium-python.readthedocs.io/index.html
 selenium = ">= 4.12"
 # Fixed version until fix of https://github.com/jorisroovers/gitlint/issues/535
-virtualenv = "20.24.5"
+virtualenv = "20.24.6"
 
 [tool.poetry.group.dev.dependencies]
 # Improved REPL
