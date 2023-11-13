@@ -90,7 +90,7 @@ flake8-pyproject = "^1.2.3"
 
 # Mypy is a static type checker for Python.
 # https://mypy.readthedocs.io/en/stable/
-mypy = "^1.6.0"
+mypy = "^1.7.0"
 
 [build-system]
 requires = ["poetry-core"]
