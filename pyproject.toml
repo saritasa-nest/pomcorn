@@ -43,8 +43,6 @@ python = ">= 3.11, < 4.0"
 # Python bindings for Selenium
 # https://selenium-python.readthedocs.io/index.html
 selenium = ">= 4.12"
-# Fixed version until fix of https://github.com/jorisroovers/gitlint/issues/535
-virtualenv = "20.24.5"
 
 [tool.poetry.group.dev.dependencies]
 # Improved REPL
@@ -53,6 +51,8 @@ ipython = ">= 8.14.0"
 # A framework for managing and maintaining multi-language pre-commit hooks.
 # https://pre-commit.com/
 pre-commit = ">= 3.3.3"
+# Fixed version until fix of https://github.com/jorisroovers/gitlint/issues/535
+virtualenv = "20.24.5"
 # Collection of invoke commands
 # https://github.com/saritasa-nest/saritasa-python-invocations
 saritasa-invocations = ">= 0.8"
@@ -113,17 +113,18 @@ known_pytest=[
     "_pytest",
     "xdist",
 ]
-known_page_object="page_object"
 sections=[
     "FUTURE",
     "STDLIB",
     "THIRDPARTY",
     "PYTEST",
-    "PAGE_OBJECT",
     "FIRSTPARTY",
     "LOCALFOLDER",
 ]
 include_trailing_comma=true
+# For sorting `__all__` sections
+# Off until the issue is fixed: https://github.com/PyCQA/isort/issues/2193
+# sort_reexports=true
 
 [tool.flake8]
 # F403: using wildcard imports (from … import *)
