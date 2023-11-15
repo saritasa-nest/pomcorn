@@ -205,11 +205,8 @@ of the class `Search component <#search-component>`_.
 Package Details Page
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. TODO:
-    Replace with pomcorn details page after release
-
 This class represents the PyPI
-`package details page <https://pypi.org/project/saritasa-invocations/>`_.
+`package details page <https://pypi.org/project/pomcorn/>`_.
 
 .. image:: ../docs/_static/images/pypi_package_details.png
     :alt: Package details page

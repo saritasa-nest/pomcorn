@@ -12,13 +12,11 @@ def test_search(index_page: IndexPage):
     # Search packages by `saritasa`
     search_page = index_page.search.find("saritasa")
 
-    # TODO: Replace to 4 after upload `pomcorn`
-    # Check that presented 3 packages
-    assert search_page.results.count == 3
+    # Check that at least 4 packages are presented
+    assert search_page.results.count >= 4
 
     # Get package by name
-    # TODO: Replace to `pomcorn` after upload package
-    package_name = "saritasa-invocations"
+    package_name = "pomcorn"
     package = search_page.results.get_item_by_text(package_name)
     assert package.name == package_name
 

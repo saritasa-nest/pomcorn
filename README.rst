@@ -2,7 +2,7 @@
 Pomcorn
 ===============================================================================
 
-.. image:: https://img.shields.io/github/actions/workflow/status/saritasa-nest/pomcorn/checks.yml
+.. image:: https://img.shields.io/github/actions/workflow/status/saritasa-nest/pomcorn/pre-commit.yml
 	:target: https://img.shields.io/
 	:alt: GitHub Workflow Status (with event)
 

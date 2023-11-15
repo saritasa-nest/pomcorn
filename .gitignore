@@ -13,5 +13,8 @@ __pycache__/
 .env
 .coverage
 
+# Distribution / packaging
+dist/
+
 # Folder for locally generated documentation
 local-docs/
