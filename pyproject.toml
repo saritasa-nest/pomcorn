@@ -52,7 +52,7 @@ ipython = ">= 8.14.0"
 # https://pre-commit.com/
 pre-commit = ">= 3.3.3"
 # Fixed version until fix of https://github.com/jorisroovers/gitlint/issues/535
-virtualenv = "20.24.5"
+virtualenv = "20.24.7"
 # Collection of invoke commands
 # https://github.com/saritasa-nest/saritasa-python-invocations
 saritasa-invocations = ">= 0.8"
