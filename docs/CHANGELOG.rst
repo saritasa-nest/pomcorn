@@ -3,7 +3,7 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-unreleased
+0.2.0
 *******************************************************************************
 
 Backwards incompatible changes
