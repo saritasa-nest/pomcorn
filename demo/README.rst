@@ -95,7 +95,8 @@ Base Page
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 .. note::
-    The ``is_loaded`` property and the ``APP_ROOT`` attribute require special attention here.
+    The ``check_page_is_loaded`` method and the ``APP_ROOT`` attribute require special attention
+    here.
 
 .. literalinclude:: ../demo/pages/base/base_page.py
     :language: python
@@ -182,7 +183,8 @@ Help Page
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This class represents the PyPI `help page <https://pypi.org/help/>`_. The ``title`` property is
-implemented here to show how you can use page properties to implement the ``is_loaded`` property.
+implemented here to show how you can use page properties to implement the ``check_page_is_loaded``
+method.
 
 .. image:: ../docs/_static/images/pypi_help_title.png
     :alt: Help page title
@@ -215,8 +217,8 @@ This class represents the PyPI
     :language: python
 
 .. note::
-    You don't have to implement the ``is_loaded`` page property if this property is set on the base
-    page and is appropriate for the current page.
+    You don't have to implement the ``check_page_is_loaded`` page method if this property is set on
+    the base page and is appropriate for the current page.
 
 Tests
 -------------------------------------------------------------------------------

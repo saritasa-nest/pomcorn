@@ -104,8 +104,7 @@ packages to the terminal. The script contains all base classes contained in ``po
 
       APP_ROOT = "https://pypi.org"
 
-      @property
-      def is_loaded(self) -> bool:
+      def check_page_is_loaded(self) -> bool:
           return self.init_element(locator=locators.TagNameLocator("main")).is_displayed
 
       @property

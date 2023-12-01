@@ -58,15 +58,21 @@ class PyPIPage(Page):
         return Navbar(self)
 
     # Some pages can be slow to load and cause problems checking for unloaded
-    # items. To be sure the page is loaded, this property should return the
+    # items. To be sure the page is loaded, this method should return the
     # result of checking for the slowest parts of the page.
-    @property
-    def is_loaded(self) -> bool:
+    def check_page_is_loaded(self) -> bool:
         """Return the result of checking that the page is loaded.
 
         Check that `main` tag is displayed.
 
         """
+        # Be careful with the elements you use to check page load. If you only
+        # use them to check loading, it's better to initiate them directly in
+        # this method. Otherwise, it is better to define them as page
+        # properties or initiate them in the `__init__` method above the
+        # `super().__init__` call. This is necessary because the
+        # `wait_until_loaded` method will be called in `super().__init__`, and
+        # it depends on `check_page_is_loaded`.
         return self.init_element(
             locator=locators.TagNameLocator("main"),
         ).is_displayed

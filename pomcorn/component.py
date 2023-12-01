@@ -140,12 +140,10 @@ class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
 
         Check that only one locator argument is passed, or none.
         If only `relative_locator` was passed, `base_locator` will be added to
-        it.
-        If only `locator` was passed, it will return itself.
-        If both locators are empty, `base_locator` is returned.
+        it. If only `locator` was passed, it will return itself.
 
         Raises:
-            ValueError: If both arguments were passed.
+            ValueError: If both arguments were passed or neither.
 
         """
         if relative_locator and locator:
