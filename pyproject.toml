@@ -52,8 +52,6 @@ ipython = ">= 8.14.0"
 # A framework for managing and maintaining multi-language pre-commit hooks.
 # https://pre-commit.com/
 pre-commit = ">= 3.3.3"
-# Fixed version until fix of https://github.com/jorisroovers/gitlint/issues/535
-virtualenv = "20.24.5"
 # Collection of invoke commands
 # https://github.com/saritasa-nest/saritasa-python-invocations
 saritasa-invocations = ">= 0.8"
