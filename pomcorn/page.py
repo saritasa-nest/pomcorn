@@ -45,8 +45,7 @@ class Page(WebView):
         )
         self.wait_until_loaded()
 
-    @property
-    def is_loaded(self) -> bool:
+    def check_page_is_loaded(self) -> bool:
         """Return result of check that the page is loaded.
 
         Some pages can be slow to load and cause problems checking for unloaded
@@ -117,7 +116,7 @@ class Page(WebView):
 
     def wait_until_loaded(self) -> None:
         """Wait until page is loaded."""
-        self.wait.until(lambda _: self.is_loaded)
+        self.wait.until(lambda _: self.check_page_is_loaded())
 
     def navigate(self, url: str) -> None:
         """Navigate absolute URL.

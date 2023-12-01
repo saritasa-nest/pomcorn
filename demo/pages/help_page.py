@@ -30,11 +30,13 @@ class HelpPage(PyPIPage):
         """Get the title element."""
         return self.init_element(locators.ClassLocator("page-title"))
 
-    def is_loaded(self) -> bool:
+    def check_page_is_loaded(self) -> bool:
         """Return the check result that the page is loaded.
 
         Return whether `main` tag and help page title element are displayed
         or not.
 
         """
-        return super().is_loaded and self.title_element.is_displayed
+        return (
+            super().check_page_is_loaded() and self.title_element.is_displayed
+        )
