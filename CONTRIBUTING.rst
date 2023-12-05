@@ -2,7 +2,7 @@
 How to contribute
 ===============================================================================
 
-`Installing <https://read-the-docs-pomcorn.readthedocs.io/en/latest/installation.html>`_
+`Installing <https://pomcorn.readthedocs.io/en/latest/installation.html>`_
 
 *******************************************************************************
 Submitting your code
