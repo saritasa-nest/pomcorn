@@ -20,4 +20,6 @@ relative_item_locator = locators.ClassLocator(
 )
 ```
 
+* Add support for pages without a specified base URL (`APP_ROOT`)
+
 * Add short comparison with other POM implementations
