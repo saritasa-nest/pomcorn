@@ -204,15 +204,15 @@ class InputByLabelLocator(XPathLocator):
     """Locator to looking for input with label by XPath.
 
     Specify the query as the string
-    ``//*[label[contains(text(), "label")]]/input``, where ``label`` is the
-    text of the input label.
+    ``//label[contains(., "label")]//input``, where ``label`` is the text of
+    the input label.
 
     """
 
     def __init__(self, label: str):
         """Init XPathLocator."""
         super().__init__(
-            query=f'//*[label[contains(text(), "{label}")]]/input',
+            query=f'//label[contains(., "{label}")]//input',
         )
 
 
