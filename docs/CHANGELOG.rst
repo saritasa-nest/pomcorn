@@ -3,6 +3,13 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.3.0
+*******************************************************************************
+
+Backwards incompatible changes
+-------------------------------------------------------------------------------
+- Update ``InputByLabelLocator`` from a single-level to a nested implementation
+
 0.2.0
 *******************************************************************************
 
