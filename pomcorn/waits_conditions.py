@@ -7,6 +7,9 @@ from selenium.common.exceptions import (
     StaleElementReferenceException,
 )
 from selenium.webdriver.remote.webdriver import WebDriver
+from selenium.webdriver.support.expected_conditions import (
+    WebDriverOrWebElement,
+)
 
 from pomcorn.locators.base_locators import TLocator
 
@@ -76,7 +79,7 @@ def text_not_to_be_present_in_element_attribute(
     locator: tuple[str, str],
     attribute_: str,
     text_: str,
-) -> Callable[[WebDriver], bool]:
+) -> Callable[[WebDriverOrWebElement], bool]:
     """Represent `wait condition` that checks that text is not in attribute.
 
     NOTE: "_" in argument names added for consistent with selenium's built-in
@@ -90,7 +93,7 @@ def text_not_to_be_present_in_element_attribute(
 
     """
 
-    def check_the_match(driver: WebDriver) -> bool:
+    def check_the_match(driver: WebDriverOrWebElement) -> bool:
         try:
             attribute_text = driver.find_element(*locator).get_attribute(
                 name=attribute_,
