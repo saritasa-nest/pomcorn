@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.3.1
+*******************************************************************************
+
+- Fix type hints after `update Selenium <https://github.com/SeleniumHQ/selenium/commit/10adfe88a2b2870e3e61546b9e2a9233c9f74657>`_
+
 0.3.0
 *******************************************************************************
 
