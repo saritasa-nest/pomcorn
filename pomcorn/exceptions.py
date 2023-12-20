@@ -32,3 +32,7 @@ class AttributeDoesNotContainError(TimeoutError):
 
 class FailedFormSubmissionError(Exception):
     """Raised when there an error on form submission."""
+
+
+class PageDidNotLoadedError(Exception):
+    """Raised when page load timeout has expired."""
