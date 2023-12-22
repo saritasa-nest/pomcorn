@@ -122,7 +122,8 @@ class Page(WebView):
             self.wait.until(lambda _: self.check_page_is_loaded())
         except TimeoutException:
             raise PageDidNotLoadedError(
-                f"Page didn't loaded in {self.wait_timeout} seconds!",
+                f"Page didn't loaded in {self.wait_timeout} seconds! "
+                "Didn't wait for `True` from `check_page_is_loaded` method.",
             )
 
     def navigate(self, url: str) -> None:
