@@ -385,17 +385,17 @@ pydocstyle = ">=2.1"
 
 [[package]]
 name = "flake8-modern-annotations"
-version = "1.5.0"
+version = "1.6.0"
 description = "Flake8 modern annotations validation"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "flake8-modern-annotations-1.5.0.tar.gz", hash = "sha256:990d79c315a5f07d79fbfd631dd9d634183f066b2bd53e87f0a9af9393df6626"},
-    {file = "flake8_modern_annotations-1.5.0-py3-none-any.whl", hash = "sha256:3fae74b06dd38e2189d3894c4e22e3be5c31a40c68070b290084ef2b2e3a149d"},
+    {file = "flake8-modern-annotations-1.6.0.tar.gz", hash = "sha256:879a370b1ba51a7b86bbba1b48393640a12565538b56fc0994630e74f89d9343"},
+    {file = "flake8_modern_annotations-1.6.0-py3-none-any.whl", hash = "sha256:40342ddf684f12a8882719913adb94a8d4bb4e83e217ec7fe5b03df18acd0ecf"},
 ]
 
 [package.dependencies]
-flake8 = ">=3.8.0,<7.0"
+flake8 = ">=3.8.0,<8.0"
 typing-extensions = ">=3.7.4.2"
 
 [package.extras]
