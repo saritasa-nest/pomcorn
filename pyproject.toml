@@ -70,7 +70,7 @@ pytest = ">= 7.4.2"
 # Flake dependencies are added so that VSCode extension for flake8
 # would work properly
 # https://marketplace.visualstudio.com/items?itemName=ms-python.flake8&ssr=false#overview
-flake8 = "^6.1.0"
+flake8 = ">=6.1,<8.0"
 # A flake8 plugin that warn about backslashes usage.
 # https://github.com/wemake-services/flake8-broken-line
 flake8-broken-line = "^1.0.0"
