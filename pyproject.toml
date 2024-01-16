@@ -76,7 +76,7 @@ flake8 = ">=6.1,<8.0"
 flake8-broken-line = "^1.0.0"
 # A plugin for Flake8 finding likely bugs and design problems in your program.
 # https://github.com/PyCQA/flake8-bugbear
-flake8-bugbear = "^23.9.16"
+flake8-bugbear = ">=23.9.16,<25.0.0"
 # A simple module that adds an extension for the fantastic pydocstyle tool to flake8.
 # https://github.com/PyCQA/flake8-docstrings
 flake8-docstrings = "^1.7.0"
