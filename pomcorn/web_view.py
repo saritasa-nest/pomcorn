@@ -47,6 +47,10 @@ class WebView:
     def init_element(self, locator: TInitLocator) -> Element[TInitLocator]:
         """Shortcut for initializing Element instances.
 
+        Note: To be consistent with the method of the same name in
+        ``ComponentWithBaseLocator``, try to use keyword when specifying
+        the ``locator`` argument whenever possible.
+
         Args:
             locator: Instance of a class to locate the element in the browser.
 
@@ -60,6 +64,10 @@ class WebView:
         """Shortcut for initializing many Element instances via single locator.
 
         Note: Only supports Xpath locators.
+
+        Note: To be consistent with the method of the same name in
+        ``ComponentWithBaseLocator``, try to use keyword when specifying the
+        ``locator`` argument whenever possible.
 
         Args:
             locator: Instance of a class to locate the element in the browser.
@@ -88,9 +96,10 @@ class WebView:
 
         For example, there are multiple elements on the page that matches
         `XPathLocator("//a")`.
+
         This method return the set of locators like:
-        * `XPathLocator("//a[1]")`
-        * `XPathLocator("//a[2]")`
+        * `XPathLocator("(//a)[1]")`
+        * `XPathLocator("(//a)[2]")`
 
         Args:
             locator: Instance of a class to locate the element in the browser.
