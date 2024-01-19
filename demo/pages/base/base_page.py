@@ -42,6 +42,9 @@ class PyPIPage(Page):
         # The Logo will be on all the pages of the application so we initialize
         # it in base page class.
         self.logo = self.init_element(
+            # The ``locator=`` keyword is optional here, but we recommend using
+            # it to be consistent with the method of the same name in
+            # ``ComponentWithBaseLocator``. Same with ``init_elements``.
             locator=locators.ClassLocator("site-header__logo"),
         )
 

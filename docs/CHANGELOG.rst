@@ -3,6 +3,15 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.4.0
+*******************************************************************************
+
+- Add ``|`` (or) operator for XPathLocators
+- Add ``Page.click_on_page`` method
+- Add recommendation for use keyword when specifying the ``locator`` argument
+  in ``init_element`` and ``init_elements`` methods whenever possible to be
+  consistent with the method of the same name in ``ComponentWithBaseLocator``
+
 0.3.1
 *******************************************************************************
 

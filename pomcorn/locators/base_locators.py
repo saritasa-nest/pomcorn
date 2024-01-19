@@ -127,6 +127,21 @@ class XPathLocator(Locator):
         """Override `//` operator to implement nested XPath locators."""
         return XPathLocator(query=f"{self.query}//{other.related_query}")
 
+    def __or__(self, other: XPathLocator) -> XPathLocator:
+        r"""Override `|` operator to implement variant XPath locators.
+
+        Example:
+            span = XPathLocator("//span")
+            div = XPathLocator("//div")
+            img = XPathLocator("//img")
+
+            (span | div) // img == XPathLocator("(//span | //div)//img")
+
+            span | div // img == XPathLocator("(//span | //div//img)")
+
+        """
+        return XPathLocator(query=f"({self.query} | {other.query})")
+
     def extend_query(self, extra_query: str) -> XPathLocator:
         """Return new XPathLocator with extended query."""
         return XPathLocator(query=self.query + extra_query)

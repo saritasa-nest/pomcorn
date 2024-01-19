@@ -86,8 +86,6 @@ Below is the code that opens ``PyPI.org``, searches for packages by name and pri
 packages to the terminal. The script contains all base classes contained in ``pomcorn``: **Page**,
 **ComponentWithBaseLocator**, **ListComponent** and **Element**.
 
-.. /* yaspeller ignore:start */
-
 .. code-block:: python
 
   from typing import Self
@@ -105,11 +103,11 @@ packages to the terminal. The script contains all base classes contained in ``po
       APP_ROOT = "https://pypi.org"
 
       def check_page_is_loaded(self) -> bool:
-          return self.init_element(locator=locators.TagNameLocator("main")).is_displayed
+          return self.init_element(locators.TagNameLocator("main")).is_displayed
 
       @property
       def search(self) -> Element[locators.XPathLocator]:
-          return self.init_element(locator=locators.IdLocator("search"))
+          return self.init_element(locators.IdLocator("search"))
 
 
   # Prepare components
@@ -158,8 +156,6 @@ packages to the terminal. The script contains all base classes contained in ``po
 
   search_page = SearchPage.open(webdriver=Chrome())
   print(search_page.find("saritasa").names)
-
-.. /* yaspeller ignore:end */
 
 For more information about package classes, you can read in `Object Hierarchy <https://pomcorn.readthedocs.io/en/latest/objects_hierarchy.html>`_
 and `Developer Interface <https://pomcorn.readthedocs.io/en/latest/developer_interface.html>`_.
