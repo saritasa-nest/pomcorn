@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pomcorn"
-version = "0.3.1"
+version = "0.4.0"
 description = "Base implementation of Page Object Model"
 authors = [
   "Saritasa <pypi@saritasa.com>",

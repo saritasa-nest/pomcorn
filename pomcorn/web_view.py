@@ -353,11 +353,22 @@ class WebView:
     def scroll_to(self, target: WebElement):
         """Scroll page to target.
 
+        Scroll to the center of target vertically and to the center of target
+        horizontally.
+
         Args:
             target: The web element instance to scroll to.
 
         """
-        self.webdriver.execute_script("arguments[0].scrollIntoView();", target)
+        # behavior="instant" - to scroll without animation
+        # block="center" - vertical scrolling up to center
+        # inline="center"- horizontal scrolling up to center
+        script = (
+            "arguments[0].scrollIntoView("
+            "{behavior: 'instant', block: 'center', inline: 'center'}"
+            ");"
+        )
+        self.webdriver.execute_script(script, target)
 
     def scroll_to_top(self):
         """Scroll browser to top."""

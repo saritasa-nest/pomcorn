@@ -11,6 +11,7 @@ We follow `Semantic Versions <https://semver.org/>`_.
 - Add recommendation for use keyword when specifying the ``locator`` argument
   in ``init_element`` and ``init_elements`` methods whenever possible to be
   consistent with the method of the same name in ``ComponentWithBaseLocator``
+- Improve ``WebView.scroll_to()``
 
 0.3.1
 *******************************************************************************
