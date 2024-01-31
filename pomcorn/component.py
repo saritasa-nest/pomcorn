@@ -1,4 +1,3 @@
-import abc
 from typing import Generic, TypeVar, overload
 
 from . import locators
@@ -34,10 +33,12 @@ class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
 
     """
 
+    base_locator: locators.XPathLocator
+
     def __init__(
         self,
         page: TPage,
-        base_locator: locators.XPathLocator,
+        base_locator: locators.XPathLocator | None = None,
         wait_until_visible: bool = True,
     ):
         """Initialize component.
@@ -46,14 +47,14 @@ class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
             page: An instance of the page that uses this component.
             base_locator: locator: Instance of a class to locate the element in
                 the browser. Used in relative element initialization methods
-                and visibility waits.
+                and visibility waits. You also can specify it as attribute.
             wait_until_visible: Whether to wait for the component to become
                 visible before completing initialization or not.
 
         """
         super().__init__(page)
-        self.base_locator = base_locator
-        self.body = self.init_element(locator=base_locator)
+        self.base_locator = base_locator or self.base_locator
+        self.body = self.init_element(locator=self.base_locator)
 
         if wait_until_visible:
             self.wait_until_visible()
@@ -194,14 +195,44 @@ class ListComponent(
     Waits for `base_item_locator` property to be implemented and value of
     `item_class` to be set.
 
+    Waits for `base_item_locator` property  to be overridden or one of the
+    attributes (`item_locator` or `relative_item_locator`) to be specified.
+
+    The `item_class` attribute is also required.
+
     """
 
     item_class: type[ListItemType]
 
-    @abc.abstractproperty
+    item_locator: locators.XPathLocator | None = None
+    relative_item_locator: locators.XPathLocator | None = None
+
+    @property
     def base_item_locator(self) -> locators.XPathLocator:
-        """Get the base locator of list item."""
-        raise NotImplementedError
+        """Get the base locator of list item.
+
+        Raises:
+            ValueError: If both attributes are specified.
+            NotImplementedError: If no attribute has been specified,
+
+        """
+        if self.relative_item_locator and self.item_locator:
+            raise ValueError(
+                "You only need to specify one of the attributes: "
+                "`relative_item_locator` - if you want locator nested within "
+                "`base_locator`, `item_locator` - otherwise. "
+                "Or override `base_item_locator` property.",
+            )
+        if not self.relative_item_locator:
+            if not self.item_locator:
+                raise NotImplementedError(
+                    "You need to specify one of the arguments: "
+                    "`relative_item_locator` - if you want locator nested "
+                    "within `base_locator`, `item_locator` - otherwise. "
+                    "Or override `base_item_locator` property.",
+                )
+            return self.item_locator
+        return self.base_locator // self.relative_item_locator
 
     @property
     def count(self) -> int:

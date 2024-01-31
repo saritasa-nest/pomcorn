@@ -7,19 +7,6 @@
 ## In future
 
 * Add arguments for `ButtonWithTextLocator` to choice `a` or `button` tag
-* Provide ability to specify base locator and item locator as class attributes like:
-
-```python
-base_locator = locators.PropertyLocator(
-    prop="aria-label",
-    value="Search results",
-)
-relative_item_locator = locators.ClassLocator(
-    class_name="package-snippet",
-    container="a",
-)
-```
-
+* Add ability to pass `**kwargs` to `ListComponent` items
 * Add support for pages without a specified base URL (`APP_ROOT`)
-
 * Add short comparison with other POM implementations

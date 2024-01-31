@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pages import PyPIComponentWithBaseLocator, PyPIPage
+from pages import PyPIComponentWithBaseLocator
 from selenium.webdriver.common.keys import Keys
 
 from pomcorn import locators
@@ -14,13 +14,9 @@ if TYPE_CHECKING:
 class Search(PyPIComponentWithBaseLocator):
     """Component representing the search input field."""
 
-    def __init__(
-        self,
-        page: PyPIPage,
-        base_locator: locators.XPathLocator = locators.IdLocator("search"),
-        wait_until_visible: bool = True,
-    ):
-        super().__init__(page, base_locator, wait_until_visible)
+    # If you are not going to write anything in ``__init__`` and only want
+    # to set up ``base_locator``, you can specify it as a class attribute
+    base_locator = locators.IdLocator("search")
 
     def find(self, text: str) -> SearchPage:
         """Paste the text into the search field and send `Enter` key.

@@ -3,6 +3,16 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.5.0
+*******************************************************************************
+
+- Add ability to specify ``base_locator`` for ``ComponentWithBaseLocator`` as a
+  class attribute, so as not to override `__init__` (Issue: `#34 <https://github.com/saritasa-nest/pomcorn/issues/34>`_)
+- Add ability to specify ``base_item_locator`` via ``item_locator`` and
+  ``relative_item_locator`` attributes for ``ListComponent`` to avoid
+  overriding ``property`` each time and simplify creation of nested items
+  locators
+
 0.4.0
 *******************************************************************************
 
