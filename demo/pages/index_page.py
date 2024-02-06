@@ -1,10 +1,16 @@
+from __future__ import annotations
+
 from pages.base import PyPIPage
 from pages.common import Search
 from selenium.webdriver.remote.webdriver import WebDriver
 
+from pomcorn.descriptors import ComponentDescriptor
+
 
 class IndexPage(PyPIPage):
     """Represent the index page."""
+
+    search2 = ComponentDescriptor["IndexPage", Search](Search)
 
     def __init__(
         self,
