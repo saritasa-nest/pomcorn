@@ -17,9 +17,22 @@ class GetComponent(Generic[TClass]):
     def __init__(
         self,
         base_locator: locators.XPathLocator | None = None,
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
+        """Initialize descriptor.
+
+        Args:
+            base_locator: Instance of a class to locate the component in the
+                browser.
+            is_relative: Whether add parent ``base_locator`` to the current
+                descriptors's `base_locator` or not.
+            wait_until_visible: Whether to wait for the component to become
+                visible before completing initialization or not.
+
+        """
         self._base_locator = base_locator
+        self._is_relative = is_relative
         self._wait_until_visible = wait_until_visible
 
     @property
@@ -36,6 +49,12 @@ class GetComponent(Generic[TClass]):
         if not instance:
             raise AttributeError("This descriptor is for instances only!")
 
+        if self._is_relative and not isinstance(instance, Page):
+            if instance.base_locator and self._base_locator:
+                self._base_locator = (
+                    instance.base_locator // self._base_locator
+                )
+
         return self._class(
             page=self._get_page(instance),
             base_locator=self._base_locator,
@@ -46,6 +65,7 @@ class GetComponent(Generic[TClass]):
         raise ValueError("You can't reset a component attribute value!")
 
     def _get_page(self, instance: Page | TClass) -> Page:
+        """Get page from parent instance."""
         if isinstance(instance, ComponentWithBaseLocator):
             return instance.page
         return instance
@@ -57,12 +77,13 @@ class ComponentByXpath(Generic[TClass], GetComponent[TClass]):
     def __init__(
         self,
         base_locator: str | None = None,
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
+        locator = locators.XPathLocator(base_locator) if base_locator else None
         super().__init__(
-            base_locator=locators.XPathLocator(base_locator)
-            if base_locator
-            else None,
+            base_locator=locator,
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )
 
@@ -70,9 +91,15 @@ class ComponentByXpath(Generic[TClass], GetComponent[TClass]):
 class ComponentByTag(Generic[TClass], GetComponent[TClass]):
     """Descriptor for init component as attribute by css tag."""
 
-    def __init__(self, tag: str, wait_until_visible: bool = True) -> None:
+    def __init__(
+        self,
+        tag: str,
+        is_relative: bool = True,
+        wait_until_visible: bool = True,
+    ) -> None:
         super().__init__(
             base_locator=locators.TagNameLocator(tag),
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )
 
@@ -86,6 +113,7 @@ class ComponentByProperty(Generic[TClass], GetComponent[TClass]):
         value: str,
         container: str = "*",
         exact: bool = False,
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
         super().__init__(
@@ -95,6 +123,7 @@ class ComponentByProperty(Generic[TClass], GetComponent[TClass]):
                 container=container,
                 exact=exact,
             ),
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )
 
@@ -106,10 +135,12 @@ class ComponentByDataTestId(Generic[TClass], GetComponent[TClass]):
         self,
         value: str,
         container: str = "*",
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
         super().__init__(
             base_locator=locators.DataTestIdLocator(value, container),
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )
 
@@ -121,10 +152,12 @@ class ComponentById(Generic[TClass], GetComponent[TClass]):
         self,
         value: str,
         container: str = "*",
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
         super().__init__(
             base_locator=locators.IdLocator(value, container),
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )
 
@@ -136,10 +169,12 @@ class ComponentByName(Generic[TClass], GetComponent[TClass]):
         self,
         value: str,
         container: str = "*",
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
         super().__init__(
             base_locator=locators.NameLocator(value, container),
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )
 
@@ -152,6 +187,7 @@ class ComponentByText(Generic[TClass], GetComponent[TClass]):
         text: str,
         element: str = "*",
         exact: bool = False,
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
         super().__init__(
@@ -160,6 +196,7 @@ class ComponentByText(Generic[TClass], GetComponent[TClass]):
                 element=element,
                 exact=exact,
             ),
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )
 
@@ -172,6 +209,7 @@ class ComponentByClass(Generic[TClass], GetComponent[TClass]):
         class_name: str,
         container: str = "*",
         exact: bool = False,
+        is_relative: bool = True,
         wait_until_visible: bool = True,
     ) -> None:
         super().__init__(
@@ -180,5 +218,6 @@ class ComponentByClass(Generic[TClass], GetComponent[TClass]):
                 container=container,
                 exact=exact,
             ),
+            is_relative=is_relative,
             wait_until_visible=wait_until_visible,
         )

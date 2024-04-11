@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar, overload
+from typing import Generic, TypeVar, get_args, overload
 
 from . import locators
 from .element import XPathElement
@@ -45,9 +45,9 @@ class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
 
         Args:
             page: An instance of the page that uses this component.
-            base_locator: locator: Instance of a class to locate the element in
-                the browser. Used in relative element initialization methods
-                and visibility waits. You also can specify it as attribute.
+            base_locator: Instance of a class to locate the component in the
+                browser. Used in relative element initialization methods and
+                visibility waits. You also can specify it as attribute.
             wait_until_visible: Whether to wait for the component to become
                 visible before completing initialization or not.
 
@@ -240,6 +240,18 @@ class ListComponent(
         return len(self._get_elements(self.base_item_locator))
 
     @property
+    def _item_class(self) -> type[ListItemType]:
+        """Return class passed in `item_class`.
+
+        If the `item_class` attribute is not specified, the class passed in
+        `ListItemType` will be returned.
+
+        """
+        if self.item_class:
+            return self.item_class
+        return get_args(self.__orig_class__)[0]  # type: ignore
+
+    @property
     def all(self) -> list[ListItemType]:
         """Get all items of list."""
         # Sometimes `base_item_locator` exists in dom but is not visible
@@ -251,7 +263,7 @@ class ListComponent(
 
         items: list[ListItemType] = []
         for locator in self.iter_locators(self.base_item_locator):
-            items.append(self.item_class(self.page, locator))
+            items.append(self._item_class(self.page, locator))
         return items
 
     def get_item_by_text(self, text: str) -> ListItemType:
@@ -259,13 +271,13 @@ class ListComponent(
         locator = self.base_item_locator.extend_query(
             extra_query=f"[contains(.,'{text}')]",
         )
-        return self.item_class(page=self.page, base_locator=locator)
+        return self._item_class(page=self.page, base_locator=locator)
 
     def __repr__(self) -> str:
         return (
             "ListComponent("
             f"component={self.__class__}, "
-            f"item_class={self.item_class}, "
+            f"item_class={self._item_class}, "
             f"base_item_locator={self.base_item_locator}, "
             f"count={self.count}, "
             f"items={self.all}, "

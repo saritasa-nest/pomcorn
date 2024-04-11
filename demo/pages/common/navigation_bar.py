@@ -25,7 +25,7 @@ class Navbar(PyPIComponentWithBaseLocator):
         # tags and several elements with a similar class name.
         container="nav",
     )
-    help_button = ElementByText(text="Help", element="a")
+    help_button = ElementByText(text="Help", element="a", is_relative=True)
 
     def open_help(self) -> HelpPage:
         """Click on `Help` button and redirect to HelpPage."""
