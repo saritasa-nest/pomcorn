@@ -94,20 +94,18 @@ packages to the terminal. The script contains all base classes contained in ``po
   from selenium.webdriver.common.keys import Keys
   from selenium.webdriver.remote.webdriver import WebDriver
 
-  from pomcorn import ComponentWithBaseLocator, Element, ListComponent, Page, locators
+  from pomcorn import ComponentWithBaseLocator, ListComponent, Page, locators
+  from pomcorn.descriptors import ElementById, ComponentByProperty
 
 
   # Prepare base page
   class PyPIPage(Page):
-
       APP_ROOT = "https://pypi.org"
+
+      search = ElementById("search")
 
       def check_page_is_loaded(self) -> bool:
           return self.init_element(locators.TagNameLocator("main")).is_displayed
-
-      @property
-      def search(self) -> Element[locators.XPathLocator]:
-          return self.init_element(locators.IdLocator("search"))
 
 
   # Prepare components
@@ -115,12 +113,8 @@ packages to the terminal. The script contains all base classes contained in ``po
 
 
   class PackageList(ListComponent[Package, PyPIPage]):
-
       item_class = Package
-
-      @property
-      def base_item_locator(self) -> locators.XPathLocator:
-          return self.base_locator // locators.ClassLocator("snippet__name")
+      relative_item_locator = locators.ClassLocator("snippet__name")
 
       @property
       def names(self) -> list[str]:
@@ -129,6 +123,10 @@ packages to the terminal. The script contains all base classes contained in ``po
 
   # Prepare search page
   class SearchPage(PyPIPage):
+      results = ComponentByProperty[PackageList](
+          prop="aria-label",
+          value="Search results",
+      )
 
       @classmethod
       def open(cls, webdriver: WebDriver, **kwargs) -> Self:
@@ -137,16 +135,6 @@ packages to the terminal. The script contains all base classes contained in ``po
           pypi_page.search.fill("")
           pypi_page.search.send_keys(Keys.ENTER)
           return cls(webdriver, **kwargs)
-
-      @property
-      def results(self) -> PackageList:
-          return PackageList(
-              page=self,
-              base_locator=locators.PropertyLocator(
-                  prop="aria-label",
-                  value="Search results",
-              ),
-          )
 
       def find(self, query: str) -> PackageList:
           self.search.fill(query)

@@ -48,11 +48,12 @@ class PyPIPage(Page):
             locator=locators.ClassLocator("site-header__logo"),
         )
 
-    # We recommend adding components to the page as properties, because it
-    # helps us to run `waits_until_visible` method every time this component is
-    # accessed. But if you need to perform some actions before manipulating
-    # this component (e.g. clicking, hovering, etc.), it's better to create
-    # opening methods on page (like `open_navbar`).
+    # We recommend adding components to the page as class attributes via
+    # descriptors or as properties, because it helps us to run
+    # `waits_until_visible` method every time this component is accessed. But
+    # if you need to perform some actions before manipulating this component
+    # (e.g. clicking, hovering, etc.), it's better to create opening methods on
+    # page (like `open_navbar`).
     @property
     def navbar(self) -> Navbar:
         """Get a component for working with the page navigation panel."""

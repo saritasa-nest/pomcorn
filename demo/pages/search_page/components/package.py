@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pages import PyPIComponentWithBaseLocator
+from pages.base import PyPIComponentWithBaseLocator
 
 from pomcorn import locators
 

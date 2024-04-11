@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from pages.base import PyPIPage
+from pages import PyPIPage
 from selenium.webdriver.remote.webdriver import WebDriver
 
 from pomcorn import locators
