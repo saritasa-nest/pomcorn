@@ -200,12 +200,17 @@ class ButtonWithTextLocator(ElementWithTextLocator):
         super().__init__(text=text, element="button", exact=exact)
 
 
-class InputByLabelLocator(XPathLocator):
+class InputInLabelLocator(XPathLocator):
     """Locator to looking for input with label by XPath.
 
     Specify the query as the string
     ``//label[contains(., "label")]//input``, where ``label`` is the text of
     the input label.
+
+    Example:
+        <label>Title</label>
+            <input value="Value">
+        </label>
 
     """
 
@@ -213,6 +218,28 @@ class InputByLabelLocator(XPathLocator):
         """Init XPathLocator."""
         super().__init__(
             query=f'//label[contains(., "{label}")]//input',
+        )
+
+
+class InputByLabelLocator(XPathLocator):
+    """Locator to looking for input next to label by XPath.
+
+    Specify the query as the string
+    ``//label[contains(., "label")]/following-sibling::input``, where ``label``
+    is the text of the input label.
+
+    Example:
+        <div>
+            <label for="InputWithLabel">Title</label>
+            <input id="InputWithLabel" value="Value">
+        </div>
+
+    """
+
+    def __init__(self, label: str):
+        """Init XPathLocator."""
+        super().__init__(
+            query=f'//label[contains(., "{label}")]/following-sibling::input',
         )
 
 
