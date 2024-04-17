@@ -45,7 +45,7 @@ class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
 
         Args:
             page: An instance of the page that uses this component.
-            base_locator: locator: Instance of a class to locate the element in
+            base_locator: Instance of a class to locate the element in
                 the browser. Used in relative element initialization methods
                 and visibility waits. You also can specify it as attribute.
             wait_until_visible: Whether to wait for the component to become
@@ -251,7 +251,7 @@ class ListComponent(
 
         items: list[ListItemType] = []
         for locator in self.iter_locators(self.base_item_locator):
-            items.append(self.item_class(self.page, locator))
+            items.append(self.item_class(page=self.page, base_locator=locator))
         return items
 
     def get_item_by_text(self, text: str) -> ListItemType:
