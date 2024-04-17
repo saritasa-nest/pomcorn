@@ -3,7 +3,6 @@ from typing import Self
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from . import locators
 from .exceptions import PageDidNotLoadedError
 from .web_view import WebView
 
@@ -146,14 +145,19 @@ class Page(WebView):
             self._get_full_relative_url(self.app_root, relative_url),
         )
 
-    def click_on_page(self):
-        """Click on page `html` tag.
+    def click_on_page(self) -> None:
+        """Click on (1, 1) coordinates in the upper left corner of the page.
 
         Allows you to move focus away from an element, for example, if it
         is currently unavailable for interaction.
 
         """
-        self.init_element(locator=locators.TagNameLocator("html")).click()
+        from selenium.webdriver.common.action_chains import ActionChains
+
+        ActionChains(self.webdriver).move_by_offset(
+            xoffset=1,  # cspell:disable-line
+            yoffset=1,  # cspell:disable-line
+        ).click().perform()
 
     @staticmethod
     def _get_full_relative_url(app_root: str, relative_url: str) -> str:
