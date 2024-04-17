@@ -3,6 +3,17 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.6.0
+*******************************************************************************
+
+Backwards incompatible changes
+-------------------------------------------------------------------------------
+- Updating the ``Page.click_on_page`` method: now it clicks on (1, 1) page
+  coordinates, because clicking on the html tag was done in the center of the
+  page, which led to unexpected situations
+- ``InputByLabelLocator`` is split into ``InputByLabelLocator`` (for non-nested
+  case) and ``InputInLabelLocator`` (for nested case)
+
 0.5.0
 *******************************************************************************
 
