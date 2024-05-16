@@ -26,8 +26,25 @@ to create `relative locators <https://www.selenium.dev/documentation/webdriver/e
 Interfaces
 *******************************************************************************
 
-.. image:: _static/images/locators_diagram.png
-    :alt: Locators hierarchy
+.. mermaid::
+
+  classDiagram
+    Locator <|-- XPathLocator
+    XPathLocator <|-- TInitLocator
+    XPathLocator <|-- TLocator
+    XPathLocator <|-- ElementWithTextLocator
+    XPathLocator <|-- InputByLabelLocator
+    XPathLocator <|-- PropertyLocator
+    XPathLocator <|-- TagNameLocator
+    XPathLocator <|-- TextAreaByLabelLocator
+
+    PropertyLocator <|-- ClassLocator
+    PropertyLocator <|-- DataTestIdLocator
+    PropertyLocator <|-- IdLocator
+    PropertyLocator <|-- NameLocator
+    ElementWithTextLocator <|-- ButtonWithTextLocator
+
+| * you can zoom it
 
 .. _Locator:
 

@@ -42,14 +42,14 @@ Backwards incompatible changes
 0.3.0
 *******************************************************************************
 
-Backwards incompatible changes
+Backwards incompatible changes in 0.3.0
 -------------------------------------------------------------------------------
 - Update ``InputByLabelLocator`` from a single-level to a nested implementation
 
 0.2.0
 *******************************************************************************
 
-Backwards incompatible changes
+Backwards incompatible changes in 0.2.0
 -------------------------------------------------------------------------------
 - Replace ``is_loaded`` property to ``check_page_is_loaded`` method
 

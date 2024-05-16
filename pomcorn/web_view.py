@@ -48,8 +48,8 @@ class WebView:
         """Shortcut for initializing Element instances.
 
         Note: To be consistent with the method of the same name in
-        ``ComponentWithBaseLocator``, try to use keyword when specifying
-        the ``locator`` argument whenever possible.
+        ``Component``, try to use keyword when specifying the ``locator``
+        argument whenever possible.
 
         Args:
             locator: Instance of a class to locate the element in the browser.
@@ -66,8 +66,8 @@ class WebView:
         Note: Only supports Xpath locators.
 
         Note: To be consistent with the method of the same name in
-        ``ComponentWithBaseLocator``, try to use keyword when specifying the
-        ``locator`` argument whenever possible.
+        ``Component``, try to use keyword when specifying the ``locator``
+        argument whenever possible.
 
         Args:
             locator: Instance of a class to locate the element in the browser.

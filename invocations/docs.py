@@ -25,3 +25,11 @@ def clear(context: invoke.Context):
     print_success("Start cleaning of local documentation")
     context.run(f"rm -rf {LOCAL_DOCS_DIR}/*")
     print_success("Cleaning completed")
+
+
+@invoke.task
+def serve(context: invoke.Context, host: int = 8000):
+    """Run built docs on localhost."""
+    print_success("Run docs on localhost")
+    context.run(f"python -m http.server {host} " f"-d {LOCAL_DOCS_DIR}")
+    print_success("Stop docs host")

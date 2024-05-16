@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pages import PyPIComponentWithBaseLocator
+from pages import PyPIComponent
 
 from pomcorn import locators
 
@@ -10,7 +10,7 @@ if TYPE_CHECKING:
     from pages import PackageDetailsPage
 
 
-class Package(PyPIComponentWithBaseLocator):
+class Package(PyPIComponent):
     """Represent the single search result (package) on `SearchPage`."""
 
     @property
@@ -25,7 +25,7 @@ class Package(PyPIComponentWithBaseLocator):
         from pages import PackageDetailsPage
 
         # The property `body` is available because the package is descendant of
-        # `ComponentWithBaseLocator`. It allows us to interact with the body of
-        # the component and we can check that the package is clickable.
+        # `Component`. It allows us to interact with the body of the component
+        # and we can check that the package is clickable.
         self.body.click()
         return PackageDetailsPage(self.webdriver)

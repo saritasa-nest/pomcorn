@@ -8,9 +8,8 @@ from .package import Package
 class PackageList(ListComponent[Package, PyPIPage]):
     """Represent the list of search results on `SearchPage`."""
 
-    # The ``ListComponent`` item should always be ``ComponentWithBaseLocator``,
-    # because all its methods depend on `base_locator`. Also this attribute is
-    # required.
+    # The ``ListComponent`` item should always be ``Component``, because all
+    # its methods depend on `base_locator`. Also this attribute is required.
     item_class = Package
 
     base_locator = locators.PropertyLocator(
