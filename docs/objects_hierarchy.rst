@@ -4,8 +4,39 @@ Object Hierarchy
 
 Pomcorn includes next object hierarchy for Page Object Model (``POM``) page creation:
 
-.. image:: _static/images/class_diagram.png
-    :alt: Class diagram
+
+.. mermaid::
+
+  classDiagram
+    WebView <|-- Component
+    WebView <|-- Page
+    Component <|-- ListComponent
+    Component .. Locator
+    Page .. Component
+
+    class WebView{
+        -webdriver: Webdriver
+    }
+    class Page{
+        +wait_until_loaded()
+        +open()
+    }
+    class Component{
+        -page: Page
+        -base_locator: Locator
+        + wait_until_visible()
+    }
+    class ListComponent{
+        -item_locator: Locator
+        +count()
+        +all()
+        +get_item_by_text()
+    }
+    class Locator{
+      -query: String
+    }
+
+|
 
 WebView class
 *******************************************************************************
@@ -23,20 +54,11 @@ Component classes
 *******************************************************************************
 
 **Component** is a group of elements that can be found on different pages (e.g. a list with search
-bar). Descendant of `WebView`.
-
-**ComponentWithBaseLocator** - It's a class, descendant of **Component**, with implemented
-additional logic of waiting until it becomes visible/invisible. During initialization, it waits for
-the base locator (see :ref:`Locators<Locators>`), which will be used to search for this component in
-its waiting methods. Also, the base locator will be used to create the `body` attribute, which will
-represent the component body to interact with it.
-
-
-.. note::
-    Using **ComponentWithBaseLocator** is more preferable, because unlike **Component**, this
-    component implements methods of waiting until it becomes visible/invisible, including in
-    ``__init__`` method. This will allow you to make your test more stable because the component
-    will wait until it becomes visible before returning its instance.
+bar). Descendant of `WebView`. It has implemented logic of waiting until it becomes
+visible/invisible. During initialization, it waits for the base locator
+(see :ref:`Locators<Locators>`), which will be used to search for this component in its waiting
+methods. Also, the base locator will be used to create the `body` attribute, which will represent
+the component body to interact with it.
 
 **ListComponent** - It's a class, descendant of **Component**, with implemented methods for work
 with list-like components: ``all``, ``count`` and ``get_item_by_text``.

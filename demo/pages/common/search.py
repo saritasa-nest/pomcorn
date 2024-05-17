@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pages import PyPIComponentWithBaseLocator
+from pages import PyPIComponent
 from selenium.webdriver.common.keys import Keys
 
 from pomcorn import locators
@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from pages.search_page import SearchPage
 
 
-class Search(PyPIComponentWithBaseLocator):
+class Search(PyPIComponent):
     """Component representing the search input field."""
 
     # If you are not going to write anything in ``__init__`` and only want

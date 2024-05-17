@@ -3,10 +3,21 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.7.0*
+*******************************************************************************
+
+- Update diagrams with `mermaid <https://mermaid.js.org/intro/>`__
+- Add invocation **inv docs.serve" to run docs on localhost
+
+Backwards incompatible changes in 0.7.0
+-------------------------------------------------------------------------------
+- Remove simple ``Component`` class
+- Rename ``ComponentWithBaseLocator`` to ``Component``
+
 0.6.0
 *******************************************************************************
 
-Backwards incompatible changes
+Backwards incompatible changes in 0.6.0
 -------------------------------------------------------------------------------
 - Updating the ``Page.click_on_page`` method: now it clicks on (1, 1) page
   coordinates, because clicking on the html tag was done in the center of the
@@ -42,14 +53,14 @@ Backwards incompatible changes
 0.3.0
 *******************************************************************************
 
-Backwards incompatible changes
+Backwards incompatible changes in 0.3.0
 -------------------------------------------------------------------------------
 - Update ``InputByLabelLocator`` from a single-level to a nested implementation
 
 0.2.0
 *******************************************************************************
 
-Backwards incompatible changes
+Backwards incompatible changes in 0.2.0
 -------------------------------------------------------------------------------
 - Replace ``is_loaded`` property to ``check_page_is_loaded`` method
 

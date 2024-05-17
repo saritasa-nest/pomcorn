@@ -207,7 +207,9 @@ class InputInLabelLocator(XPathLocator):
     ``//label[contains(., "label")]//input``, where ``label`` is the text of
     the input label.
 
-    Example:
+    .. code-block:: html
+
+        # Example
         <label>Title</label>
             <input value="Value">
         </label>
@@ -228,7 +230,9 @@ class InputByLabelLocator(XPathLocator):
     ``//label[contains(., "label")]/following-sibling::input``, where ``label``
     is the text of the input label.
 
-    Example:
+    .. code-block:: html
+
+        # Example
         <div>
             <label for="InputWithLabel">Title</label>
             <input id="InputWithLabel" value="Value">

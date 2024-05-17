@@ -9,25 +9,11 @@ TPage = TypeVar("TPage", bound=Page)
 
 
 class Component(Generic[TPage], WebView):
-    """The class to represent a page component.
-
-    It contains page elements and utils methods for page manipulation, but as a
-    separate entity that can be reused for different pages with common
-    elements.
-
-    """
-
-    def __init__(self, page: TPage):
-        super().__init__(
-            page.webdriver,
-            app_root=page.app_root,
-            wait_timeout=page.wait_timeout,
-        )
-        self.page = page
-
-
-class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
     """The class to represent a page component that depends on base locator.
+
+    It contains page elements, components and utils methods for page
+    manipulation, but as a separate entity that can be reused for different
+    pages with common elements.
 
     Implement wait methods until the component becomes visible or invisible.
 
@@ -52,7 +38,12 @@ class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
                 visible before completing initialization or not.
 
         """
-        super().__init__(page)
+        super().__init__(
+            page.webdriver,
+            app_root=page.app_root,
+            wait_timeout=page.wait_timeout,
+        )
+        self.page = page
         self.base_locator = base_locator or self.base_locator
         self.body = self.init_element(locator=self.base_locator)
 
@@ -171,18 +162,12 @@ class ComponentWithBaseLocator(Generic[TPage], Component[TPage]):
         self.body.wait_until_invisible()
 
 
-# Here type ignore added because we can't specify TPage as generic
-# for ComponentWithBaseLocator, but specifying Page is incorrect
-ListItemType = TypeVar(
-    "ListItemType",
-    bound=ComponentWithBaseLocator,  # type: ignore
-)
+# Here type ignore added because we can't specify TPage as generic for
+# Component, but specifying Page is incorrect
+ListItemType = TypeVar("ListItemType", bound=Component)  # type: ignore
 
 
-class ListComponent(
-    Generic[ListItemType, TPage],
-    ComponentWithBaseLocator[TPage],
-):
+class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
     """Class to represent a list-like component.
 
     It contains standard properties and methods for working with list-like

@@ -36,7 +36,13 @@ extensions = [
     "sphinx.ext.todo",
     # Support for Google style Python docstrings
     "sphinx.ext.napoleon",
+    # Support mermaid diagrams
+    # https://github.com/mgaitan/sphinxcontrib-mermaid/tree/master
+    "sphinxcontrib.mermaid",
 ]
+
+# Add ability to zoom mermaid diagrams
+mermaid_d3_zoom = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
