@@ -7,7 +7,10 @@ We follow `Semantic Versions <https://semver.org/>`_.
 *******************************************************************************
 
 - Update diagrams with `mermaid <https://mermaid.js.org/intro/>`__
-- Add invocation **inv docs.serve" to run docs on localhost
+- Add invocation **inv docs.serve** to run docs on localhost
+- Add auto-scroll to element before click
+- Add page class name to ``PageDidNotLoadedError``
+- Add method ``contains()`` to ``XPathLocator`` for search by contained text
 
 Backwards incompatible changes in 0.7.0
 -------------------------------------------------------------------------------
