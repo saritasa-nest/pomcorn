@@ -121,11 +121,15 @@ class XPathLocator(Locator):
 
     def __truediv__(self, other: XPathLocator) -> XPathLocator:
         """Override `/` operator to implement following XPath locators."""
-        return XPathLocator(query=f"{self.query}/{other.related_query}")
+        return XPathLocator(
+            query=f"//{self.related_query}/{other.related_query}",
+        )
 
     def __floordiv__(self, other: XPathLocator) -> XPathLocator:
         """Override `//` operator to implement nested XPath locators."""
-        return XPathLocator(query=f"{self.query}//{other.related_query}")
+        return XPathLocator(
+            query=f"//{self.related_query}//{other.related_query}",
+        )
 
     def __or__(self, other: XPathLocator) -> XPathLocator:
         r"""Override `|` operator to implement variant XPath locators.
@@ -145,3 +149,19 @@ class XPathLocator(Locator):
     def extend_query(self, extra_query: str) -> XPathLocator:
         """Return new XPathLocator with extended query."""
         return XPathLocator(query=self.query + extra_query)
+
+    def contains(self, text: str, exact: bool = False) -> XPathLocator:
+        """Return new XPathLocator with search on contained text.
+
+        This is shortcut for the commonly used
+        `.extend_query(f"[contains(., '{text}')])`.
+
+        Args:
+            text: The text that should be inside the tag.
+            exact: Specify whether the text being searched must match exactly.
+                By default, the search is based on a partial match.
+
+        """
+        partial_query = f"[contains(., '{text}')]"
+        exact_query = f"[./text()='{text}']"
+        return self.extend_query(exact_query if exact else partial_query)
