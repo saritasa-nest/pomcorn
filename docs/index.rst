@@ -27,6 +27,7 @@ Documentation
    objects_hierarchy
    developer_interface
    locators
+   descriptors
    waits_conditions
    development
    contributing

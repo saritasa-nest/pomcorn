@@ -13,7 +13,7 @@ from selenium.webdriver.support.expected_conditions import (
 
 from pomcorn.locators.base_locators import TLocator
 
-from .element import Element
+from .element import PomcornElement
 
 
 def url_not_matches(pattern: str) -> Callable[[WebDriver], bool]:
@@ -26,7 +26,7 @@ def url_not_matches(pattern: str) -> Callable[[WebDriver], bool]:
 
 
 def text_in_element_changes(
-    element: Element[TLocator] | TLocator,
+    element: PomcornElement[TLocator] | TLocator,
     old_text: str,
 ) -> Callable[[WebDriver], bool]:
     """Represent `wait condition` to check that text doesn't match old text.
@@ -40,7 +40,7 @@ def text_in_element_changes(
     def check_the_match(driver: WebDriver) -> bool:
         target = element
 
-        if isinstance(target, Element):
+        if isinstance(target, PomcornElement):
             return old_text != target.get_text()
 
         return old_text != driver.find_element(*target).text
@@ -49,14 +49,14 @@ def text_in_element_changes(
 
 
 def element_not_exists_in_dom(
-    element: Element[TLocator] | TLocator,
+    element: PomcornElement[TLocator] | TLocator,
 ) -> Callable[[WebDriver], bool]:
     """Represent `wait condition` to check that element not exists in DOM."""
 
     def check_the_match(driver: WebDriver) -> bool:
         target = element
 
-        if isinstance(target, Element):
+        if isinstance(target, PomcornElement):
             return not target.exists_in_dom
 
         try:

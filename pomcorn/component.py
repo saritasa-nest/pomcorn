@@ -31,9 +31,9 @@ class Component(Generic[TPage], WebView):
 
         Args:
             page: An instance of the page that uses this component.
-            base_locator: Instance of a class to locate the element in
-                the browser. Used in relative element initialization methods
-                and visibility waits. You also can specify it as attribute.
+            base_locator: Instance of a class to locate the component in the
+                browser. Used in relative element initialization methods and
+                visibility waits. You also can specify it as attribute.
             wait_until_visible: Whether to wait for the component to become
                 visible before completing initialization or not.
 

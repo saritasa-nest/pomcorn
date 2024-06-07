@@ -7,7 +7,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from pomcorn.element import Element, XPathElement
+from pomcorn.element import PomcornElement, XPathElement
 
 from . import exceptions, locators, waits_conditions
 from .locators.base_locators import TInitLocator
@@ -44,7 +44,10 @@ class WebView:
             poll_frequency=poll_frequency,
         )
 
-    def init_element(self, locator: TInitLocator) -> Element[TInitLocator]:
+    def init_element(
+        self,
+        locator: TInitLocator,
+    ) -> PomcornElement[TInitLocator]:
         """Shortcut for initializing Element instances.
 
         Note: To be consistent with the method of the same name in
@@ -55,7 +58,7 @@ class WebView:
             locator: Instance of a class to locate the element in the browser.
 
         """
-        return Element(self, locator=locator)
+        return PomcornElement(web_view=self, locator=locator)
 
     def init_elements(
         self,
@@ -317,7 +320,7 @@ class WebView:
 
     def wait_until_not_exists_in_dom(
         self,
-        element: Element[locators.TLocator] | locators.TLocator,
+        element: PomcornElement[locators.TLocator] | locators.TLocator,
     ):
         """Wait until element ceases to exist in DOM.
 
