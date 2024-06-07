@@ -3,7 +3,7 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.7.0*
+0.7.0
 *******************************************************************************
 
 - Update diagrams with `mermaid <https://mermaid.js.org/intro/>`__
