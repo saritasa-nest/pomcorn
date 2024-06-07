@@ -3,11 +3,14 @@ from __future__ import annotations
 from pages.base import PyPIPage
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from pomcorn import XPathElement, locators
+from pomcorn import Element, locators
 
 
 class HelpPage(PyPIPage):
     """Represent the help page."""
+
+    # Define element for title
+    title_element = Element(locators.ClassLocator("page-title"))
 
     @classmethod
     def open(
@@ -25,18 +28,10 @@ class HelpPage(PyPIPage):
         # user does.
         return IndexPage.open(webdriver, app_root=app_root).navbar.open_help()
 
-    @property
-    def title_element(self) -> XPathElement:
-        """Get the title element."""
-        return self.init_element(locators.ClassLocator("page-title"))
-
     def check_page_is_loaded(self) -> bool:
         """Return the check result that the page is loaded.
 
-        Return whether `main` tag and help page title element are displayed
-        or not.
+        Return whether help page title element are displayed or not.
 
         """
-        return (
-            super().check_page_is_loaded() and self.title_element.is_displayed
-        )
+        return self.title_element.is_displayed

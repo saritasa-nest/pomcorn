@@ -17,6 +17,10 @@ Backwards incompatible changes in 0.7.0
 - Remove simple ``Component`` class
 - Rename ``ComponentWithBaseLocator`` to ``Component``
 
+- Rename ``Element`` class to ``PomcornElement``
+- Add descriptor ``Element`` to simplify adding element-attributes to **Pages**
+  and **Components**
+
 0.6.0
 *******************************************************************************
 

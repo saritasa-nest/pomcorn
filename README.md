@@ -81,12 +81,10 @@ Below is the code that opens ``PyPI.org``, searches for packages by name and pri
 
       APP_ROOT = "https://pypi.org"
 
+      search = Element(locators.IdLocator("search"))
+
       def check_page_is_loaded(self) -> bool:
           return self.init_element(locators.TagNameLocator("main")).is_displayed
-
-      @property
-      def search(self) -> Element[locators.XPathLocator]:
-          return self.init_element(locators.IdLocator("search"))
 
 
   # Prepare components
@@ -96,10 +94,7 @@ Below is the code that opens ``PyPI.org``, searches for packages by name and pri
   class PackageList(ListComponent[Package, PyPIPage]):
 
       item_class = Package
-
-      @property
-      def base_item_locator(self) -> locators.XPathLocator:
-          return self.base_locator // locators.ClassLocator("snippet__name")
+      relative_item_locator = locators.ClassLocator("snippet__name")
 
       @property
       def names(self) -> list[str]:
@@ -135,6 +130,7 @@ Below is the code that opens ``PyPI.org``, searches for packages by name and pri
 
   search_page = SearchPage.open(webdriver=Chrome())
   print(search_page.find("saritasa").names)
+  search_page.webdriver.close()
 ```
 
 For more information about package classes, you can read in [Object Hierarchy](https://pomcorn.readthedocs.io/en/latest/objects_hierarchy.html) and [Developer Interface](https://pomcorn.readthedocs.io/en/latest/developer_interface.html).

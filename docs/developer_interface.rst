@@ -16,14 +16,19 @@ Page
 .. automodule:: pomcorn.page
     :members:
 
-Element
-*******************************************************************************
-
-.. automodule:: pomcorn.element
-   :members:
-
 Components
 *******************************************************************************
 
 .. automodule:: pomcorn.component
+   :members:
+
+
+PomcornElement
+*******************************************************************************
+
+.. note::
+  This class is returned when the ``Element`` descriptor or the
+  ``init_element/init_elements`` methods of the page or components are used.
+
+.. automodule:: pomcorn.element
    :members:

@@ -63,8 +63,14 @@ the component body to interact with it.
 **ListComponent** - It's a class, descendant of **Component**, with implemented methods for work
 with list-like components: ``all``, ``count`` and ``get_item_by_text``.
 
-Element class
+PomcornElement class
 *******************************************************************************
 
 A smallest part of page(component). It can be a button, link, or just some text. In general, you can
 imagine that this is an html tag.
+
+
+.. note::
+    The class is rarely initiated in its pure form, so we added descriptors for easy definition of
+    element-attributes (see :ref:`descriptors<Descriptors>`), and within **Page** and **Component**
+    classes, an element can be defined using the :ref:`self.init_element<WebView>` method.
