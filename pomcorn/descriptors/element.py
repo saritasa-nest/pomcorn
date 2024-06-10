@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, NoReturn
+from typing import TYPE_CHECKING, NoReturn, overload
 
 from pomcorn import locators
 
@@ -23,23 +23,39 @@ class Element:
 
     cache_attribute_name = "cached_elements"
 
+    @overload
     def __init__(
         self,
-        locator: locators.XPathLocator,
-        is_relative_locator: bool = True,
+        locator: locators.XPathLocator | None = None,
+    ) -> None:
+        ...
+
+    @overload
+    def __init__(
+        self,
+        *,
+        relative_locator: locators.XPathLocator | None = None,
+    ) -> None:
+        ...
+
+    def __init__(
+        self,
+        locator: locators.XPathLocator | None = None,
+        *,
+        relative_locator: locators.XPathLocator | None = None,
     ) -> None:
         """Initialize descriptor.
 
-        Args:
-            locator: Instance of a class to locate the element in
-                the browser.
-            is_relative_locator: Whether add parent ``base_locator`` to the
-                current descriptors's `base_locator` or not. If descriptor is
-                used for ``Page``, the value of this argument will not be used.
+        Use `relative_locator` if you need to include `base_locator` of
+        instance, otherwise use `locator`.
+
+        If descriptor is used for instance of ``Page``, then
+        ``relative_locator`` is not needed, since element will be searched
+        across the entire page, not within some component.
 
         """
-        self.is_relative_locator = is_relative_locator
         self.locator = locator
+        self.relative_locator = relative_locator
 
     def __set_name__(self, _owner: type, name: str) -> None:
         """Save attribute name for which descriptor is created."""
@@ -69,10 +85,6 @@ class Element:
         ``self.is_relative_locator=True``, element will be found by sum of
         ``base_locator`` of that component and passed locator of descriptor.
 
-        If descriptor is used for instance of ``Page``, then ``base_locator``
-        is not needed, since element will be searched across the entire page,
-        not within some component.
-
         """
         if not getattr(instance, self.cache_attribute_name, None):
             setattr(instance, self.cache_attribute_name, {})
@@ -81,15 +93,49 @@ class Element:
         if cached_element := cache.get(self.attribute_name):
             return cached_element
 
-        from pomcorn import Component
-
-        if self.is_relative_locator and isinstance(instance, Component):
-            self.locator = instance.base_locator // self.locator
-
-        element = instance.init_element(locator=self.locator)
+        element = instance.init_element(
+            locator=self._prepare_locator(instance),
+        )
         cache[self.attribute_name] = element
 
         return element
+
+    def _prepare_locator(self, instance: WebView) -> locators.XPathLocator:
+        """Prepare a locator by arguments.
+
+        Check that only one locator argument is passed, or none.
+        If only `relative_locator` was passed, `base_locator` of instance will
+        be added to specified in descriptor arguments. If only `locator` was
+        passed, it will return only specified one.
+
+        Raises:
+            ValueError: If both arguments were passed or neither or
+                ``relative_locator`` used not in ``Component``.
+
+        """
+        if self.relative_locator and self.locator:
+            raise ValueError(
+                "You need to pass only one of the arguments: "
+                "`locator` or `relative_locator`.",
+            )
+
+        if not self.relative_locator:
+            if not self.locator:
+                raise ValueError(
+                    "You need to pass one of the arguments: "
+                    "`locator` or `relative_locator`.",
+                )
+            return self.locator
+
+        from pomcorn import Component
+
+        if self.relative_locator and isinstance(instance, Component):
+            return instance.base_locator // self.relative_locator
+
+        raise ValueError(
+            f"`relative_locator` should be used only if descriptor used in "
+            f"component. `{instance}` is not a component.",
+        )
 
     def __set__(self, *args, **kwargs) -> NoReturn:
         raise ValueError("You can't reset an element attribute value!")
