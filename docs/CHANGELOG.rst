@@ -3,6 +3,15 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.7.1
+*******************************************************************************
+
+- Add ability to `Element` to specify simple and relative locators using the
+  `locator` or `relative_locator` arguments, as in `Component.init_element <https://github.com/saritasa-nest/pomcorn/blob/main/pomcorn/component.py>`_.
+- Fix some possible xpath errors depending on empty locators queries and
+  brackets.
+
+
 0.7.0
 *******************************************************************************
 
