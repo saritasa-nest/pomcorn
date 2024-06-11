@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from collections.abc import Iterator
-from typing import TypeVar
+from typing import Literal, TypeVar
 
 from selenium.webdriver.common.by import By
 
@@ -120,16 +120,22 @@ class XPathLocator(Locator):
         super().__init__(by=By.XPATH, query=query)
 
     def __truediv__(self, other: XPathLocator) -> XPathLocator:
-        """Override `/` operator to implement following XPath locators."""
-        return XPathLocator(
-            query=f"//{self.related_query}/{other.related_query}",
-        )
+        """Override `/` operator to implement following XPath locators.
+
+        "/" used to select the nearest children of the current node.
+
+        """
+        return self.prepare_relative_locator(other=other, separator="/")
 
     def __floordiv__(self, other: XPathLocator) -> XPathLocator:
-        """Override `//` operator to implement nested XPath locators."""
-        return XPathLocator(
-            query=f"//{self.related_query}//{other.related_query}",
-        )
+        """Override `//` operator to implement nested XPath locators.
+
+        "//" used to select all descendants (children, grandchildren,
+        great-grandchildren, etc.) of current node, regardless of their level
+        in hierarchy.
+
+        """
+        return self.prepare_relative_locator(other=other, separator="//")
 
     def __or__(self, other: XPathLocator) -> XPathLocator:
         r"""Override `|` operator to implement variant XPath locators.
@@ -145,6 +151,10 @@ class XPathLocator(Locator):
 
         """
         return XPathLocator(query=f"({self.query} | {other.query})")
+
+    def __bool__(self) -> bool:
+        """Return whether query of current locator is empty or not."""
+        return bool(self.related_query)
 
     def extend_query(self, extra_query: str) -> XPathLocator:
         """Return new XPathLocator with extended query."""
@@ -165,3 +175,49 @@ class XPathLocator(Locator):
         partial_query = f"[contains(., '{text}')]"
         exact_query = f"[./text()='{text}']"
         return self.extend_query(exact_query if exact else partial_query)
+
+    def prepare_relative_locator(
+        self,
+        other: XPathLocator,
+        separator: Literal["/", "//"] = "/",
+    ) -> XPathLocator:
+        """Prepare relative locator base on queries of two locators.
+
+        If one of parent and other locator queries is empty, the method will
+        return only the filled one.
+
+        Args:
+            other: Child locator object.
+            separator: Literal which will placed between locators queries - "/"
+                used to select nearest children of current node and "//" used
+                to select all descendants (children, grandchildren,
+                great-grandchildren, etc.) of current node, regardless of their
+                level in hierarchy.
+
+        Raises:
+            ValueError: If parent and child locators queries are empty.
+
+        """
+        related_query = self.related_query
+        if not related_query.startswith("("):
+            # Parent query can be bracketed, in which case we don't need to use
+            # `//`
+            # Example:
+            #   (//li)[3] -> valid
+            #   //(//li)[3] -> invalid
+            related_query = f"//{self.related_query}"
+
+        locator = XPathLocator(
+            query=f"{related_query}{separator}{other.related_query}",
+        )
+
+        if self and other:
+            return locator
+
+        if not (self or other):
+            raise ValueError(
+                f"Both of locators have empty query. The `{locator.query}` is "
+                "not a valid locator.",
+            )
+
+        return other if not self else self
