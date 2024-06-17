@@ -7,6 +7,7 @@ We follow `Semantic Versions <https://semver.org/>`_.
 *******************************************************************************
 - Improve ``Page.click_on_page`` method to click on <html> tag
 - Improve ``Page.open_from_url`` to support kwargs
+- Fix ``\`` related problems in ``Page._get_full_relative_url``
 
 
 0.7.1
