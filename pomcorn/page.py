@@ -108,7 +108,7 @@ class Page(WebView):
         # navigate to relative url before page is initialized, since otherwise
         # `wait_until_loaded` method in page `__init__` method might fail.
         webdriver.get(cls._get_full_relative_url(app_root, path))
-        page = cls(webdriver, app_root=app_root)
+        page = cls(webdriver, app_root=app_root, **kwargs)
         return page
 
     def refresh(self) -> None:
