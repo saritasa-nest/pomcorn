@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.7.2
+*******************************************************************************
+- Improve ``Page.click_on_page`` method to click on <html> tag
+
+
 0.7.1
 *******************************************************************************
 
