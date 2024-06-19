@@ -3,11 +3,16 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.7.3
+*******************************************************************************
+- Add ability to not specify ``app_root`` in ``Page.open_from_url()`` as in ``Page.open()``
+
+
 0.7.2
 *******************************************************************************
-- Improve ``Page.click_on_page`` method to click on <html> tag
-- Improve ``Page.open_from_url`` to support kwargs
-- Fix ``\`` related problems in ``Page._get_full_relative_url``
+- Improve ``Page.click_on_page()`` method to click on <html> tag
+- Improve ``Page.open_from_url()`` to support kwargs
+- Fix ``\`` related problems in ``Page._get_full_relative_url()``
 
 
 0.7.1

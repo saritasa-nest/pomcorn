@@ -103,12 +103,18 @@ class Page(WebView):
             path: Relative URL.
 
         """
-        app_root = app_root or cls.APP_ROOT
+        # hack to not specify app_root in each page init method
+        if app_root:
+            kwargs["app_root"] = app_root
+
         # We don't use `page.navigate_relative` here because we need to
         # navigate to relative url before page is initialized, since otherwise
         # `wait_until_loaded` method in page `__init__` method might fail.
-        webdriver.get(cls._get_full_relative_url(app_root, path))
-        page = cls(webdriver, app_root=app_root, **kwargs)
+        webdriver.get(
+            url=cls._get_full_relative_url(app_root or cls.APP_ROOT, path),
+        )
+
+        page = cls(webdriver, **kwargs)
         return page
 
     def refresh(self) -> None:
