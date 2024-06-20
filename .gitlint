@@ -25,3 +25,8 @@ line-length=79
 
 [body-min-length]
 min-length=1
+
+# Ignore certain lines in a commit body that match a regex.
+# E.g. Ignore all lines that start with 'Co-authored-By' or http(s) links
+[ignore-body-lines]
+regex=^(Co-authored-by|http)
