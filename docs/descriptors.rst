@@ -30,6 +30,5 @@ Element descriptor interfaces
 
 .. autoclass:: pomcorn.descriptors.Element
    :members:
-
    :special-members: __init__
    :exclude-members: Element
