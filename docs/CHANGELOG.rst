@@ -3,6 +3,12 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.7.4
+*******************************************************************************
+- Improve ``Page.click_on_page()`` method to click the page coordinates instead
+  of offset relative to  current mouse position
+
+
 0.7.3
 *******************************************************************************
 - Add ability to not specify ``app_root`` in ``Page.open_from_url()`` as in ``Page.open()``

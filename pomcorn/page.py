@@ -153,25 +153,19 @@ class Page(WebView):
         )
 
     def click_on_page(self) -> None:
-        """Click on (1, 1) coordinates of `html` tag (page upper left corner).
+        """Click on (1, 1) coordinates of page (left upper corner).
 
         Allows you to move focus away from an element, for example, if it
         is currently unavailable for interaction.
 
         """
-        from selenium.webdriver.common.action_chains import ActionChains
+        from selenium.webdriver.common.actions.action_builder import (
+            ActionBuilder,
+        )
 
-        from pomcorn import locators
-
-        html_webelement = self.init_element(
-            locator=locators.TagNameLocator("html"),
-        ).get_element()
-
-        ActionChains(self.webdriver).move_to_element_with_offset(
-            to_element=html_webelement,
-            xoffset=1,  # cspell:disable-line
-            yoffset=1,  # cspell:disable-line
-        ).click().perform()
+        action = ActionBuilder(self.webdriver)
+        action.pointer_action.move_to_location(1, 1).click()
+        action.perform()
 
     @staticmethod
     def _get_full_relative_url(app_root: str, relative_url: str) -> str:
