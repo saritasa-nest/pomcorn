@@ -285,7 +285,6 @@ class PomcornElement(Generic[locators.TLocator]):
     def click(
         self,
         only_visible: bool = True,
-        scroll_to: bool = True,
         wait_until_clickable: bool = True,
     ):
         """Click on element.
@@ -293,13 +292,10 @@ class PomcornElement(Generic[locators.TLocator]):
         Args:
             only_visible: Flag for viewing visible elements. If this is `True`
                 (default), then this method will only get visible elements.
-            scroll_to: Whether to scroll to element before clicking or not.
             wait_until_clickable: Wait until the element is clickable before
                 clicking, or not (default `True`).
 
         """
-        if scroll_to:
-            self.scroll_to(only_visible=only_visible)
         if wait_until_clickable:
             self.wait_until_clickable()
         self.get_element(only_visible=only_visible).click()

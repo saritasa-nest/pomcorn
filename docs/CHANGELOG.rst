@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.7.5
+*******************************************************************************
+- Remove redundant call of ``scroll_to`` in ``PomcornElement.click()``.
+  This is redundant, as webdriver by default scrolls to element before click (`docs <https://www.w3.org/TR/webdriver2/#element-click>`_).
+
 0.7.4
 *******************************************************************************
 - Improve ``Page.click_on_page()`` method to click the page coordinates instead
