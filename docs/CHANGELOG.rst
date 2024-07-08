@@ -3,6 +3,14 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.0 (05.07.24)
+*******************************************************************************
+- Add ability to not specify ``item_class`` in ``ListComponent``. Instead, it
+  will be automatically filled with value passed in ``Generic[ListItemType]``.
+
+**Warning**: The ``item_class`` specification is still available, but it is
+deprecated and will be removed soon.
+
 0.7.5
 *******************************************************************************
 - Remove redundant call of ``scroll_to`` in ``PomcornElement.click()``.

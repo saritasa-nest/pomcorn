@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar, overload
+from typing import Generic, TypeVar, get_args, overload
 
 from . import locators
 from .element import XPathElement
@@ -177,20 +177,36 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
     * all
     * get_item_by_text()
 
-    Waits for `base_item_locator` property to be implemented and value of
-    `item_class` to be set.
-
     Waits for `base_item_locator` property  to be overridden or one of the
     attributes (`item_locator` or `relative_item_locator`) to be specified.
 
-    The `item_class` attribute is also required.
-
     """
-
-    item_class: type[ListItemType]
 
     item_locator: locators.XPathLocator | None = None
     relative_item_locator: locators.XPathLocator | None = None
+
+    def __init__(
+        self,
+        page: TPage,
+        base_locator: locators.XPathLocator | None = None,
+        wait_until_visible: bool = True,
+    ):
+        super().__init__(page, base_locator, wait_until_visible)
+        if item_class := getattr(self, "item_class", None):
+            import warnings
+
+            warnings.warn(
+                DeprecationWarning(
+                    "\nSpecifying `item_class` attribute in `ListComponent` "
+                    f"({self.__class__}) is DEPRECATED. It is now "
+                    "automatically substituted from Generic[ListItemType]. "
+                    "Ability to specify this attribute will be removed soon.",
+                ),
+                stacklevel=2,
+            )
+            self._item_class = item_class
+        else:
+            self._item_class = self._get_list_item_class()
 
     @property
     def base_item_locator(self) -> locators.XPathLocator:
@@ -236,7 +252,9 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
 
         items: list[ListItemType] = []
         for locator in self.iter_locators(self.base_item_locator):
-            items.append(self.item_class(page=self.page, base_locator=locator))
+            items.append(
+                self._item_class(page=self.page, base_locator=locator),
+            )
         return items
 
     def get_item_by_text(self, text: str) -> ListItemType:
@@ -244,13 +262,17 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
         locator = self.base_item_locator.extend_query(
             extra_query=f"[contains(.,'{text}')]",
         )
-        return self.item_class(page=self.page, base_locator=locator)
+        return self._item_class(page=self.page, base_locator=locator)
+
+    def _get_list_item_class(self) -> type[ListItemType]:
+        """Return class passed in `Generic[ListItemType]`."""
+        return get_args(self.__orig_bases__[0])[0]  # type: ignore
 
     def __repr__(self) -> str:
         return (
             "ListComponent("
             f"component={self.__class__}, "
-            f"item_class={self.item_class}, "
+            f"item_class={self._item_class}, "
             f"base_item_locator={self.base_item_locator}, "
             f"count={self.count}, "
             f"items={self.all}, "
