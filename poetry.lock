@@ -1111,13 +1111,13 @@ jupyter = ["ipywidgets (>=7.5.1,<9)"]
 
 [[package]]
 name = "saritasa-invocations"
-version = "1.1.1"
+version = "1.2.0"
 description = "Collection of invoke commands used by Saritasa"
 optional = false
 python-versions = "<4.0,>=3.10"
 files = [
-    {file = "saritasa_invocations-1.1.1-py3-none-any.whl", hash = "sha256:5fa889d6ce75b029f43b3c316561995ed5163e88bf14612b7b1bd4835feb6395"},
-    {file = "saritasa_invocations-1.1.1.tar.gz", hash = "sha256:61033debaffa440c9f69552d7c9e9813cfa12dfd99adad3c07cfb66f37cb0476"},
+    {file = "saritasa_invocations-1.2.0-py3-none-any.whl", hash = "sha256:7a18ba2297c52b999496cb52c4e7ddab6dc76bd8492c0b4fc9a3b36bdaf5bb3d"},
+    {file = "saritasa_invocations-1.2.0.tar.gz", hash = "sha256:cabc7ce70d44fd9d45ae56c1968c7a27c14870585b7d657f5c6ed2b804f7481d"},
 ]
 
 [package.dependencies]
