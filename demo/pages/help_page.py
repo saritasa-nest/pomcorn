@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from pages.base import PyPIPage
 from selenium.webdriver.remote.webdriver import WebDriver
 
+from demo.pages.base import PyPIPage
 from pomcorn import Element, locators
 
 
@@ -20,7 +20,7 @@ class HelpPage(PyPIPage):
         app_root: str | None = None,
     ) -> HelpPage:
         """Open the help page via the index page."""
-        from pages.index_page import IndexPage
+        from demo.pages.index_page import IndexPage
 
         # Reusing already implemented methods of opening a page instead of
         # overriding `app_root` allows us to be independent from URK changes:

@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from pages.base import PyPIPage
 from selenium.webdriver.remote.webdriver import WebDriver
 
+from demo.pages.base import PyPIPage
 from pomcorn import locators
 
 
@@ -25,7 +25,7 @@ class PackageDetailsPage(PyPIPage):
         app_root: str | None = None,
     ) -> PackageDetailsPage:
         """Search and open the package details page by its name."""
-        from pages import IndexPage
+        from demo.pages import IndexPage
 
         search_page = IndexPage.open(
             webdriver,

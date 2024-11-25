@@ -3,6 +3,14 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.1 (25.11.24)
+*******************************************************************************
+- Improve getting ``item class`` from first ``ListComponent`` generic variable.
+  There were several cases where this didn't work correctly (for multiple generic variables
+  and inheritance). Examples of such cases are presented in `this PR <https://github.com/saritasa-nest/pomcorn/pull/98#issuecomment-2485811259>`_.\
+
+**Warning**: The ``item_class`` class attribute was removed.
+
 0.8.0 (05.07.24)
 *******************************************************************************
 - Add ability to not specify ``item_class`` in ``ListComponent``. Instead, it
@@ -21,18 +29,15 @@ deprecated and will be removed soon.
 - Improve ``Page.click_on_page()`` method to click the page coordinates instead
   of offset relative to  current mouse position
 
-
 0.7.3
 *******************************************************************************
 - Add ability to not specify ``app_root`` in ``Page.open_from_url()`` as in ``Page.open()``
-
 
 0.7.2
 *******************************************************************************
 - Improve ``Page.click_on_page()`` method to click on <html> tag
 - Improve ``Page.open_from_url()`` to support kwargs
 - Fix ``\`` related problems in ``Page._get_full_relative_url()``
-
 
 0.7.1
 *******************************************************************************
@@ -41,7 +46,6 @@ deprecated and will be removed soon.
   `locator` or `relative_locator` arguments, as in `Component.init_element <https://github.com/saritasa-nest/pomcorn/blob/main/pomcorn/component.py>`_.
 - Fix some possible xpath errors depending on empty locators queries and
   brackets.
-
 
 0.7.0
 *******************************************************************************

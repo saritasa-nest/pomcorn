@@ -22,7 +22,6 @@ Components
 .. automodule:: pomcorn.component
    :members:
 
-
 PomcornElement
 *******************************************************************************
 

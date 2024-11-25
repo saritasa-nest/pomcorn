@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pomcorn"
-version = "0.8.0"
+version = "0.8.1"
 description = "Base implementation of Page Object Model"
 authors = [
   "Saritasa <pypi@saritasa.com>",
@@ -170,6 +170,11 @@ pytest-fixture-no-parentheses = true
 pytest-parametrize-names-type = "list"
 pytest-parametrize-values-type = "list"
 pytest-parametrize-values-row-type = "list"
+
+per-file-ignores = [
+  # Ignore using lambda in `item_class` tests
+  "tests/list_component/test_item_class.py: E731",
+]
 
 [tool.mypy]
 # mypy configurations: https://mypy.readthedocs.io/en/latest/config_file.html

@@ -49,6 +49,7 @@ words:
   - STDLIB
   - pydocstyle
   - redef
+  - prefs
 
     # RST blocks
   - autodoc

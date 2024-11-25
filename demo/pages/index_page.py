@@ -1,6 +1,7 @@
-from pages.base import PyPIPage
-from pages.common import Search
 from selenium.webdriver.remote.webdriver import WebDriver
+
+from demo.pages.base import PyPIPage
+from demo.pages.common import Search
 
 
 class IndexPage(PyPIPage):

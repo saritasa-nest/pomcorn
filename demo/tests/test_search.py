@@ -1,4 +1,4 @@
-from pages import IndexPage
+from demo.pages import IndexPage
 
 
 def test_search(index_page: IndexPage):

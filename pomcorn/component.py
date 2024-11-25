@@ -1,4 +1,13 @@
-from typing import Generic, TypeVar, get_args, overload
+from inspect import isclass
+from typing import (
+    Any,
+    Generic,
+    Literal,
+    TypeVar,
+    get_args,
+    get_origin,
+    overload,
+)
 
 from . import locators
 from .element import XPathElement
@@ -6,6 +15,17 @@ from .page import Page
 from .web_view import WebView
 
 TPage = TypeVar("TPage", bound=Page)
+
+
+class _EmptyValue:
+    """Singleton to use as default value for empty class attribute."""
+
+    def __bool__(self) -> Literal[False]:
+        """Allow `EmptyValue` to be used in bool expressions."""
+        return False
+
+
+EmptyValue: Any = _EmptyValue()
 
 
 class Component(Generic[TPage], WebView):
@@ -182,31 +202,30 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
 
     """
 
+    _item_class: type[ListItemType] = EmptyValue
+
     item_locator: locators.XPathLocator | None = None
     relative_item_locator: locators.XPathLocator | None = None
 
-    def __init__(
-        self,
-        page: TPage,
-        base_locator: locators.XPathLocator | None = None,
-        wait_until_visible: bool = True,
-    ):
-        super().__init__(page, base_locator, wait_until_visible)
-        if item_class := getattr(self, "item_class", None):
-            import warnings
+    def __init_subclass__(cls) -> None:
+        """Run logic for getting/overriding item_class attr for subclasses."""
+        super().__init_subclass__()
 
-            warnings.warn(
-                DeprecationWarning(
-                    "\nSpecifying `item_class` attribute in `ListComponent` "
-                    f"({self.__class__}) is DEPRECATED. It is now "
-                    "automatically substituted from Generic[ListItemType]. "
-                    "Ability to specify this attribute will be removed soon.",
-                ),
-                stacklevel=2,
-            )
-            self._item_class = item_class
-        else:
-            self._item_class = self._get_list_item_class()
+        # If class has valid `_item_class` attribute from a parent class
+        if cls.is_valid_item_class(cls._item_class):
+            # We leave using of parent `item_class`
+            return
+
+        # Try to get `item_class` from first generic variable
+        list_item_class = cls.get_list_item_class()
+
+        if not list_item_class:
+            # If `item_class` is not specified in generic we leave it empty
+            # because it maybe not specified in base class but will be
+            # specified in child
+            return
+
+        cls._item_class = list_item_class
 
     @property
     def base_item_locator(self) -> locators.XPathLocator:
@@ -257,16 +276,38 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
             )
         return items
 
+    @classmethod
+    def get_list_item_class(cls) -> type[ListItemType] | None:
+        """Return class passed in `Generic[ListItemType]`."""
+        base_class = next(
+            _class
+            for _class in cls.__orig_bases__  # type: ignore
+            if isclass(get_origin(_class))
+            and issubclass(get_origin(_class), ListComponent)
+        )
+
+        # Get first generic variable and return it if it is valid item class
+        item_class = get_args(base_class)[0]
+        if cls.is_valid_item_class(item_class):
+            return item_class
+
+        return None
+
+    @classmethod
+    def is_valid_item_class(cls, item_class: Any) -> bool:
+        """Check that specified ``item_class`` is valid.
+
+        Valid `item_class` should be a class and subclass of ``Component``.
+
+        """
+        return isclass(item_class) and issubclass(item_class, Component)
+
     def get_item_by_text(self, text: str) -> ListItemType:
         """Get list item by text."""
         locator = self.base_item_locator.extend_query(
             extra_query=f"[contains(.,'{text}')]",
         )
         return self._item_class(page=self.page, base_locator=locator)
-
-    def _get_list_item_class(self) -> type[ListItemType]:
-        """Return class passed in `Generic[ListItemType]`."""
-        return get_args(self.__orig_bases__[0])[0]  # type: ignore
 
     def __repr__(self) -> str:
         return (

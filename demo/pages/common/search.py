@@ -2,13 +2,13 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pages import PyPIComponent
 from selenium.webdriver.common.keys import Keys
 
+from demo.pages import PyPIComponent
 from pomcorn import locators
 
 if TYPE_CHECKING:
-    from pages.search_page import SearchPage
+    from demo.pages.search_page import SearchPage
 
 
 class Search(PyPIComponent):
@@ -24,7 +24,7 @@ class Search(PyPIComponent):
         Redirect to `SearchPage` and return its instance.
 
         """
-        from pages.search_page import SearchPage
+        from demo.pages.search_page import SearchPage
 
         self.body.fill(text)
         self.body.send_keys(Keys.ENTER)
