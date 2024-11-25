@@ -1,4 +1,4 @@
-from pages import HelpPage
+from demo.pages import HelpPage
 
 
 def test_logo(help_page: HelpPage):

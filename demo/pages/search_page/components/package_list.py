@@ -1,5 +1,4 @@
-from pages import PyPIPage
-
+from demo.pages import PyPIPage
 from pomcorn import ListComponent, locators
 
 from .package import Package
@@ -8,9 +7,9 @@ from .package import Package
 class PackageList(ListComponent[Package, PyPIPage]):
     """Represent the list of search results on `SearchPage`."""
 
-    # The ``ListComponent`` item should always be ``Component``, because all
-    # its methods depend on `base_locator`. Also this attribute is required.
-    item_class = Package
+    # By default `ListComponent` have `item_class` attribute with stored first
+    # Generic variable (Package in current case). This attribute is responsible
+    # for the class that will be used for list items.
 
     base_locator = locators.PropertyLocator(
         prop="aria-label",

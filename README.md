@@ -93,7 +93,6 @@ Below is the code that opens ``PyPI.org``, searches for packages by name and pri
 
   class PackageList(ListComponent[Package, PyPIPage]):
 
-      item_class = Package
       relative_item_locator = locators.ClassLocator("snippet__name")
 
       @property

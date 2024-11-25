@@ -2,12 +2,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pages import PyPIComponent
-
+from demo.pages import PyPIComponent
 from pomcorn import Element, locators
 
 if TYPE_CHECKING:
-    from pages.help_page import HelpPage
+    from demo.pages.help_page import HelpPage
 
 
 # `Component` implements methods of waiting until the component becomes
@@ -30,7 +29,7 @@ class Navbar(PyPIComponent):
 
     def open_help(self) -> HelpPage:
         """Click on `Help` button and redirect to HelpPage."""
-        from pages.help_page import HelpPage
+        from demo.pages.help_page import HelpPage
 
         self.help_button.click()
         return HelpPage(self.webdriver)

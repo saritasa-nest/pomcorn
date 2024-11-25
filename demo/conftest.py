@@ -1,8 +1,9 @@
-from pages import HelpPage, IndexPage, SearchPage
 from selenium import webdriver as selenium_webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
 
 import pytest
+
+from demo.pages import HelpPage, IndexPage, SearchPage
 
 
 # You can implement your own logic to initialize a webdriver.
@@ -10,7 +11,13 @@ import pytest
 @pytest.fixture(scope="session")
 def webdriver() -> WebDriver:
     """Initialize `Chrome` webdriver."""
-    webdriver = selenium_webdriver.Chrome()
+    options = selenium_webdriver.ChromeOptions()
+
+    # Set browser's language to English
+    prefs = {"intl.accept_languages": "en,en_U"}
+    options.add_experimental_option("prefs", prefs)
+
+    webdriver = selenium_webdriver.Chrome(options)
     webdriver.set_window_size(1920, 1080)
     return webdriver
 

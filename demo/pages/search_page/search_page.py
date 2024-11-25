@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from pages import IndexPage, PyPIPage
 from selenium.webdriver.remote.webdriver import WebDriver
+
+from demo.pages import IndexPage, PyPIPage
 
 from .components import PackageList
 

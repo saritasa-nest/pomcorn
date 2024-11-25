@@ -7,8 +7,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from pomcorn import Page, locators
 
 if TYPE_CHECKING:
-    from pages import IndexPage
-    from pages.common import Navbar
+    from demo.pages import IndexPage
+    from demo.pages.common import Navbar
 
 
 class PyPIPage(Page):
@@ -56,7 +56,7 @@ class PyPIPage(Page):
     @property
     def navbar(self) -> Navbar:
         """Get a component for working with the page navigation panel."""
-        from pages.common import Navbar
+        from demo.pages.common import Navbar
 
         return Navbar(self)
 
@@ -82,7 +82,7 @@ class PyPIPage(Page):
 
     def click_on_logo(self) -> IndexPage:
         """Click on the logo and redirect to `IndexPage`."""
-        from pages import IndexPage
+        from demo.pages import IndexPage
 
         self.logo.click()
         return IndexPage(self.webdriver)

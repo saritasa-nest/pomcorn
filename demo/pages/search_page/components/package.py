@@ -2,12 +2,11 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from pages import PyPIComponent
-
+from demo.pages import PyPIComponent
 from pomcorn import locators
 
 if TYPE_CHECKING:
-    from pages import PackageDetailsPage
+    from demo.pages import PackageDetailsPage
 
 
 class Package(PyPIComponent):
@@ -22,7 +21,7 @@ class Package(PyPIComponent):
 
     def open(self) -> PackageDetailsPage:
         """Click on the package and open its details page."""
-        from pages import PackageDetailsPage
+        from demo.pages import PackageDetailsPage
 
         # The property `body` is available because the package is descendant of
         # `Component`. It allows us to interact with the body of the component
