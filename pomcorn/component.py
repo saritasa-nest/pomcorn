@@ -1,3 +1,4 @@
+import typing
 from inspect import isclass
 from typing import (
     Any,
@@ -207,6 +208,43 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
     item_locator: locators.XPathLocator | None = None
     relative_item_locator: locators.XPathLocator | None = None
 
+    def __class_getitem__(cls, item: tuple[type, ...]) -> Any:
+        """Create parameterized versions of generic classes.
+
+        This method is called when the class is used as a parameterized type,
+        such as MyGeneric[int] or MyGeneric[List[str]].
+
+        We override this method to store values passed in generic parameters.
+
+        Args:
+            cls - The generic class itself.
+            item - The type used for parameterization.
+
+        Returns:
+            type: A parameterized version of the class with the specified type.
+
+        """
+        list_cls = super().__class_getitem__(item)  # type: ignore
+        cls.__parameters__ = item  # type: ignore
+        return list_cls
+
+    def __init__(
+        self,
+        page: TPage,
+        base_locator: locators.XPathLocator | None = None,
+        wait_until_visible: bool = True,
+    ) -> None:
+        # If `_item_class` was not specified in `__init_subclass__`, this means
+        # that `ListComponent` is used as a parameterized type
+        # (e.g., `List[ItemClass, Page]`).
+        if isinstance(self._item_class, _EmptyValue):
+            # In this way we check the stored generic parameters and, if first
+            # from them is valid, set it as `_item_class`
+            first_generic_param = self.__parameters__[0]
+            if self.is_valid_item_class(first_generic_param):
+                self._item_class = first_generic_param
+        super().__init__(page, base_locator, wait_until_visible)
+
     def __init_subclass__(cls) -> None:
         """Run logic for getting/overriding item_class attr for subclasses."""
         super().__init_subclass__()
@@ -297,10 +335,19 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
     def is_valid_item_class(cls, item_class: Any) -> bool:
         """Check that specified ``item_class`` is valid.
 
-        Valid `item_class` should be a class and subclass of ``Component``.
+        Valid ``item_class`` should be
+        * a class and subclass of ``Component``
+        * or TypeAlias based on ``Component``
 
         """
-        return isclass(item_class) and issubclass(item_class, Component)
+        if isclass(item_class) and issubclass(item_class, Component):
+            return True
+
+        if isinstance(item_class, typing._GenericAlias):  # type: ignore
+            type_alias = item_class.__origin__  # type: ignore
+            return isclass(type_alias) and issubclass(type_alias, Component)
+
+        return False
 
     def get_item_by_text(self, text: str) -> ListItemType:
         """Get list item by text."""

@@ -1,4 +1,4 @@
-from typing import Generic, TypeVar
+from typing import Generic, TypeAlias, TypeVar
 
 import pytest
 
@@ -105,3 +105,34 @@ def test_set_item_class_with_extra_generic_variable(fake_page: Page) -> None:
     # Ensure that `List.item_class` has correct type
     list_cls = List(fake_page)
     assert list_cls._item_class is ItemClass
+
+
+def test_set_item_class_without_inheritance(fake_page: Page) -> None:
+    """Check that item_class will be correct in not inherited class."""
+
+    class BaseList(Generic[TItem, TPage], ListComponent[TItem, TPage]):
+        """Base list component without specified Generic variables."""
+
+        base_locator = locators.XPathLocator("html")  # required
+        relative_item_locator = locators.XPathLocator("body")  # required
+        wait_until_visible = lambda _: True  # to not wait anything
+
+    # Prepare base list component without specified Generic variables
+    list_cls = BaseList[ItemClass, Page](fake_page)
+    # Ensure that `InheritedList.item_class` has correct type
+    assert list_cls._item_class is ItemClass
+
+
+# Type alias for check that ItemClass can be also a TypeAlias
+TypeAliasItemClass: TypeAlias = Component[Page]
+
+
+def test_item_class_can_be_type_alias(fake_page: Page) -> None:
+    """Check that item_class can be a type alias based on ``Component``."""
+
+    class List(ListComponent[TypeAliasItemClass, Page]):
+        base_locator = locators.XPathLocator("html")  # required
+        wait_until_visible = lambda _: True  # to not wait anything
+
+    list_cls = List(fake_page)
+    assert list_cls._item_class is TypeAliasItemClass
