@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.2 (29.11.24)
+*******************************************************************************
+- Add ability to specify ``TypeAlias`` as ``_item class`` and use
+  ``ListComponent`` as a parameterized type
+
 0.8.1 (25.11.24)
 *******************************************************************************
 - Improve getting ``item class`` from first ``ListComponent`` generic variable.
