@@ -225,7 +225,7 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
 
         """
         list_cls = super().__class_getitem__(item)  # type: ignore
-        cls.__parameters__ = item  # type: ignore
+        cls.__generic_parameters__ = item  # type: ignore
         return list_cls
 
     def __init__(
@@ -240,7 +240,7 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
         if isinstance(self._item_class, _EmptyValue):
             # In this way we check the stored generic parameters and, if first
             # from them is valid, set it as `_item_class`
-            first_generic_param = self.__parameters__[0]
+            first_generic_param = self.__generic_parameters__[0]
             if self.is_valid_item_class(first_generic_param):
                 self._item_class = first_generic_param
         super().__init__(page, base_locator, wait_until_visible)

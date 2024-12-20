@@ -3,7 +3,12 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.8.2 (29.11.24)
+0.8.3 (20.12.24)
+*******************************************************************************
+- Rename ``__parameters__`` in ``ListComponent`` to ``__generic__parameters``
+  to avoid problems with Python build-in functions
+
+0.8.2 (19.12.24)
 *******************************************************************************
 - Add ability to specify ``TypeAlias`` as ``_item class`` and use
   ``ListComponent`` as a parameterized type
