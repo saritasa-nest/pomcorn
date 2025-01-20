@@ -23,7 +23,7 @@ class HelpPage(PyPIPage):
         from demo.pages.index_page import IndexPage
 
         # Reusing already implemented methods of opening a page instead of
-        # overriding `app_root` allows us to be independent from URK changes:
+        # overriding `app_root` allows us to be independent from URL changes:
         # we move from one page to another, interacting with the page as the
         # user does.
         return IndexPage.open(webdriver, app_root=app_root).navbar.open_help()
