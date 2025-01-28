@@ -140,8 +140,8 @@ class ElementWithTextLocator(XPathLocator):
                 partial match of the value.
 
         """
-        exact_query = f'//{element}[./text()="{text}"]'
-        partial_query = f'//{element}[contains(.,"{text}")]'
+        exact_query = f"//{element}[./text()={self._escape_quotes(text)}]"
+        partial_query = f"//{element}[contains(.,{self._escape_quotes(text)})]"
 
         super().__init__(query=exact_query if exact else partial_query)
 
@@ -219,7 +219,7 @@ class InputInLabelLocator(XPathLocator):
     def __init__(self, label: str):
         """Init XPathLocator."""
         super().__init__(
-            query=f'//label[contains(., "{label}")]//input',
+            query=f"//label[contains(., {self._escape_quotes(label)})]//input",
         )
 
 
@@ -243,7 +243,8 @@ class InputByLabelLocator(XPathLocator):
     def __init__(self, label: str):
         """Init XPathLocator."""
         super().__init__(
-            query=f'//label[contains(., "{label}")]/following-sibling::input',
+            query=f"//label[contains(.,"
+            f" {self._escape_quotes(label)})]/following-sibling::input",
         )
 
 
@@ -259,5 +260,6 @@ class TextAreaByLabelLocator(XPathLocator):
     def __init__(self, label: str):
         """Init XPathLocator."""
         super().__init__(
-            query=f'//*[label[contains(text(), "{label}")]]/textarea',
+            query="//*[label[contains(text(),"
+            f" {self._escape_quotes(label)})]]/textarea",
         )

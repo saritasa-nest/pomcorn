@@ -156,6 +156,47 @@ class XPathLocator(Locator):
         """Return whether query of current locator is empty or not."""
         return bool(self.related_query)
 
+    @staticmethod
+    def _escape_quotes(text: str) -> str:
+        """Escape single and double quotes in given text for use in locators. # noqa: D202, E501.
+
+        This method is useful when locating elements
+        with text containing single or double quotes.
+
+        For example, the text `He's 6'2"` will be transformed into:
+        `concat("He", "'", "s 6", "'", "2", '"')`.
+
+        The resulting string can be used in XPath expressions
+        like `text()=...` or `contains(.,...)`.
+
+        Returns:
+            The escaped text wrapped in `concat()` for XPath compatibility,
+            or the original text in double quotes if no escaping is needed.
+
+        """
+
+        if ('"' not in text and "'" not in text) or (not text):
+            return f'"{text}"'
+
+        escaped_parts = []
+        buffer = ""  # Temporary storage for normal characters
+
+        for char in text:
+            if char in ('"', "'"):
+                if buffer:
+                    escaped_parts.append(f'"{buffer}"')
+                    buffer = ""
+                escaped_parts.append(
+                    "'" + char + "'" if char == '"' else '"' + char + '"',
+                )
+            else:
+                buffer += char
+
+        if buffer:
+            escaped_parts.append(f'"{buffer}"')
+
+        return f"concat({', '.join(escaped_parts)})"
+
     def extend_query(self, extra_query: str) -> XPathLocator:
         """Return new XPathLocator with extended query."""
         return XPathLocator(query=self.query + extra_query)
@@ -172,8 +213,8 @@ class XPathLocator(Locator):
                 By default, the search is based on a partial match.
 
         """
-        partial_query = f"[contains(., '{text}')]"
-        exact_query = f"[./text()='{text}']"
+        partial_query = f"[contains(., {self._escape_quotes(text)})]"
+        exact_query = f"[./text()={self._escape_quotes(text)}]"
         return self.extend_query(exact_query if exact else partial_query)
 
     def prepare_relative_locator(
