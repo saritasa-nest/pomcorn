@@ -243,8 +243,10 @@ class InputByLabelLocator(XPathLocator):
     def __init__(self, label: str):
         """Init XPathLocator."""
         super().__init__(
-            query=f"//label[contains(.,"
-            f" {self._escape_quotes(label)})]/following-sibling::input",
+            query=(
+                f"//label[contains(., {self._escape_quotes(label)})]"
+                "/following-sibling::input"
+            ),
         )
 
 
@@ -260,6 +262,8 @@ class TextAreaByLabelLocator(XPathLocator):
     def __init__(self, label: str):
         """Init XPathLocator."""
         super().__init__(
-            query="//*[label[contains(text(),"
-            f" {self._escape_quotes(label)})]]/textarea",
+            query=(
+                "//*[label[contains(text(), "
+                f"{self._escape_quotes(label)})]]/textarea"
+            ),
         )

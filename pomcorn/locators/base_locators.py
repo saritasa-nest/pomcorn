@@ -156,8 +156,8 @@ class XPathLocator(Locator):
         """Return whether query of current locator is empty or not."""
         return bool(self.related_query)
 
-    @staticmethod
-    def _escape_quotes(text: str) -> str:
+    @classmethod
+    def _escape_quotes(cls, text: str) -> str:
         """Escape single and double quotes in given text for use in locators. # noqa: D202, E501.
 
         This method is useful when locating elements
@@ -175,22 +175,22 @@ class XPathLocator(Locator):
 
         """
 
-        if ('"' not in text and "'" not in text) or (not text):
+        if not text or ('"' not in text and "'" not in text):
             return f'"{text}"'
 
         escaped_parts = []
         buffer = ""  # Temporary storage for normal characters
 
         for char in text:
-            if char in ('"', "'"):
-                if buffer:
-                    escaped_parts.append(f'"{buffer}"')
-                    buffer = ""
-                escaped_parts.append(
-                    "'" + char + "'" if char == '"' else '"' + char + '"',
-                )
-            else:
+            if char not in ('"', "'"):
                 buffer += char
+                continue
+            if buffer:
+                escaped_parts.append(f'"{buffer}"')
+                buffer = ""
+            escaped_parts.append(
+                "'" + char + "'" if char == '"' else '"' + char + '"',
+            )
 
         if buffer:
             escaped_parts.append(f'"{buffer}"')

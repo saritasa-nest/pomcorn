@@ -352,8 +352,9 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
     def get_item_by_text(self, text: str) -> ListItemType:
         """Get list item by text."""
         locator = self.base_item_locator.extend_query(
-            extra_query=f"[contains(.,"
-            f" {self.base_item_locator._escape_quotes(text)})]",
+            extra_query=(
+                f"[contains(., {self.base_item_locator._escape_quotes(text)})]"
+            ),
         )
         return self._item_class(page=self.page, base_locator=locator)
 
