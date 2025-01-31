@@ -3,6 +3,13 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.4 (30.01.25)
+*******************************************************************************
+- Add escaping single and double quotes in the: ``ElementWithTextLocator``,
+  ``InputInLabelLocator``, ``InputByLabelLocator``, ``TextAreaByLabelLocator``.
+- Add escaping single and double quotes in the ``get_item_by_text`` method of
+  the ``ListComponent``
+
 0.8.3 (20.12.24)
 *******************************************************************************
 - Rename ``__parameters__`` in ``ListComponent`` to ``__generic__parameters``
