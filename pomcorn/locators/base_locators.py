@@ -152,6 +152,28 @@ class XPathLocator(Locator):
         """
         return XPathLocator(query=f"({self.query} | {other.query})")
 
+    def __getitem__(self, index: int) -> XPathLocator:
+        """Allow get related xpath locator by index.
+
+        Example:
+            div_locator = XPathLocator("//div") --> `//div`
+            div_locator[0]  --> `(//div)[1]`   # xpath numeration starts with 1
+            div_locator[-1] --> `(//div)[last()]`
+
+        """
+        query = f"({self.query})"
+
+        if index >= 0:
+            # `+1` is used here because numeration in xpath starts with 1
+            query += f"[{index + 1}]"
+        elif index == -1:
+            # To avoid ugly locators with `...)[last() - 0]`
+            query += "[last()]"
+        else:
+            query += f"[last() - {abs(index + 1)}]"
+
+        return XPathLocator(query)
+
     def __bool__(self) -> bool:
         """Return whether query of current locator is empty or not."""
         return bool(self.related_query)

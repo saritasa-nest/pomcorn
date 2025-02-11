@@ -35,6 +35,8 @@ words:
   - yaspeller
 
     # Code words
+  - argnames
+  - argvalues
   - docstrings
   - conftest
   - kwargs

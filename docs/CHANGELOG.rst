@@ -3,6 +3,10 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.5 (10.02.25)
+*******************************************************************************
+- Add ability to get related xpath locators by index for ``XPathLocator``
+
 0.8.4 (30.01.25)
 *******************************************************************************
 - Add escaping single and double quotes in the: ``ElementWithTextLocator``,
