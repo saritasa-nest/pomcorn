@@ -43,10 +43,6 @@ To run checks:
 
     $ inv pre-commit.run-hooks
 
-.. note::
-
-    Package also include flake8 dependencies for proper support of flake8 vscode plugin.
-
 
 Local Documentation
 *******************************************************************************

@@ -101,6 +101,8 @@ class Page(WebView):
             app_root: The URL of page, by default the value of `APP_ROOT`
                 attribute is used.
             path: Relative URL.
+            **kwargs: Additional arguments passed to the
+                page object initialization.
 
         """
         # hack to not specify app_root in each page init method
@@ -172,6 +174,8 @@ class Page(WebView):
         """Add relative URL to application root URL.
 
         Args:
+            app_root: The URL of page, by default the value of `APP_ROOT`
+                attribute is used.
             relative_url (str): Relative URL
 
         """

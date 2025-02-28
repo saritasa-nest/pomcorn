@@ -13,17 +13,6 @@ repos:
       - id: check-merge-conflict
       - id: detect-private-key
 
-  - repo: https://github.com/pycqa/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-
-  - repo: https://github.com/psf/black
-    rev: 23.9.1
-    hooks:
-      - id: black
-        language_version: python3
-
   - repo: https://github.com/asottile/add-trailing-comma
     rev: v3.1.0
     hooks:
@@ -36,15 +25,10 @@ repos:
     rev: eb1df347edd128b30cd3368dddc3aa65edcfac38
     hooks:
       - id: docformatter
-        args: [
-          --wrap-summaries=100,
-          --wrap-descriptions=0,
-          --in-place,
-          --blank
-        ]
+        args: [--wrap-summaries=100, --wrap-descriptions=0, --in-place, --blank]
 
   - repo: https://github.com/jorisroovers/gitlint
-    rev:  v0.19.1
+    rev: v0.19.1
     hooks:
       - id: gitlint
       - id: gitlint-ci
@@ -55,39 +39,17 @@ repos:
       - id: poetry-check
         args: ["--lock"]
 
-  - repo: https://github.com/pycqa/flake8
-    rev: 6.1.0
-    hooks:
-      - id: flake8
-        additional_dependencies:
-          # A flake8 plugin that warn about backslashes usage.
-          # https://github.com/wemake-services/flake8-broken-line
-          - "flake8-broken-line"
-          # A plugin for Flake8 finding likely bugs and design problems in your program.
-          # https://github.com/PyCQA/flake8-bugbear
-          - "flake8-bugbear"
-          # A simple module that adds an extension for the fantastic pydocstyle tool to flake8.
-          # https://github.com/PyCQA/flake8-docstrings
-          - "flake8-docstrings"
-          # Extension to enforce better comma placement.
-          # flake8 plugin to validate type annotations according to modern practices.
-          # https://github.com/plinss/flake8-modern-annotations
-          - "flake8-modern-annotations"
-          # Flake8 plug-in loading the configuration from pyproject.toml
-          # https://github.com/john-hen/Flake8-pyproject
-          - "flake8-pyproject"
-          # A flake8 plugin checking common style issues or inconsistencies with pytest-based tests.
-          # https://github.com/m-burst/flake8-pytest-style
-          - "flake8-pytest-style"
-          # Extension to lint for quotes
-          # https://github.com/zheller/flake8-quotes
-          - "flake8-quotes"
-
   # Typo search tool
   - repo: https://github.com/streetsidesoftware/cspell-cli
     rev: v7.3.1
     hooks:
       - id: cspell
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.3
+    hooks:
+      - id: ruff
+      - id: ruff-format
 
   - repo: local
     hooks:
@@ -96,12 +58,12 @@ repos:
         entry: inv mypy.run
         language: system
         pass_filenames: false
-        types: [ file ]
-        stages: [ push ]
+        types: [file]
+        stages: [push]
       - id: run tests
         name: run tests
         entry: inv pytest.run
         language: system
         pass_filenames: false
-        types: [ file ]
-        stages: [ commit ]
+        types: [file]
+        stages: [commit]

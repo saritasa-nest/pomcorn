@@ -187,7 +187,7 @@ class PomcornElement(Generic[locators.TLocator]):
 
         Args:
             keys: The names of the keys in the form of a single string.
-                More keys: https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html     # noqa
+                More keys: https://www.selenium.dev/selenium/docs/api/py/webdriver/selenium.webdriver.common.keys.html
             only_visible: Flag for viewing visible elements. If this is `True`
                 (default), then this method will only get visible elements,
                 otherwise all the elements (including not visible) will be

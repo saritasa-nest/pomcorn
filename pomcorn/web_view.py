@@ -22,7 +22,7 @@ class WebView:
         *,
         app_root: str,
         wait_timeout: int,
-        poll_frequency=float(0),
+        poll_frequency: float = 0,
     ):
         """Initialize webview.
 
@@ -325,7 +325,7 @@ class WebView:
         """Wait until element ceases to exist in DOM.
 
         Args:
-            locator: Instance of a class to locate the element in the browser
+            element: Instance of a class to locate the element in the browser
                 or instance of element.
 
         Raises:
@@ -396,6 +396,7 @@ class WebView:
 
         Args:
             script: JavaScript code as a string object.
+            *args: Any applicable arguments for your JavaScript.
 
         """
         self.webdriver.execute_script(script, *args)
