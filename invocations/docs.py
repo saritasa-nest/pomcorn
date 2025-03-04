@@ -31,5 +31,5 @@ def clear(context: invoke.Context):
 def serve(context: invoke.Context, host: int = 8000):
     """Run built docs on localhost."""
     print_success("Run docs on localhost")
-    context.run(f"python -m http.server {host} " f"-d {LOCAL_DOCS_DIR}")
+    context.run(f"python -m http.server {host} -d {LOCAL_DOCS_DIR}")
     print_success("Stop docs host")
