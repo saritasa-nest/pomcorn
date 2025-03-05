@@ -6,15 +6,15 @@
 
 
 # -- Path setup ---------------------------------------------------------------
+import pathlib
 import sys
-from pathlib import Path
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use Path.resolve() to make it absolute, like shown here.
-sys.path.append(str(Path().resolve()))
-sys.path.append(str(Path("..").resolve()))
-sys.path.append(str(Path("../").resolve()))
+sys.path.append(str(pathlib.Path().resolve()))
+sys.path.append(str(pathlib.Path("..").resolve()))
+sys.path.append(str(pathlib.Path("../").resolve()))
 
 # import pomcorn  # does not fail anymore # noqa: ERA001
 

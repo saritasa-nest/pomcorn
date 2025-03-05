@@ -6,12 +6,12 @@ TEST_QUERY = "//span[text()='Users']"
 
 
 @pytest.mark.parametrize(
-    argnames=("index", "result"),
+    argnames=["index", "result"],
     argvalues=[
-        (-2, f"({TEST_QUERY})[last()-1]"),
-        (-1, f"({TEST_QUERY})[last()]"),
-        (0, f"({TEST_QUERY})[1]"),
-        (1, f"({TEST_QUERY})[2]"),
+        [-2, f"({TEST_QUERY})[last()-1]"],
+        [-1, f"({TEST_QUERY})[last()]"],
+        [0, f"({TEST_QUERY})[1]"],
+        [1, f"({TEST_QUERY})[2]"],
     ],
 )
 def test_getting_related_xpath_locators_by_index(index: int, result: str):

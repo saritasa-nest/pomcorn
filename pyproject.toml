@@ -2,8 +2,12 @@
 name = "pomcorn"
 version = "0.8.5"
 description = "Base implementation of Page Object Model"
-authors = ["Saritasa <pypi@saritasa.com>"]
-maintainers = ["Anton Oboleninov <anton.oboleninov@saritasa.com>"]
+authors = [
+  "Saritasa <pypi@saritasa.com>",
+]
+maintainers = [
+    "Anton Oboleninov <anton.oboleninov@saritasa.com>",
+]
 homepage = "https://pypi.org/project/pomcorn/"
 repository = "https://github.com/saritasa-nest/pomcorn/"
 documentation = "http://pomcorn.rtfd.io/"
@@ -21,7 +25,9 @@ keywords = [
 ]
 license = "MIT"
 readme = "README.md"
-packages = [{ include = "pomcorn" }]
+packages = [
+  { include = "pomcorn" }
+]
 
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -67,9 +73,6 @@ pytest = ">= 7.4.2"
 # Mypy is a static type checker for Python.
 # https://mypy.readthedocs.io/en/stable/
 mypy = "^1.7.0"
-# An extremely fast Python linter and code formatter, written in Rust.
-# https://docs.astral.sh/ruff/
-ruff = "^0.9.9"
 
 [build-system]
 requires = ["poetry-core"]
@@ -79,8 +82,11 @@ build-backend = "poetry.core.masonry.api"
 [tool.ruff]
 line-length = 79
 indent-width = 4
-target-version = "py313"
-exclude = [".venv", "venv"]
+target-version = "py311"
+exclude = [
+  ".venv",
+  "venv",
+]
 
 
 [tool.ruff.lint]
@@ -187,6 +193,12 @@ section-order = [
   "local-folder",
 ]
 
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+parametrize-names-type = "list"
+parametrize-values-type = "list"
+parametrize-values-row-type = "list"
+
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
@@ -203,7 +215,6 @@ line-ending = "auto"
   "F401",
 ]
 
-
 [tool.mypy]
 # mypy configurations: https://mypy.readthedocs.io/en/latest/config_file.html
 # https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
@@ -214,3 +225,9 @@ disable_error_code = ["override", "no-redef"]
 check_untyped_defs = true
 exclude = "config|venv|.venv| __init__.py"
 disallow_any_generics = true
+
+[tool.docformatter]
+wrap-descriptions = 0
+wrap-summaries = 100
+in-place = true
+blank = true
