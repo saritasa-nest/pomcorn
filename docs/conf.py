@@ -16,11 +16,11 @@ sys.path.append(str(pathlib.Path().resolve()))
 sys.path.append(str(pathlib.Path("..").resolve()))
 sys.path.append(str(pathlib.Path("../").resolve()))
 
-# import pomcorn  # does not fail anymore # noqa: ERA001
-
 # -- Project information ------------------------------------------------------
+from datetime import datetime
+
 project = "Pomcorn"
-copyright = "2023, Saritasa"  # noqa:A001
+copyright = f"{datetime.now().year}, Saritasa"  # noqa:A001
 author = "Saritasa"
 
 # -- General configuration ---------------------------------------------
