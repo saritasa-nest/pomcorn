@@ -4,23 +4,23 @@
 # list see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
-import os
 
 # -- Path setup ---------------------------------------------------------------
+import pathlib
 import sys
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-sys.path.append(os.path.abspath("."))
-sys.path.append(os.path.abspath(".."))
-sys.path.append(os.path.abspath("../"))
-
-# import pomcorn  # does not fail anymore
+# documentation root, use Path.resolve() to make it absolute, like shown here.
+sys.path.append(str(pathlib.Path().resolve()))
+sys.path.append(str(pathlib.Path("..").resolve()))
+sys.path.append(str(pathlib.Path("../").resolve()))
 
 # -- Project information ------------------------------------------------------
+from datetime import datetime
+
 project = "Pomcorn"
-copyright = "2023, Saritasa"
+copyright = f"{datetime.now().year}, Saritasa"  # noqa:A001
 author = "Saritasa"
 
 # -- General configuration ---------------------------------------------

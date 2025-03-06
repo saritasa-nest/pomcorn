@@ -24,11 +24,12 @@ def test_set_item_class_in_parent_class(fake_page: Page) -> None:
         """Base list component with specified item_class in Generic."""
 
         base_locator = locators.XPathLocator("html")  # required
-        wait_until_visible = lambda _: True  # to not wait anything
+
+        def wait_until_visible(self, **kwargs) -> None:
+            """To not wait anything."""
 
     # Inherit from `BaseList` and specify page generic variable
-    class InheritedList(BaseList[Page]):
-        ...
+    class InheritedList(BaseList[Page]): ...
 
     # Ensure that `InheritedList.item_class` has correct type
     list_cls = InheritedList(fake_page)
@@ -43,11 +44,12 @@ def test_no_set_item_class(fake_page: Page) -> None:
 
         base_locator = locators.XPathLocator("html")  # required
         relative_item_locator = locators.XPathLocator("body")  # required
-        wait_until_visible = lambda _: True  # to not wait anything
+
+        def wait_until_visible(self, **kwargs) -> None:
+            """To not wait anything."""
 
     # Inherit from `BaseList` and specify only page generic variable
-    class InheritedList(Generic[TItem], BaseList[TItem, Page]):
-        ...
+    class InheritedList(Generic[TItem], BaseList[TItem, Page]): ...
 
     list_cls = InheritedList(fake_page)  # type: ignore
 
@@ -63,11 +65,12 @@ def test_set_item_class_in_child_via_generic(fake_page: Page) -> None:
         """Base list component without specified Generic variables."""
 
         base_locator = locators.XPathLocator("html")  # required
-        wait_until_visible = lambda _: True  # to not wait anything
+
+        def wait_until_visible(self, **kwargs) -> None:
+            """To not wait anything."""
 
     # Prepare base list component without specified Generic variables
-    class InheritedList(BaseList[ItemClass, Page]):
-        ...
+    class InheritedList(BaseList[ItemClass, Page]): ...
 
     # Ensure that `InheritedList.item_class` has correct type
     list_cls = InheritedList(fake_page)
@@ -79,7 +82,9 @@ def test_specify_all_generic_variables(fake_page: Page) -> None:
 
     class List(ListComponent[ItemClass, Page]):
         base_locator = locators.XPathLocator("html")  # required
-        wait_until_visible = lambda _: True  # to not wait anything
+
+        def wait_until_visible(self, **kwargs) -> None:
+            """To not wait anything."""
 
     list_cls = List(fake_page)
     assert list_cls._item_class is ItemClass
@@ -93,14 +98,14 @@ def test_set_item_class_with_extra_generic_variable(fake_page: Page) -> None:
         """Base list component with new generic variable."""
 
         base_locator = locators.XPathLocator("html")  # required
-        wait_until_visible = lambda _: True  # to not wait anything
+
+        def wait_until_visible(self, **kwargs) -> None:
+            """To not wait anything."""
 
     # Inherit from `BaseList` and specify new generic variable
-    class Param(Component[Page]):
-        ...
+    class Param(Component[Page]): ...
 
-    class List(BaseList[Param]):
-        ...
+    class List(BaseList[Param]): ...
 
     # Ensure that `List.item_class` has correct type
     list_cls = List(fake_page)
@@ -115,7 +120,9 @@ def test_set_item_class_without_inheritance(fake_page: Page) -> None:
 
         base_locator = locators.XPathLocator("html")  # required
         relative_item_locator = locators.XPathLocator("body")  # required
-        wait_until_visible = lambda _: True  # to not wait anything
+
+        def wait_until_visible(self, **kwargs) -> None:
+            """To not wait anything."""
 
     # Prepare base list component without specified Generic variables
     list_cls = BaseList[ItemClass, Page](fake_page)
@@ -132,7 +139,9 @@ def test_item_class_can_be_type_alias(fake_page: Page) -> None:
 
     class List(ListComponent[TypeAliasItemClass, Page]):
         base_locator = locators.XPathLocator("html")  # required
-        wait_until_visible = lambda _: True  # to not wait anything
+
+        def wait_until_visible(self, **kwargs) -> None:
+            """To not wait anything."""
 
     list_cls = List(fake_page)
     assert list_cls._item_class is TypeAliasItemClass

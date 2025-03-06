@@ -70,26 +70,6 @@ sphinxcontrib-mermaid = ">=0.9.2,<1.1.0"
 pytest = ">= 7.4.2"
 
 [tool.poetry.group.linters.dependencies]
-# Flake dependencies are added so that VSCode extension for flake8
-# would work properly
-# https://marketplace.visualstudio.com/items?itemName=ms-python.flake8&ssr=false#overview
-flake8 = ">=6.1,<8.0"
-# A flake8 plugin that warn about backslashes usage.
-# https://github.com/wemake-services/flake8-broken-line
-flake8-broken-line = "^1.0.0"
-# A plugin for Flake8 finding likely bugs and design problems in your program.
-# https://github.com/PyCQA/flake8-bugbear
-flake8-bugbear = ">=23.9.16,<25.0.0"
-# A simple module that adds an extension for the fantastic pydocstyle tool to flake8.
-# https://github.com/PyCQA/flake8-docstrings
-flake8-docstrings = "^1.7.0"
-# flake8 plugin to validate type annotations according to modern practices.
-# https://github.com/plinss/flake8-modern-annotations
-flake8-modern-annotations = "^1.5.0"
-# A flake8 plugin loading the configuration from pyproject.toml
-# https://github.com/john-hen/Flake8-pyproject
-flake8-pyproject = "^1.2.3"
-
 # Mypy is a static type checker for Python.
 # https://mypy.readthedocs.io/en/stable/
 mypy = "^1.7.0"
@@ -98,82 +78,143 @@ mypy = "^1.7.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.isort]
-profile="black"
-line_length=79
-multi_line_output=3
-skip=[
-    "_tmp",
-    "src",
-    ".env",
-    "env",
-    ".venv",
-    "venv",
-]
-known_pytest=[
-    "pytest",
-    "_pytest",
-    "xdist",
-]
-sections=[
-    "FUTURE",
-    "STDLIB",
-    "THIRDPARTY",
-    "PYTEST",
-    "FIRSTPARTY",
-    "LOCALFOLDER",
-]
-include_trailing_comma=true
-# For sorting `__all__` sections
-# Off until the issue is fixed: https://github.com/PyCQA/isort/issues/2193
-# sort_reexports=true
 
-[tool.flake8]
-# F403: using wildcard imports (from … import *)
-# F405: name may be undefined, or defined from star imports: module
-# D100: missing docstring in public module
-# D102: missing docstring in public method
-# D103: missing docstring in public function
-# D105: missing docstring in magic method
-# D106: missing docstring in public nested
-# D107: missing docstring in __init__
-# PT004: missing add leading underscore in name of fixture that does not return anything
-# B008: function calls in argument defaults
-ignore = [
-    "D100",
-    "D102",
-    "D103",
-    "D105",
-    "D106",
-    "D107",
-    "F403",
-    "F405",
-    "W503",
-    "PT004",
-    "B008",
-]
+[tool.ruff]
+line-length = 79
+indent-width = 4
+target-version = "py311"
 exclude = [
-    "config",
-    ".venv",
-    "venv",
-    "__init__.py",
+  ".venv",
+  "venv",
 ]
-max-line-length = 79
-inline-quotes = "double"
-docstring-quotes = "double"
-count = true
-max-complexity = 10
 
-# flake8-pytest-style configuration
-# https://github.com/m-burst/flake8-pytest-style
-pytest-fixture-no-parentheses = true
-pytest-parametrize-names-type = "list"
-pytest-parametrize-values-type = "list"
-pytest-parametrize-values-row-type = "list"
 
-per-file-ignores = [
-  # Ignore using lambda in `item_class` tests
-  "tests/list_component/test_item_class.py: E731",
+[tool.ruff.lint]
+extend-select = [
+  # https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+  "W",
+  "E",
+  # https://docs.astral.sh/ruff/rules/#mccabe-c90
+  "C90",
+  # https://docs.astral.sh/ruff/rules/#isort-i
+  "I",
+  # https://docs.astral.sh/ruff/rules/#pep8-naming-n
+  "N",
+  # https://docs.astral.sh/ruff/rules/#pydocstyle-d
+  "D",
+  # https://docs.astral.sh/ruff/rules/#pyupgrade-up
+  "UP",
+  # https://docs.astral.sh/ruff/rules/#flake8-annotations-ann
+  "ANN",
+  # https://docs.astral.sh/ruff/rules/#flake8-bandit-s
+  "S",
+  # https://docs.astral.sh/ruff/rules/#flake8-bugbear-b
+  "B",
+  # https://docs.astral.sh/ruff/rules/#flake8-builtins-a
+  "A",
+  # https://docs.astral.sh/ruff/rules/#flake8-commas-com
+  "COM",
+  # https://docs.astral.sh/ruff/rules/#flake8-comprehensions-c4
+  "C4",
+  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
+  "DTZ",
+  # https://docs.astral.sh/ruff/rules/#flake8-debugger-t10
+  "T10",
+  # https://docs.astral.sh/ruff/rules/#flake8-django-dj
+  "DJ",
+  # https://docs.astral.sh/ruff/rules/#flake8-print-t20
+  "T20",
+  # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
+  "PT",
+  # https://docs.astral.sh/ruff/rules/#flake8-simplify-sim
+  "SIM",
+  # https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
+  "PTH",
+  # https://docs.astral.sh/ruff/rules/#flake8-todos-td
+  "TD",
+  # https://docs.astral.sh/ruff/rules/#eradicate-era
+  "ERA",
+  # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
+  "RUF",
+]
+
+ignore = [
+  # https://docs.astral.sh/ruff/rules/missing-type-args/
+  "ANN002",
+  # https://docs.astral.sh/ruff/rules/missing-type-kwargs/
+  "ANN003",
+  # https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function/
+  "ANN201",
+  # https://docs.astral.sh/ruff/rules/missing-return-type-special-method/
+  "ANN204",
+  # https://docs.astral.sh/ruff/rules/any-type/
+  "ANN401",
+  # https://docs.astral.sh/ruff/rules/function-call-in-default-argument/
+  "B008",
+  # https://docs.astral.sh/ruff/rules/raise-without-from-inside-except/
+  "B904",
+  # https://docs.astral.sh/ruff/rules/one-blank-line-before-class/
+  "D203",
+  # https://docs.astral.sh/ruff/rules/multi-line-summary-second-line/
+  "D213",
+  # https://docs.astral.sh/ruff/rules/undocumented-public-module/
+  "D100",
+  # https://docs.astral.sh/ruff/rules/undocumented-public-method/
+  "D102",
+  # https://docs.astral.sh/ruff/rules/undocumented-public-function/
+  "D103",
+  # https://docs.astral.sh/ruff/rules/undocumented-public-package/
+  "D104",
+  # https://docs.astral.sh/ruff/rules/undocumented-magic-method/
+  "D105",
+  # https://docs.astral.sh/ruff/rules/undocumented-public-nested-class/
+  "D106",
+  # https://docs.astral.sh/ruff/rules/undocumented-public-init/
+  "D107",
+  # https://docs.astral.sh/ruff/rules/undefined-local-with-import-star/
+  "F403",
+  # https://docs.astral.sh/ruff/rules/undefined-local-with-import-star-usage/
+  "F405",
+  # https://docs.astral.sh/ruff/rules/assert/
+  "S101",
+  # https://docs.astral.sh/ruff/rules/non-pep695-type-alias/
+  "UP040",
+  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
+  "DTZ",
+]
+
+
+[tool.ruff.lint.isort]
+force-wrap-aliases = true
+split-on-trailing-comma = true
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
+
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+parametrize-names-type = "list"
+parametrize-values-type = "list"
+parametrize-values-row-type = "list"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
+[tool.ruff.lint.per-file-ignores]
+"**/test_*" = [
+  # https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function/
+  "ANN201",
+]
+"**/__init__.py" = [
+  # https://docs.astral.sh/ruff/rules/unused-import/
+  "F401",
 ]
 
 [tool.mypy]
@@ -187,5 +228,8 @@ check_untyped_defs = true
 exclude = "config|venv|.venv| __init__.py"
 disallow_any_generics = true
 
-[tool.black]
-line-length=79
+[tool.docformatter]
+wrap-descriptions = 0
+wrap-summaries = 100
+in-place = true
+blank = true

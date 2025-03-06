@@ -27,16 +27,14 @@ class Element:
     def __init__(
         self,
         locator: locators.XPathLocator | None = None,
-    ) -> None:
-        ...
+    ) -> None: ...
 
     @overload
     def __init__(
         self,
         *,
         relative_locator: locators.XPathLocator | None = None,
-    ) -> None:
-        ...
+    ) -> None: ...
 
     def __init__(
         self,

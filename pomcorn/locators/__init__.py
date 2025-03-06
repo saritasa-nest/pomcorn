@@ -18,18 +18,18 @@ from pomcorn.locators.xpath_locators import (
 )
 
 __all__ = (
-    "Locator",
-    "TInitLocator",
-    "TLocator",
-    "XPathLocator",
     "ButtonWithTextLocator",
     "ClassLocator",
     "DataTestIdLocator",
     "ElementWithTextLocator",
     "IdLocator",
     "InputByLabelLocator",
+    "Locator",
     "NameLocator",
     "PropertyLocator",
+    "TInitLocator",
+    "TLocator",
     "TagNameLocator",
     "TextAreaByLabelLocator",
+    "XPathLocator",
 )

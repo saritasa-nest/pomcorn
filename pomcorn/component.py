@@ -72,16 +72,18 @@ class Component(Generic[TPage], WebView):
             self.wait_until_visible()
 
     @overload
-    def init_element(self, *, locator: locators.XPathLocator) -> XPathElement:
-        ...
+    def init_element(
+        self,
+        *,
+        locator: locators.XPathLocator,
+    ) -> XPathElement: ...
 
     @overload
     def init_element(
         self,
         *,
         relative_locator: locators.XPathLocator,
-    ) -> XPathElement:
-        ...
+    ) -> XPathElement: ...
 
     def init_element(
         self,
@@ -110,16 +112,14 @@ class Component(Generic[TPage], WebView):
         self,
         *,
         locator: locators.XPathLocator | None = None,
-    ) -> list[XPathElement]:
-        ...
+    ) -> list[XPathElement]: ...
 
     @overload
     def init_elements(
         self,
         *,
         relative_locator: locators.XPathLocator | None = None,
-    ) -> list[XPathElement]:
-        ...
+    ) -> list[XPathElement]: ...
 
     def init_elements(
         self,
@@ -217,8 +217,8 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
         We override this method to store values passed in generic parameters.
 
         Args:
-            cls - The generic class itself.
-            item - The type used for parameterization.
+            cls: The generic class itself.
+            item: The type used for parameterization.
 
         Returns:
             type: A parameterized version of the class with the specified type.

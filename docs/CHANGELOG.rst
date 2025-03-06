@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.6 (04.03.25)
+*******************************************************************************
+- Replace isort, black, flake with Ruff
+
+
 0.8.5 (10.02.25)
 *******************************************************************************
 - Add ability to get related xpath locators by index for ``XPathLocator``

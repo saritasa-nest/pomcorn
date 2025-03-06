@@ -1,7 +1,6 @@
+import pytest
 from selenium import webdriver as selenium_webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
-
-import pytest
 
 from demo.pages import HelpPage, IndexPage, SearchPage
 

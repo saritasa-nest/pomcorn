@@ -1,17 +1,22 @@
+"""Module with `XPathLocator`.
+
+Provide only `XPathLocator` because a locator of this type
+is sufficient for all operations and
+it also allows to combine locators with `/` operator.
+It's better to use one type of locators for consistency.
+
+Example:
+  # Search button inside base element
+  button_element_locator = base_locator / button_locator
+
+"""
+
 from __future__ import annotations
 
 from collections.abc import Iterator
 from typing import Literal, TypeVar
 
 from selenium.webdriver.common.by import By
-
-# Provide only `XPathLocator` because a locator of this type is sufficient for
-# all operations and it also allows to combine locators with `/` operator.
-# It's better to use one type of locators for consistency.
-#
-# Example:
-#   # Search button inside base element
-#   button_element_locator = base_locator / button_locator
 
 
 class Locator:
@@ -180,7 +185,7 @@ class XPathLocator(Locator):
 
     @classmethod
     def _escape_quotes(cls, text: str) -> str:
-        """Escape single and double quotes in given text for use in locators. # noqa: D202, E501.
+        """Escape single and double quotes in given text for use in locators.
 
         This method is useful when locating elements
         with text containing single or double quotes.
@@ -196,7 +201,6 @@ class XPathLocator(Locator):
             or the original text in double quotes if no escaping is needed.
 
         """
-
         if not text or ('"' not in text and "'" not in text):
             return f'"{text}"'
 
@@ -283,4 +287,4 @@ class XPathLocator(Locator):
                 "not a valid locator.",
             )
 
-        return other if not self else self
+        return self if self else other
