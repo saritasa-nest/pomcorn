@@ -1,9 +1,7 @@
 from typing import Self
 
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.remote.webdriver import WebDriver
 
-from .exceptions import PageDidNotLoadedError
 from .web_view import WebView
 
 
@@ -126,14 +124,14 @@ class Page(WebView):
 
     def wait_until_loaded(self) -> None:
         """Wait until page is loaded."""
-        try:
-            self.wait.until(lambda _: self.check_page_is_loaded())
-        except TimeoutException:
-            raise PageDidNotLoadedError(
+        self.wait.until(
+            method=lambda _: self.check_page_is_loaded(),
+            message=(
                 f"Page `{self.__class__}` didn't loaded in "
                 f"{self.wait_timeout} seconds! Didn't wait for `True` from "
-                "`check_page_is_loaded` method.",
-            )
+                "`check_page_is_loaded` method."
+            ),
+        )
 
     def navigate(self, url: str) -> None:
         """Navigate absolute URL.

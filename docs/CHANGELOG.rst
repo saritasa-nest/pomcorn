@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.7 (12.03.25)
+*******************************************************************************
+- Replace error message handling via try-except block in wait methods with built-in
+selenium's message attribute of the `wait.until` method.
+
 0.8.6 (04.03.25)
 *******************************************************************************
 - Replace isort, black, flake with Ruff
