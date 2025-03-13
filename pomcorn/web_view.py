@@ -1,6 +1,5 @@
 from contextlib import contextmanager
 
-from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -9,7 +8,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 from pomcorn.element import PomcornElement, XPathElement
 
-from . import exceptions, locators, waits_conditions
+from . import locators, waits_conditions
 from .locators.base_locators import TInitLocator
 
 
@@ -177,13 +176,13 @@ class WebView:
                 has not ended.
 
         """
-        try:
-            self.wait.until(expected_conditions.url_contains(url))
-        except TimeoutException:
-            raise exceptions.UrlDoesContainError(
+        self.wait.until(
+            method=expected_conditions.url_contains(url),
+            message=(
                 f"Url doesn't contain `{url}` in {self.wait_timeout} seconds! "
-                f"The current URL is `{self.current_url}`.",
-            )
+                f"The current URL is `{self.current_url}`."
+            ),
+        )
 
     def wait_until_url_not_contains(self, url: str):
         """Wait until browser's url doesn't not contains input url.
@@ -193,13 +192,13 @@ class WebView:
                 has not ended.
 
         """
-        try:
-            self.wait.until(waits_conditions.url_not_matches(url))
-        except TimeoutException:
-            raise exceptions.UrlDoesContainError(
+        self.wait.until(
+            method=waits_conditions.url_not_matches(url),
+            message=(
                 f"Url does contain `{url}` in {self.wait_timeout} seconds! "
-                f"The current URL is `{self.current_url}`.",
-            )
+                f"The current URL is `{self.current_url}`."
+            ),
+        )
 
     def wait_until_url_changes(self, url: str | None = None):
         """Wait until url changes.
@@ -214,13 +213,13 @@ class WebView:
 
         """
         url = url or self.current_url
-        try:
-            self.wait.until(expected_conditions.url_changes(url))
-        except TimeoutException:
-            raise exceptions.UrlDidNotChangedError(
+        self.wait.until(
+            method=expected_conditions.url_changes(url),
+            message=(
                 f"Url didn't changed from {url} in {self.wait_timeout} "
-                f"seconds! The current URL is `{self.current_url}`.",
-            )
+                f"seconds! The current URL is `{self.current_url}`."
+            ),
+        )
 
     def wait_until_locator_visible(self, locator: locators.Locator):
         """Wait until element matching locator becomes visible.
@@ -233,16 +232,14 @@ class WebView:
                 has not ended.
 
         """
-        try:
-            self.wait.until(
-                expected_conditions.visibility_of_element_located(
-                    locator=(locator.by, locator.query),
-                ),
-            )
-        except TimeoutException:
-            raise exceptions.ElementIsNotVisibleError(
-                f"Unable to locate {locator} in {self.wait_timeout} seconds!",
-            )
+        self.wait.until(
+            method=expected_conditions.visibility_of_element_located(
+                locator=(locator.by, locator.query),
+            ),
+            message=(
+                f"Unable to locate {locator} in {self.wait_timeout} seconds!"
+            ),
+        )
 
     def wait_until_locator_invisible(self, locator: locators.Locator):
         """Wait until element matching locator becomes invisible.
@@ -255,16 +252,14 @@ class WebView:
                 has not ended.
 
         """
-        try:
-            self.wait.until(
-                expected_conditions.invisibility_of_element_located(
-                    locator=(locator.by, locator.query),
-                ),
-            )
-        except TimeoutException:
-            raise exceptions.ElementIsNotInvisibleError(
-                f"{locator} is still visible in {self.wait_timeout} seconds!",
-            )
+        self.wait.until(
+            method=expected_conditions.invisibility_of_element_located(
+                locator=(locator.by, locator.query),
+            ),
+            message=(
+                f"{locator} is still visible in {self.wait_timeout} seconds!"
+            ),
+        )
 
     def wait_until_clickable(self, locator: locators.Locator):
         """Wait until element matching locator becomes clickable.
@@ -277,17 +272,14 @@ class WebView:
                 has not ended.
 
         """
-        try:
-            self.wait.until(
-                expected_conditions.element_to_be_clickable(
-                    mark=(locator.by, locator.query),
-                ),
-            )
-        except TimeoutException:
-            raise exceptions.ElementIsNotClickableError(
-                f"{locator} isn't clickable after {self.wait_timeout} "
-                "seconds!",
-            )
+        self.wait.until(
+            method=expected_conditions.element_to_be_clickable(
+                mark=(locator.by, locator.query),
+            ),
+            message=(
+                f"{locator} isn't clickable after {self.wait_timeout} seconds!"
+            ),
+        )
 
     def wait_until_text_is_in_element(
         self,
@@ -305,18 +297,16 @@ class WebView:
                 has not ended.
 
         """
-        try:
-            self.wait.until(
-                expected_conditions.text_to_be_present_in_element(
-                    locator=(locator.by, locator.query),
-                    text_=text,
-                ),
-            )
-        except TimeoutException:
-            raise exceptions.TextIsNotInElementError(
+        self.wait.until(
+            method=expected_conditions.text_to_be_present_in_element(
+                locator=(locator.by, locator.query),
+                text_=text,
+            ),
+            message=(
                 f"{locator} doesn't have `{text}` after {self.wait_timeout} "
-                "seconds!",
-            )
+                "seconds!"
+            ),
+        )
 
     def wait_until_not_exists_in_dom(
         self,
@@ -333,15 +323,13 @@ class WebView:
                 has not ended.
 
         """
-        try:
-            self.wait.until(
-                waits_conditions.element_not_exists_in_dom(element),
-            )
-        except TimeoutException:
-            raise exceptions.TextIsNotInElementError(
+        self.wait.until(
+            method=waits_conditions.element_not_exists_in_dom(element),
+            message=(
                 f"{element} is still exists in DOM after {self.wait_timeout} "
-                "seconds!",
-            )
+                "seconds!"
+            ),
+        )
 
     def drag_and_drop(self, source: WebElement, target: WebElement):
         """Perform drag and drop.
