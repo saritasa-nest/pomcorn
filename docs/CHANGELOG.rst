@@ -3,11 +3,16 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.8.6 (12.03.25)
+0.8.6 (13.03.25)
 *******************************************************************************
 - Replace isort, black, flake with Ruff
 - Replace error message handling via try-except block in wait methods with built-in
-selenium's message attribute of the `wait.until` method.
+  selenium's message attribute of the `wait.until` method.
+
+Backwards incompatible changes in 0.8.6
+-------------------------------------------------------------------------------
+- Remove custom errors. Custom errors were used only in `wait.until` that wrapped try-except block.
+  Since the error message can be set directly in `wait.until`, these errors have been removed.
 
 0.8.5 (10.02.25)
 *******************************************************************************
