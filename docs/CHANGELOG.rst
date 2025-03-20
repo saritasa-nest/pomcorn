@@ -3,6 +3,10 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.8.7 (20.03.25)
+*******************************************************************************
+- Add \`InputInLabelLocator\` to locators.__init__
+
 0.8.6 (13.03.25)
 *******************************************************************************
 - Replace isort, black, flake with Ruff
