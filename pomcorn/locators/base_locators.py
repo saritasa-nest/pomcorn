@@ -157,25 +157,41 @@ class XPathLocator(Locator):
         """
         return XPathLocator(query=f"({self.query} | {other.query})")
 
-    def __getitem__(self, index: int) -> XPathLocator:
-        """Allow get related xpath locator by index.
+    def __getitem__(self, value: int | str | XPathLocator) -> XPathLocator:
+        """Allow to set xpath expressions or index into the locator query.
 
-        Example:
+        Examples:
             div_locator = XPathLocator("//div") --> `//div`
+
+            # Indexation
             div_locator[0]  --> `(//div)[1]`   # xpath numeration starts with 1
             div_locator[-1] --> `(//div)[last()]`
+
+            # Attribute condition
+            div_locator["@type='black'"] --> `//div[@type='black']
+
+            # Checking if there are children
+            child_locator = XPathLocator("//label").contains("Schedule")
+                --> `//label[contains(., 'Star']`
+            div_locator[child_locator] --> `//div[//label[contains(., 'Star']]`
 
         """
         query = f"({self.query})"
 
-        if index >= 0:
+        if isinstance(value, XPathLocator):
+            value = value.query
+
+        if isinstance(value, str):
+            return XPathLocator(f"{query}[{value}]")
+
+        if value >= 0:
             # `+1` is used here because numeration in xpath starts with 1
-            query += f"[{index + 1}]"
-        elif index == -1:
+            query += f"[{value + 1}]"
+        elif value == -1:
             # To avoid ugly locators with `...)[last() - 0]`
             query += "[last()]"
         else:
-            query += f"[last() - {abs(index + 1)}]"
+            query += f"[last() - {abs(value + 1)}]"
 
         return XPathLocator(query)
 
