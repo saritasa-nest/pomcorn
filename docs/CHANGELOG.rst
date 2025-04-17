@@ -3,6 +3,12 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+
+0.9.0 (17.04.25)
+*******************************************************************************
+- Add xpath expressions and locator object support for square brackets of
+  ``XPathLocator``
+
 0.8.7 (20.03.25)
 *******************************************************************************
 - Add \`InputInLabelLocator\` to locators.__init__
