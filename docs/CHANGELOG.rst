@@ -3,6 +3,10 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.9.1 (05.05.25)
+*******************************************************************************
+- Fix \`PomcornElement.clear\` method: remove redundant string and add passing
+  \`only_visible\` argument to \`send_keys\`
 
 0.9.0 (17.04.25)
 *******************************************************************************

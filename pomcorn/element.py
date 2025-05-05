@@ -172,13 +172,12 @@ class PomcornElement(Generic[locators.TLocator]):
                 counted.
 
         """
-        self.get_element(only_visible=only_visible)
+        cmd_ctrl = Keys.COMMAND
+        if sys.platform.lower() == "darwin":
+            cmd_ctrl = Keys.CONTROL
 
-        if sys.platform == "darwin":
-            self.send_keys(Keys.COMMAND + "a")
-        else:
-            self.send_keys(Keys.CONTROL + "a")
-        self.send_keys(Keys.BACK_SPACE)
+        self.send_keys(cmd_ctrl + "a", only_visible=only_visible)
+        self.send_keys(Keys.BACK_SPACE, only_visible=only_visible)
 
     def send_keys(self, keys: str, only_visible: bool = True):
         """Send keys to element.
