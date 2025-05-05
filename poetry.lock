@@ -1049,33 +1049,33 @@ test = ["pytest (>=8)"]
 
 [[package]]
 name = "saritasa-invocations"
-version = "1.3.1"
+version = "1.4.0"
 description = "Collection of invoke commands used by Saritasa"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["dev"]
 files = [
-    {file = "saritasa_invocations-1.3.1-py3-none-any.whl", hash = "sha256:de7a453b59c7ca6fe3748066753d559c4575416e5ae8653f3a100127500646dc"},
-    {file = "saritasa_invocations-1.3.1.tar.gz", hash = "sha256:7826c67adfa1b8b393ad209871a8f44f657b90773539a8c82eaa7f61e0ea05ef"},
+    {file = "saritasa_invocations-1.4.0-py3-none-any.whl", hash = "sha256:cead3f57f99dd18de75c71ba906cbc6e4a111d6ba0ed8542ce194a446c237352"},
+    {file = "saritasa_invocations-1.4.0.tar.gz", hash = "sha256:cdb576b569876da17a043b2cb42dce932e6b928e8aa2b6694966c1425d736b6f"},
 ]
 
 [package.dependencies]
 invoke = ">=2,<3"
-rich = ">=13,<14"
+rich = ">=13,<15"
 
 [package.extras]
 env-settings = ["python-decouple (>=3,<4)"]
 
 [[package]]
 name = "selenium"
-version = "4.31.0"
+version = "4.32.0"
 description = "Official Python bindings for Selenium WebDriver"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "selenium-4.31.0-py3-none-any.whl", hash = "sha256:7b8b8d5e424d7133cb7aa656263b19ac505ec26d65c0f921a696e7e2c5ccd95b"},
-    {file = "selenium-4.31.0.tar.gz", hash = "sha256:441cffc436a2e6659fe3cfb012692435652efd38b0d368d16f661a5db47825f5"},
+    {file = "selenium-4.32.0-py3-none-any.whl", hash = "sha256:c4d9613f8a45693d61530c9660560fadb52db7d730237bc788ddedf442391f97"},
+    {file = "selenium-4.32.0.tar.gz", hash = "sha256:b9509bef4056f4083772abb1ae19ff57247d617a29255384b26be6956615b206"},
 ]
 
 [package.dependencies]
