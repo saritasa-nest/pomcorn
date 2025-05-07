@@ -172,9 +172,9 @@ class PomcornElement(Generic[locators.TLocator]):
                 counted.
 
         """
-        cmd_ctrl = Keys.COMMAND
+        cmd_ctrl = Keys.CONTROL
         if sys.platform.lower() == "darwin":
-            cmd_ctrl = Keys.CONTROL
+            cmd_ctrl = Keys.COMMAND
 
         self.send_keys(cmd_ctrl + "a", only_visible=only_visible)
         self.send_keys(Keys.BACK_SPACE, only_visible=only_visible)

@@ -3,6 +3,10 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.9.2 (07.05.25)
+*******************************************************************************
+- Fix mistake with \`CONTROL\` and \`COMMAND\` in \`PomcornElement.clear\`
+
 0.9.1 (05.05.25)
 *******************************************************************************
 - Fix \`PomcornElement.clear\` method: remove redundant string and add passing
