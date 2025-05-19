@@ -40,7 +40,7 @@ The package includes next base classes to create Page Object Model (``POM``) pag
 
 ```
 
-It also includes [classes to locate elements](https://pomcorn.readthedocs.io/en/latest/locators.html) on the web page and a number of additional [waiting conditions](https://pomcorn.readthedocs.io/en/latest/waits_conditions.html>).
+It also includes [classes to locate elements](https://pomcorn.readthedocs.io/en/latest/locators.html) on the web page and a number of additional [waiting conditions](https://pomcorn.readthedocs.io/en/latest/waits_conditions.html).
 
 ## Installation
 
