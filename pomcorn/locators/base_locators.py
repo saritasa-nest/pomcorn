@@ -124,7 +124,7 @@ class XPathLocator(Locator):
         self.related_query = query.lstrip(self.divider)
         super().__init__(by=By.XPATH, query=query)
 
-    def __truediv__(self, other: XPathLocator) -> XPathLocator:
+    def __truediv__(self, other: XPathLocator | str) -> XPathLocator:
         """Override `/` operator to implement following XPath locators.
 
         "/" used to select the nearest children of the current node.
@@ -132,7 +132,7 @@ class XPathLocator(Locator):
         """
         return self.prepare_relative_locator(other=other, separator="/")
 
-    def __floordiv__(self, other: XPathLocator) -> XPathLocator:
+    def __floordiv__(self, other: XPathLocator | str) -> XPathLocator:
         """Override `//` operator to implement nested XPath locators.
 
         "//" used to select all descendants (children, grandchildren,
@@ -261,7 +261,7 @@ class XPathLocator(Locator):
 
     def prepare_relative_locator(
         self,
-        other: XPathLocator,
+        other: XPathLocator | str,
         separator: Literal["/", "//"] = "/",
     ) -> XPathLocator:
         """Prepare relative locator base on queries of two locators.
@@ -270,7 +270,7 @@ class XPathLocator(Locator):
         return only the filled one.
 
         Args:
-            other: Child locator object.
+            other: Child locator object or str locator query.
             separator: Literal which will placed between locators queries - "/"
                 used to select nearest children of current node and "//" used
                 to select all descendants (children, grandchildren,
@@ -289,6 +289,8 @@ class XPathLocator(Locator):
             #   (//li)[3] -> valid
             #   //(//li)[3] -> invalid
             related_query = f"//{self.related_query}"
+
+        other = XPathLocator(other) if isinstance(other, str) else other
 
         locator = XPathLocator(
             query=f"{related_query}{separator}{other.related_query}",

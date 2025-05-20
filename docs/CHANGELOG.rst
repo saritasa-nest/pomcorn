@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+
+0.9.3 (16.05.25)
+*******************************************************************************
+- Extend `/` and `//` operations to support combining `XPathLocator` with raw `str` queries.
+
 0.9.2 (07.05.25)
 *******************************************************************************
 - Fix mistake with \`CONTROL\` and \`COMMAND\` in \`PomcornElement.clear\`
