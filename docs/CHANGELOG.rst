@@ -3,6 +3,10 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.9.4 (20.05.25)
+*******************************************************************************
+- Refactor `only_visible` logic in `_get_elements` and `_get_element` methods.
+
 
 0.9.3 (16.05.25)
 *******************************************************************************

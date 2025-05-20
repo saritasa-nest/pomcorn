@@ -1,5 +1,6 @@
 from contextlib import contextmanager
 
+from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -145,9 +146,19 @@ class WebView:
                 counted.
 
         """
+        elements = self.webdriver.find_elements(*locator)
         if only_visible:
-            self.wait_until_locator_visible(locator=locator)
-        return self.webdriver.find_element(*locator)
+            elements = [
+                element for element in elements if element.is_displayed()
+            ]
+
+        if not elements:
+            raise NoSuchElementException(
+                f"No {'visible ' if only_visible else ''}elements"
+                f"found for locator: {locator}",
+            )
+
+        return elements[0]
 
     def _get_elements(
         self,
@@ -164,9 +175,19 @@ class WebView:
                 counted.
 
         """
+        elements = self.webdriver.find_elements(*locator)
         if only_visible:
-            self.wait_until_locator_visible(locator=locator)
-        return self.webdriver.find_elements(*locator)
+            elements = [
+                element for element in elements if element.is_displayed()
+            ]
+
+        if not elements:
+            raise NoSuchElementException(
+                f"No {'visible ' if only_visible else ''}elements"
+                f"found for locator: {locator}",
+            )
+
+        return elements
 
     def wait_until_url_contains(self, url: str):
         """Wait until browser's url contains input url.
