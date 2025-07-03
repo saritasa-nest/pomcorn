@@ -3,7 +3,7 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.9.4 (05.06.25)
+0.9.4 (03.07.25)
  *******************************************************************************
 - Extend `get_item_by_text` method with `exact` parameter
 
