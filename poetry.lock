@@ -1063,14 +1063,14 @@ test = ["pytest (>=8)"]
 
 [[package]]
 name = "saritasa-invocations"
-version = "1.4.0"
+version = "1.5.0"
 description = "Collection of invoke commands used by Saritasa"
 optional = false
 python-versions = "<4.0,>=3.10"
 groups = ["dev"]
 files = [
-    {file = "saritasa_invocations-1.4.0-py3-none-any.whl", hash = "sha256:cead3f57f99dd18de75c71ba906cbc6e4a111d6ba0ed8542ce194a446c237352"},
-    {file = "saritasa_invocations-1.4.0.tar.gz", hash = "sha256:cdb576b569876da17a043b2cb42dce932e6b928e8aa2b6694966c1425d736b6f"},
+    {file = "saritasa_invocations-1.5.0-py3-none-any.whl", hash = "sha256:00ca334009a0d6f80fb5ea30ec64319e3ba0590ee094f28e880a282df7a0a4f3"},
+    {file = "saritasa_invocations-1.5.0.tar.gz", hash = "sha256:433b63ac5bb515b9327f923d84ef49726a8ef2e02ab9c2597d757ff9cba4fc73"},
 ]
 
 [package.dependencies]
