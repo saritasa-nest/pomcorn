@@ -1,3 +1,4 @@
+from collections.abc import Generator
 from contextlib import contextmanager
 
 from selenium.webdriver import ActionChains
@@ -20,7 +21,7 @@ class WebView:
         webdriver: WebDriver,
         *,
         app_root: str,
-        wait_timeout: int,
+        wait_timeout: float,
         poll_frequency: float = 0,
     ):
         """Initialize webview.
@@ -36,7 +37,6 @@ class WebView:
         """
         self.webdriver = webdriver
         self.app_root = app_root
-        self.wait_timeout = wait_timeout
         self.wait = WebDriverWait(
             driver=webdriver,
             timeout=wait_timeout,
@@ -168,19 +168,34 @@ class WebView:
             self.wait_until_locator_visible(locator=locator)
         return self.webdriver.find_elements(*locator)
 
+    @contextmanager
+    def specific_wait(self, timeout: float) -> Generator[None, None, None]:
+        """Context manager for waiting with a specific timeout.
+
+        It change default wait timeout only inside the context manager.
+        And restore it after exiting the context manager.
+
+        """
+        original_timeout = self.wait._timeout
+        self.wait._timeout = timeout
+
+        yield
+
+        self.wait._timeout = original_timeout
+
     def wait_until_url_contains(self, url: str):
         """Wait until browser's url contains input url.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
         self.wait.until(
             method=expected_conditions.url_contains(url),
             message=(
-                f"Url doesn't contain `{url}` in {self.wait_timeout} seconds! "
-                f"The current URL is `{self.current_url}`."
+                f"Url doesn't contain `{url}` in {self.wait._timeout} "
+                f"seconds! The current URL is `{self.current_url}`."
             ),
         )
 
@@ -188,14 +203,14 @@ class WebView:
         """Wait until browser's url doesn't not contains input url.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
         self.wait.until(
             method=waits_conditions.url_not_matches(url),
             message=(
-                f"Url does contain `{url}` in {self.wait_timeout} seconds! "
+                f"Url does contain `{url}` in {self.wait._timeout} seconds! "
                 f"The current URL is `{self.current_url}`."
             ),
         )
@@ -208,7 +223,7 @@ class WebView:
                 input, will be used `self.current_url`.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -216,7 +231,7 @@ class WebView:
         self.wait.until(
             method=expected_conditions.url_changes(url),
             message=(
-                f"Url didn't changed from {url} in {self.wait_timeout} "
+                f"Url didn't changed from {url} in {self.wait._timeout} "
                 f"seconds! The current URL is `{self.current_url}`."
             ),
         )
@@ -228,7 +243,7 @@ class WebView:
             locator: Instance of a class to locate the element in the browser.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -237,7 +252,7 @@ class WebView:
                 locator=(locator.by, locator.query),
             ),
             message=(
-                f"Unable to locate {locator} in {self.wait_timeout} seconds!"
+                f"Unable to locate {locator} in {self.wait._timeout} seconds!"
             ),
         )
 
@@ -248,7 +263,7 @@ class WebView:
             locator: Instance of a class to locate the element in the browser.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -257,7 +272,7 @@ class WebView:
                 locator=(locator.by, locator.query),
             ),
             message=(
-                f"{locator} is still visible in {self.wait_timeout} seconds!"
+                f"{locator} is still visible in {self.wait._timeout} seconds!"
             ),
         )
 
@@ -268,7 +283,7 @@ class WebView:
             locator: Instance of a class to locate the element in the browser.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -277,7 +292,8 @@ class WebView:
                 mark=(locator.by, locator.query),
             ),
             message=(
-                f"{locator} isn't clickable after {self.wait_timeout} seconds!"
+                f"{locator} isn't clickable after "
+                f"{self.wait._timeout} seconds!"
             ),
         )
 
@@ -293,7 +309,7 @@ class WebView:
             text: Text that should be presented in element.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -303,7 +319,7 @@ class WebView:
                 text_=text,
             ),
             message=(
-                f"{locator} doesn't have `{text}` after {self.wait_timeout} "
+                f"{locator} doesn't have `{text}` after {self.wait._timeout} "
                 "seconds!"
             ),
         )
@@ -319,14 +335,14 @@ class WebView:
                 or instance of element.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
         self.wait.until(
             method=waits_conditions.element_not_exists_in_dom(element),
             message=(
-                f"{element} is still exists in DOM after {self.wait_timeout} "
+                f"{element} is still exists in DOM after {self.wait._timeout} "
                 "seconds!"
             ),
         )
