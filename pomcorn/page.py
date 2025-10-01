@@ -128,7 +128,7 @@ class Page(WebView):
             method=lambda _: self.check_page_is_loaded(),
             message=(
                 f"Page `{self.__class__}` didn't loaded in "
-                f"{self.wait_timeout} seconds! Didn't wait for `True` from "
+                f"{self.wait._timeout} seconds! Didn't wait for `True` from "
                 "`check_page_is_loaded` method."
             ),
         )

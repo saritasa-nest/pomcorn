@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pomcorn"
-version = "0.9.3"
+version = "0.10.0"
 description = "Base implementation of Page Object Model"
 authors = [
   "Saritasa <pypi@saritasa.com>",
@@ -73,6 +73,7 @@ pytest = ">= 7.4.2"
 # Mypy is a static type checker for Python.
 # https://mypy.readthedocs.io/en/stable/
 mypy = "^1.7.0"
+ruff = "^0.13.2"
 
 [build-system]
 requires = ["poetry-core"]

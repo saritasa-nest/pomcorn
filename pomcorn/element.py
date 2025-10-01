@@ -37,7 +37,7 @@ class PomcornElement(Generic[locators.TLocator]):
         """Wait until element becomes visible.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -47,7 +47,7 @@ class PomcornElement(Generic[locators.TLocator]):
         """Wait until element becomes invisible.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -57,7 +57,7 @@ class PomcornElement(Generic[locators.TLocator]):
         """Wait until element becomes clickable.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -67,7 +67,7 @@ class PomcornElement(Generic[locators.TLocator]):
         """Wait until text is present in element.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """
@@ -80,7 +80,7 @@ class PomcornElement(Generic[locators.TLocator]):
         """Wait until element ceases to exist in DOM.
 
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
+            TimeoutException: If after `self.wait._timeout` seconds the wait
                 has not ended.
 
         """

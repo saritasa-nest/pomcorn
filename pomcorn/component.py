@@ -62,7 +62,7 @@ class Component(Generic[TPage], WebView):
         super().__init__(
             page.webdriver,
             app_root=page.app_root,
-            wait_timeout=page.wait_timeout,
+            wait_timeout=page.wait._timeout,
         )
         self.page = page
         self.base_locator = base_locator or self.base_locator
