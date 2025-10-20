@@ -33,58 +33,101 @@ class PomcornElement(Generic[locators.TLocator]):
         self.web_view = web_view
         self.locator = locator
 
-    def wait_until_visible(self):
+    def wait_until_visible(self, timeout: float | None = None):
         """Wait until element becomes visible.
 
+        By default, method waits for `self.web_view.wait_timeout` seconds.
+        If you need to change timeout, you can specify it in `timeout`
+        argument.
+
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
-                has not ended.
+            TimeoutException: If after `self.web_view.wait_timeout` seconds
+                the wait has not ended.
 
         """
-        self.web_view.wait_until_locator_visible(locator=self.locator)
+        self.web_view.wait_until_locator_visible(
+            locator=self.locator,
+            timeout=timeout,
+        )
 
-    def wait_until_invisible(self):
+    def wait_until_invisible(
+        self,
+        timeout: float | None = None,
+    ):
         """Wait until element becomes invisible.
 
+        By default, method waits for `self.web_view.wait_timeout` seconds.
+        If you need to change timeout, you can specify it in `timeout`
+        argument.
+
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
-                has not ended.
+            TimeoutException: If after `self.web_view.wait_timeout` seconds
+                the wait has not ended.
 
         """
-        self.web_view.wait_until_locator_invisible(locator=self.locator)
+        self.web_view.wait_until_locator_invisible(
+            locator=self.locator,
+            timeout=timeout,
+        )
 
-    def wait_until_clickable(self):
+    def wait_until_clickable(
+        self,
+        timeout: float | None = None,
+    ):
         """Wait until element becomes clickable.
 
+        By default, method waits for `self.web_view.wait_timeout` seconds.
+        If you need to change timeout, you can specify it in `timeout`
+        argument.
+
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
-                has not ended.
+            TimeoutException: If after `self.web_view.wait_timeout` seconds
+                the wait has not ended.
 
         """
-        self.web_view.wait_until_clickable(locator=self.locator)
+        self.web_view.wait_until_clickable(
+            locator=self.locator,
+            timeout=timeout,
+        )
 
-    def wait_until_text_is_in_element(self, text: str):
+    def wait_until_text_is_in_element(
+        self,
+        text: str,
+        timeout: float | None = None,
+    ):
         """Wait until text is present in element.
 
+        By default, method waits for `self.web_view.wait_timeout` seconds.
+        If you need to change timeout, you can specify it in `timeout`
+        argument.
+
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
-                has not ended.
+            TimeoutException: If after `self.web_view.wait_timeout` seconds
+                the wait has not ended.
 
         """
         self.web_view.wait_until_text_is_in_element(
             text=text,
             locator=self.locator,
+            timeout=timeout,
         )
 
-    def wait_until_not_exists_in_dom(self):
+    def wait_until_not_exists_in_dom(self, timeout: float | None = None):
         """Wait until element ceases to exist in DOM.
 
+        By default, method waits for `self.web_view.wait_timeout` seconds.
+        If you need to change timeout, you can specify it in `timeout`
+        argument.
+
         Raises:
-            TimeoutException: If after `self.wait_timeout` seconds the wait
-                has not ended.
+            TimeoutException: If after `self.web_view.wait_timeout` seconds
+                the wait has not ended.
 
         """
-        self.web_view.wait_until_not_exists_in_dom(self.locator)
+        self.web_view.wait_until_not_exists_in_dom(
+            element=self.locator,
+            timeout=timeout,
+        )
 
     def get_element(self, only_visible: bool = True) -> WebElement:
         """Get selenium instance(WebElement) of element.
