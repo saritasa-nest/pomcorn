@@ -122,13 +122,14 @@ class Page(WebView):
         self.webdriver.refresh()
         self.wait_until_loaded()
 
-    def wait_until_loaded(self) -> None:
+    def wait_until_loaded(self, timeout: float | None = None) -> None:
         """Wait until page is loaded."""
-        self.wait.until(
+        wait = self.get_wait(timeout)
+        wait.until(
             method=lambda _: self.check_page_is_loaded(),
             message=(
                 f"Page `{self.__class__}` didn't loaded in "
-                f"{self.wait_timeout} seconds! Didn't wait for `True` from "
+                f"{wait._timeout} seconds! Didn't wait for `True` from "
                 "`check_page_is_loaded` method."
             ),
         )

@@ -62,7 +62,7 @@ class Component(Generic[TPage], WebView):
         super().__init__(
             page.webdriver,
             app_root=page.app_root,
-            wait_timeout=page.wait_timeout,
+            wait_timeout=page.wait._timeout,
         )
         self.page = page
         self.base_locator = base_locator or self.base_locator
@@ -174,13 +174,25 @@ class Component(Generic[TPage], WebView):
             return locator
         return self.base_locator // relative_locator
 
-    def wait_until_visible(self, **kwargs):
-        """Wait until component becomes visible."""
-        self.body.wait_until_visible()
+    def wait_until_visible(self, timeout: float | None = None, **kwargs):
+        """Wait until component becomes visible.
 
-    def wait_until_invisible(self, **kwargs):
-        """Wait until component becomes invisible."""
-        self.body.wait_until_invisible()
+        By default, method waits for `self.wait._timeout` seconds.
+        If you need to change timeout, you can specify it in `timeout`
+        argument.
+
+        """
+        self.body.wait_until_visible(timeout)
+
+    def wait_until_invisible(self, timeout: float | None = None, **kwargs):
+        """Wait until component becomes invisible.
+
+        By default, method waits for `self.wait._timeout` seconds.
+        If you need to change timeout, you can specify it in `timeout`
+        argument.
+
+        """
+        self.body.wait_until_invisible(timeout)
 
 
 # Here type ignore added because we can't specify TPage as generic for

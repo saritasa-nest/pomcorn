@@ -3,9 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.9.4 (03.07.25)
- *******************************************************************************
-- Extend `get_item_by_text` method with `exact` parameter
+0.10.0 (21.10.25)
+*******************************************************************************
+- Add timeout argument for all wait methods to add ability to change default
+  wait timeout for specific cases
+- Extend `get_item_by_text` method with `exact` parameter (03.07.25)
 
 0.9.3 (22.05.25)
 *******************************************************************************
