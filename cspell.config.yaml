@@ -33,6 +33,7 @@ words:
   - ipython
   - docformatter
   - yaspeller
+  - pypa
 
     # Code words
   - argnames
