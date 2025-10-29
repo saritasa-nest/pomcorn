@@ -3,6 +3,10 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.10.1 (31.10.25)
+*******************************************************************************
+- Add auto publishing releases to PyPI via GitHub Actions
+
 0.10.0 (21.10.25)
 *******************************************************************************
 - Add timeout argument for all wait methods to add ability to change default
