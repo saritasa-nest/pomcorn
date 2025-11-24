@@ -3,6 +3,14 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.10.2 (24.11.25)
+*******************************************************************************
+- Update Component's `init_element` and `init_elements` methods
+
+  They now use `self.page.{{method name}}` instead of `super().{{method name}}`.
+  This should help in cases where it is necessary to override `PomcornElement`.
+  Now it is possible via overriding `Page.init_element / Page.init_elements` methods.
+
 0.10.1 (31.10.25)
 *******************************************************************************
 - Add auto publishing releases to PyPI via GitHub Actions

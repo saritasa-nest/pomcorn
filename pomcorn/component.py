@@ -100,7 +100,7 @@ class Component(Generic[TPage], WebView):
             ValueError: If both arguments were passed or neither.
 
         """
-        return super().init_element(
+        return self.page.init_element(
             locator=self._prepare_locator(
                 locator=locator,
                 relative_locator=relative_locator,
@@ -136,7 +136,7 @@ class Component(Generic[TPage], WebView):
             ValueError: If both arguments were passed or neither.
 
         """
-        return super().init_elements(
+        return self.page.init_elements(
             locator=self._prepare_locator(
                 locator=locator,
                 relative_locator=relative_locator,
