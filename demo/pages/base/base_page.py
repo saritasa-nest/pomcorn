@@ -29,7 +29,7 @@ class PyPIPage(Page):
         *,
         app_root: str | None = None,
         # Next arguments have default values, so you can delete/specify them.
-        wait_timeout: int = 10,
+        wait_timeout: float = 10,
         poll_frequency: float = 0.01,
     ):
         super().__init__(

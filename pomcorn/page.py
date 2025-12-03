@@ -20,7 +20,7 @@ class Page(WebView):
         webdriver: WebDriver,
         *,
         app_root: str | None = None,
-        wait_timeout: int = 5,
+        wait_timeout: float = 5.0,
         poll_frequency: float = 0.01,
     ):
         """Initialize page.
