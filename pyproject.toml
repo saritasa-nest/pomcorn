@@ -8,9 +8,6 @@ authors = [
 maintainers = [
     "Anton Oboleninov <anton.oboleninov@saritasa.com>",
 ]
-homepage = "https://pypi.org/project/pomcorn/"
-repository = "https://github.com/saritasa-nest/pomcorn/"
-documentation = "http://pomcorn.rtfd.io/"
 keywords = [
   "python",
   "selenium",
@@ -73,6 +70,14 @@ pytest = ">= 7.4.2"
 # Mypy is a static type checker for Python.
 # https://mypy.readthedocs.io/en/stable/
 mypy = "^1.7.0"
+
+[tool.poetry.urls]
+homepage = "https://pypi.org/project/pomcorn/"
+repository = "https://github.com/saritasa-nest/pomcorn/"
+documentation = "https://pomcorn.readthedocs.io/"
+changelog = "https://github.com/saritasa-nest/pomcorn/blob/main/docs/CHANGELOG.rst"
+releases = "https://github.com/saritasa-nest/pomcorn/releases"
+
 
 [build-system]
 requires = ["poetry-core"]
