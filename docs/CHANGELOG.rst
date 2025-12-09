@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+0.10.3 ()
+*******************************************************************************
+- Extend `DataTestIdLocator` arguments with `exact` parameter to specify
+  whether to use exact match or contains match for `data-testid` attribute.
+
 0.10.2 (24.11.25)
 *******************************************************************************
 - Update Component's `init_element` and `init_elements` methods

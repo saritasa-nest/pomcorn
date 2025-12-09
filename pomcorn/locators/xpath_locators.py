@@ -54,6 +54,7 @@ class DataTestIdLocator(PropertyLocator):
         self,
         value: str,
         container: str = "*",
+        exact: bool = True,
     ):
         """Init XPathLocator.
 
@@ -61,13 +62,16 @@ class DataTestIdLocator(PropertyLocator):
             value: The value of ``testid`` property.
             container: The tag in which the property should be. The default is
                 ``*``, which means "any tag".
+            exact: Specify whether the value of the property being searched
+                must match exactly. By default, the search is based on a
+                partial match of the value.
 
         """
         super().__init__(
             prop="data-testid",
             value=value,
             container=container,
-            exact=True,
+            exact=exact,
         )
 
 
