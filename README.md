@@ -2,7 +2,6 @@
 
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/saritasa-nest/pomcorn/pre-commit.yml) ![PyPI](https://img.shields.io/pypi/v/pomcorn) ![PyPI - Status](https://img.shields.io/pypi/status/pomcorn) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pomcorn) ![PyPI - License](https://img.shields.io/pypi/l/pomcorn) ![PyPI - Downloads](https://img.shields.io/pypi/dm/pomcorn) [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
-
 **Pomcorn**, or **Page Object Model corn**, is a Python package that contains base classes to create systems based on [Selenium](https://github.com/SeleniumHQ/selenium#selenium) framework and **Page Object Model** pattern. You can read more about this pattern [here](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/). The package can be used to create autotesting systems, parsing scripts and anything that requires
 interaction with the browser.
 

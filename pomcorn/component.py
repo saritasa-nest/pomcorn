@@ -10,7 +10,8 @@ from typing import (
     overload,
 )
 
-from . import locators
+from . import config, locators
+from .constants import AutomationPlatform
 from .element import XPathElement
 from .page import Page
 from .web_view import WebView
@@ -362,11 +363,41 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
         return False
 
     def get_item_by_text(self, text: str, exact: bool = False) -> ListItemType:
-        """Get list item by text."""
-        locator = self.base_item_locator.contains(
-            text=text,
-            exact=exact,
-        )
+        """Get list item by text.
+
+        Web: matches text node inside element.
+        Android: matches `@text` attribute when `AUTOMATION_PLATFORM=android`.
+
+        """
+        if config.AUTOMATION_PLATFORM == AutomationPlatform.ANDROID:
+            return self.get_item_by_text_attr(text=text, exact=exact)
+        return self.get_item_by_text_node(text=text, exact=exact)
+
+    def get_item_by_text_node(
+        self,
+        text: str,
+        exact: bool = False,
+    ) -> ListItemType:
+        """Get list item by text node of element."""
+        locator = self.base_item_locator.contains(text=text, exact=exact)
+        return self._item_class(page=self.page, base_locator=locator)
+
+    def get_item_by_text_attr(
+        self,
+        text: str,
+        exact: bool = False,
+    ) -> ListItemType:
+        """Get list item by @text attribute of element."""
+        escape_quotes = locators.XPathLocator._escape_quotes
+
+        partial_query = f"contains(@text, {escape_quotes(text)})"
+        exact_query = f"@text={escape_quotes(text)}"
+        query = exact_query if exact else partial_query
+
+        locator = self.base_item_locator[
+            f"self::node()[{query}] | .//*[{query}]"
+        ]
+
         return self._item_class(page=self.page, base_locator=locator)
 
     def __repr__(self) -> str:

@@ -28,6 +28,7 @@ Documentation
    developer_interface
    locators
    descriptors
+   configuration
    waits_conditions
    development
    contributing

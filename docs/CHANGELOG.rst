@@ -3,10 +3,27 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.10.3 ()
+0.11.0 (19.12.25)
 *******************************************************************************
 - Extend `DataTestIdLocator` arguments with `exact` parameter to specify
   whether to use exact match or contains match for `data-testid` attribute.
+
+- Adapt `ListComponent.get_item_by_text` method to support android testing
+  via `AUTOMATION_PLATFORM` config variable.
+
+  Initially pomcorn was used for web automation testing. Now we started
+  adapting it for Android testing as well. In Android apps, elements don't
+  contain text inside them. Instead, they use the `@text` attribute.
+  So we added `AUTOMATION_PLATFORM` config variable to define which platform
+  is used for automation: `web` or `android`. Depending on this variable,
+  `ListComponent.get_item_by_text` method will search for text inside the
+  element (for web) or in the `@text` attribute (for android).
+
+  This variable is equal to `web` by default and can be changed by specifying
+  `POMCORN_AUTOMATION_PLATFORM` env variable.
+
+- Added `get_item_by_text_node` and `get_items_by_text_attr` methods to
+  `ListComponent`
 
 0.10.2 (24.11.25)
 *******************************************************************************
