@@ -1153,14 +1153,14 @@ files = [
 
 [[package]]
 name = "saritasa-invocations"
-version = "1.9.1"
+version = "1.10.0"
 description = "Collection of invoke commands used by Saritasa"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "saritasa_invocations-1.9.1-py3-none-any.whl", hash = "sha256:e67e197b54811e47fe8815f0e6e9c130f8211b53aa43ee1cc32959434027c385"},
-    {file = "saritasa_invocations-1.9.1.tar.gz", hash = "sha256:164b0ab1ce011c96d8e84cea339c6a29563b5df3822ebcf7730189dc8220e654"},
+    {file = "saritasa_invocations-1.10.0-py3-none-any.whl", hash = "sha256:1e539edaeac339962927995a87d894aa0a4f2612f256ae3ed1dd77b41fe35648"},
+    {file = "saritasa_invocations-1.10.0.tar.gz", hash = "sha256:a9829c025b27122971e6a0b42ff0b1172885a55269ac63eabb8059d475370b2c"},
 ]
 
 [package.dependencies]
@@ -1372,14 +1372,14 @@ test = ["flake8", "mypy", "pytest"]
 
 [[package]]
 name = "sphinxcontrib-mermaid"
-version = "2.0.0"
+version = "2.0.1"
 description = "Mermaid diagrams in your Sphinx-powered docs"
 optional = false
 python-versions = ">=3.10"
 groups = ["docs"]
 files = [
-    {file = "sphinxcontrib_mermaid-2.0.0-py3-none-any.whl", hash = "sha256:59a73249bbee2c74b1a4db036f8e8899ade65982bdda6712cf22b4f4e9874bb5"},
-    {file = "sphinxcontrib_mermaid-2.0.0.tar.gz", hash = "sha256:cf4f7d453d001132eaba5d1fdf53d42049f02e913213cf8337427483bfca26f4"},
+    {file = "sphinxcontrib_mermaid-2.0.1-py3-none-any.whl", hash = "sha256:9dca7fbe827bad5e7e2b97c4047682cfd26e3e07398cfdc96c7a8842ae7f06e7"},
+    {file = "sphinxcontrib_mermaid-2.0.1.tar.gz", hash = "sha256:a21a385a059a6cafd192aa3a586b14bf5c42721e229db67b459dc825d7f0a497"},
 ]
 
 [package.dependencies]
