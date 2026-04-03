@@ -3,10 +3,18 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.10.3 ()
+0.10.3 (06.04.26)
 *******************************************************************************
-- Extend `DataTestIdLocator` arguments with `exact` parameter to specify
-  whether to use exact match or contains match for `data-testid` attribute.
+- Extend ``DataTestIdLocator`` arguments with ``exact`` parameter to specify
+  whether to use exact match or contains match for ``data-testid`` attribute.
+- Extend ``PomcornElement.click()`` arguments with ``center_element`` parameter
+  to specify whether to scroll to element before click.
+
+  By default, webdriver scrolls to element before clicking if the element container
+  not in screen space or behind of ``header/footer`` elements, but in some cases element
+  can be inside screen space but overlapped by another element (e.g. by custom header/footer
+  that made using ``div`` tags) and at that case we might need to use pomcorn custom scroll
+  method which scrolling to element until it will be in center of screen.
 
 0.10.2 (24.11.25)
 *******************************************************************************
