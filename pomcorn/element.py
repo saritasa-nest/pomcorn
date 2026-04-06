@@ -328,6 +328,7 @@ class PomcornElement(Generic[locators.TLocator]):
         self,
         only_visible: bool = True,
         wait_until_clickable: bool = True,
+        center_element: bool = False,
     ):
         """Click on element.
 
@@ -336,10 +337,19 @@ class PomcornElement(Generic[locators.TLocator]):
                 (default), then this method will only get visible elements.
             wait_until_clickable: Wait until the element is clickable before
                 clicking, or not (default `True`).
+            center_element: Scroll the page until the element is in
+                the center, or not scroll (default `False`).
+
+        By default, webdriver scrolls to the element before clicking if the
+        element is not in viewport or is behind overlays (header/footer tags).
+        If the element is in viewport but overlapped, set center_element
+        to True to scroll until element is in the center of the screen.
 
         """
         if wait_until_clickable:
             self.wait_until_clickable()
+        if center_element:
+            self.scroll_to(only_visible=only_visible)
         self.get_element(only_visible=only_visible).click()
 
     def drag_and_drop(
