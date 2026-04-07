@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from time import sleep
 from typing import TYPE_CHECKING
 
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -79,6 +80,13 @@ class PyPIPage(Page):
         return self.init_element(
             locator=locators.TagNameLocator("main"),
         ).is_displayed
+
+    def wait_until_loaded(self, timeout: float | None = None) -> None:
+        super().wait_until_loaded(timeout)
+        # Wait for notification bar became visible: this bar may cause
+        # click interruption but it doesn't always appear, so it's
+        # inconvenient to wait for it to appear using the locator
+        sleep(0.5)
 
     def click_on_logo(self) -> IndexPage:
         """Click on the logo and redirect to `IndexPage`."""

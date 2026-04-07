@@ -3,10 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
-0.10.3 (06.04.26)
+0.10.3 (08.04.26)
 *******************************************************************************
 - Extend ``DataTestIdLocator`` arguments with ``exact`` parameter to specify
   whether to use exact match or contains match for ``data-testid`` attribute.
+- Remove ``test_search`` after issues with captcha bypassing.
 - Extend ``PomcornElement.click()`` arguments with ``center_element`` parameter
   to specify whether to scroll to element before click.
 
