@@ -1,68 +1,120 @@
+default_stages: [
+  pre-commit,
+  pre-push,
+]
+default_install_hook_types: [
+  pre-commit,
+  pre-push,
+  post-checkout,
+  post-merge,
+  post-rewrite,
+]
+fail_fast: true
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v6.0.0
     hooks:
+      - id: check-yaml
       - id: check-toml
+      - id: check-xml
       - id: check-json
         exclude: ".*\\.vscode/"
       - id: end-of-file-fixer
       - id: trailing-whitespace
       - id: detect-aws-credentials
-        args: [--allow-missing-credentials]
+        args: [
+          --allow-missing-credentials,
+        ]
       - id: debug-statements
       - id: check-merge-conflict
+        args: [
+          --assume-in-merge,
+        ]
       - id: detect-private-key
+      - id: check-case-conflict
+      - id: check-illegal-windows-names
+      - id: check-added-large-files
+        args: [
+          --maxkb=1000,
+        ]
+      - id: file-contents-sorter
+        files: "\\.vscode/(boilerplate-words|project-related-words)\\.txt"
+        args: [
+          --ignore-case,
+        ]
 
-  - repo: https://github.com/asottile/add-trailing-comma
-    rev: v3.1.0
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
     hooks:
-      - id: add-trailing-comma
-        name: add training comma
+      - id: gitleaks
 
-  # TODO: Wait for release https://github.com/PyCQA/docformatter/issues/293
-  # Problem: https://github.com/PyCQA/docformatter/pull/287#issue-2568300589
-  - repo: https://github.com/pycqa/docformatter
-    rev: eb1df347edd128b30cd3368dddc3aa65edcfac38
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.10
     hooks:
-      - id: docformatter
+      - id: ruff-check
+        args: [
+          --fix,
+        ]
+      - id: ruff-format
 
-  - repo: https://github.com/jorisroovers/gitlint
-    rev: v0.19.1
-    hooks:
-      - id: gitlint
-      - id: gitlint-ci
-
-  - repo: https://github.com/python-poetry/poetry
-    rev: 1.6.1
-    hooks:
-      - id: poetry-check
-        args: ["--lock"]
-
-  # Typo search tool
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v7.3.1
+    rev: v9.8.0
     hooks:
       - id: cspell
 
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.9.9
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v4.0.0
     hooks:
-      - id: ruff
-      - id: ruff-format
+      - id: add-trailing-comma
+
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.6
+    hooks:
+      - id: uv-lock
+      - id: uv-sync
+        args: [
+          --all-groups
+        ]
+
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.48.0
+    hooks:
+      - id: markdownlint
+        args: [
+          "--fix",
+        ]
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: v1.7.12
+    hooks:
+      - id: actionlint
+
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/renovatebot/pre-commit-hooks
+    rev: 43.113.0
+    hooks:
+      - id: renovate-config-validator
+        args: [
+          --strict,
+        ]
 
   - repo: local
     hooks:
       - id: mypy
-        name: mypy
+        name: Run mypy
         entry: inv mypy.run
         language: system
         pass_filenames: false
-        types: [file]
-        stages: [push]
-      - id: run tests
-        name: run tests
-        entry: inv pytest.run
+        types: [ file ]
+        stages: [ pre-push ]
+      - id: doc-build-verify
+        name: Verify that docs could be build
+        entry: inv docs.build
         language: system
         pass_filenames: false
-        types: [file]
-        stages: [commit]
+        types: [ file ]
+        stages: [ pre-push ]

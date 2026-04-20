@@ -1,0 +1,34 @@
+name: Run pre-commit hooks
+
+on:
+  pull_request:
+  push:
+    branches: [
+      main
+    ]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Fallback to plain text output for reducing docker output
+  # https://github.com/docker/compose/issues/8753#issuecomment-934473781
+  BUILDKIT_PROGRESS: plain
+
+jobs:
+  pre-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        python-version: [
+          "3.12",
+          "3.13",
+          "3.14",
+        ]
+    steps:
+      - name: Run
+        uses: saritasa-nest/saritasa-python-open-source-boilerplate/.github/actions/run_pre_commit@main
+        with:
+          python-version: ${{ matrix.python-version }}

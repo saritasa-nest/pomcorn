@@ -1,0 +1,39 @@
+{
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.ruff_cache": true,
+  },
+
+  "files.associations": {
+    "**/.vscode/*.json": "jsonc"
+  },
+
+  "json.schemas": [
+    {
+      "fileMatch": ["**/.vscode/*.json"],
+      "schema": {
+        "allowTrailingCommas": true
+      }
+    }
+  ],
+
+  "editor.rulers": [79],
+
+  "editor.bracketPairColorization.enabled": true,
+
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportPrivateImportUsage": "none"
+  },
+  "python.analysis.inlayHints.functionReturnTypes": true,
+
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+
+  "[python]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+}

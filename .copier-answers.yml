@@ -1,0 +1,9 @@
+# Answers what were given during boilerplate initialization
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+# https://copier.readthedocs.io/en/stable/configuring/#the-copier-answersyml-file
+_commit: '7560947'
+_src_path: git@github.com:saritasa-nest/saritasa-python-boilerplate-open-source.git
+folder_name: pomcorn
+min_python_version: 3.12
+package_description: Short description of pomcorn
+package_name: pomcorn

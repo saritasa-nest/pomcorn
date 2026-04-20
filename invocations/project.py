@@ -3,9 +3,8 @@ import saritasa_invocations
 
 
 @invoke.task
-def init(context: invoke.Context):
-    """Build project from scratch."""
+def init(context: invoke.Context, clean: bool = False) -> None:
+    """Prepare env for working with project."""
+    saritasa_invocations.print_success("Setting up git config")
     saritasa_invocations.git.setup(context)
-    saritasa_invocations.pre_commit.run_hooks(context)
-
-    saritasa_invocations.print_success("Setup done")
+    saritasa_invocations.system.copy_vscode_settings(context)

@@ -1,98 +1,83 @@
-[tool.poetry]
+[project]
 name = "pomcorn"
-version = "0.10.3"
-description = "Base implementation of Page Object Model"
+version = "0.0.0"
+description = ""
 authors = [
-  "Saritasa <pypi@saritasa.com>",
+    {name = "Saritasa", email = "pypi@saritasa.com"}
 ]
 maintainers = [
-    "Anton Oboleninov <anton.oboleninov@saritasa.com>",
 ]
 keywords = [
   "python",
-  "selenium",
-  "webdriver",
-  "autotests",
-  "page object model",
-  "page object pattern",
-  "page object",
-  "pom",
-  "parsing",
-  "browser",
 ]
 license = "MIT"
 readme = "README.md"
-packages = [
-  { include = "pomcorn" }
-]
-
 classifiers = [
-  "Development Status :: 4 - Beta",
-  "License :: OSI Approved :: MIT License",
-  "Natural Language :: English",
-  "Intended Audience :: Developers",
-  "Operating System :: OS Independent",
-  "Programming Language :: Python :: 3.12",
-  "Topic :: Software Development :: Libraries :: Python Modules",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.12"
+dependencies = [
 ]
 
-[tool.poetry.dependencies]
-python = ">= 3.11, < 4.0"
-# Python bindings for Selenium
-# https://selenium-python.readthedocs.io/index.html
-selenium = ">= 4.12"
+[dependency-groups]
+local = [
+    "ipython>0",
+    # Exports functions to access the IPython debugger, which features tab completion, syntax highlighting, better tracebacks
+    # https://github.com/gotcha/ipdb
+    "ipdb>0",
+    # A framework for managing and maintaining multi-language pre-commit hooks.
+    # https://pre-commit.com/
+    "pre-commit>0",
+    # Collection of invoke commands which used in Saritasa organization
+    # https://github.com/saritasa-nest/saritasa-python-invocations/
+    "saritasa-invocations[env_settings]>0",
+    # A library and CLI app for rendering project templates.
+    # https://copier.readthedocs.io/en/latest/
+    "copier>0",
+]
+linters = [
+    # Mypy is a static type checker for Python.
+    # https://mypy.readthedocs.io/en/stable/
+    "mypy>0",
+]
+docs = [
+  # Project documentation with Markdown.
+  # https://www.mkdocs.org/
+  "mkdocs>0",
+  # A powerful documentation framework on top of MkDocs
+  # https://squidfunk.github.io/mkdocs-material/
+  "mkdocs-material>0",
+  # Automatic documentation from sources, for MkDocs
+  # https://mkdocstrings.github.io/
+  "mkdocstrings[python]>0",
+  # Manage multiple versions of your MkDocs-powered documentation
+  # https://github.com/jimporter/mike
+  "mike>0",
+]
 
-[tool.poetry.group.dev.dependencies]
-# Improved REPL
-ipdb = ">= 0.13.13"
-ipython = ">= 8.14.0"
-# A framework for managing and maintaining multi-language pre-commit hooks.
-# https://pre-commit.com/
-pre-commit = ">= 3.3.3"
-# Collection of invoke commands
-# https://github.com/saritasa-nest/saritasa-python-invocations
-saritasa-invocations = ">= 0.8"
-
-[tool.poetry.group.docs.dependencies]
-# Need to support autodoc for pomcorn modules
-sphinx = ">= 7.2.6"
-# The Sphinx theme for docs
-# https://sphinx-rtd-theme.readthedocs.io/en/stable/
-sphinx-rtd-theme = ">= 1.3.0rc1"
-# Support mermaid diagrams
-# https://github.com/mgaitan/sphinxcontrib-mermaid/tree/master
-sphinxcontrib-mermaid = ">=0.9.2,<2.1.0"
-
-[tool.poetry.group.demo.dependencies]
-pytest = ">= 7.4.2"
-
-[tool.poetry.group.linters.dependencies]
-# Mypy is a static type checker for Python.
-# https://mypy.readthedocs.io/en/stable/
-mypy = "^1.7.0"
-
-[tool.poetry.urls]
-homepage = "https://pypi.org/project/pomcorn/"
-repository = "https://github.com/saritasa-nest/pomcorn/"
-documentation = "https://pomcorn.readthedocs.io/"
-changelog = "https://github.com/saritasa-nest/pomcorn/blob/main/docs/CHANGELOG.rst"
-releases = "https://github.com/saritasa-nest/pomcorn/releases"
-
+[project.urls]
+Documentation = "https://saritasa-nest.github.io/pomcorn/"
+Repository = "https://github.com/saritasa-nest/pomcorn"
+Changelog = "https://saritasa-nest.github.io/pomcorn/changelog/"
+Releases = "https://saritasa-nest.github.io/pomcorn/releases/"
+"Bug Tracker" = "https://github.com/saritasa-nest/pomcorn/issues/"
+Contributing ="https://saritasa-nest.github.io/pomcorn/contributing/"
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
-
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+[tool.hatch.build.targets.wheel]
+packages = [
+  "import_export_extensions"
+]
 
 [tool.ruff]
 line-length = 79
 indent-width = 4
-target-version = "py311"
-exclude = [
-  ".venv",
-  "venv",
-]
-
 
 [tool.ruff.lint]
 extend-select = [
@@ -125,8 +110,6 @@ extend-select = [
   "DTZ",
   # https://docs.astral.sh/ruff/rules/#flake8-debugger-t10
   "T10",
-  # https://docs.astral.sh/ruff/rules/#flake8-django-dj
-  "DJ",
   # https://docs.astral.sh/ruff/rules/#flake8-print-t20
   "T20",
   # https://docs.astral.sh/ruff/rules/#flake8-pytest-style-pt
@@ -139,65 +122,65 @@ extend-select = [
   "TD",
   # https://docs.astral.sh/ruff/rules/#eradicate-era
   "ERA",
+  # https://docs.astral.sh/ruff/rules/#tryceratops-try
+  "TRY",
+  # https://docs.astral.sh/ruff/rules/#flynt-fly
+  "FLY",
+  # https://docs.astral.sh/ruff/rules/#perflint-perf
+  "PERF",
+  # https://docs.astral.sh/ruff/rules/#refurb-furb
+  "FURB",
+  # https://docs.astral.sh/ruff/rules/#flake8-pie-pie
+  "PIE",
+  # https://docs.astral.sh/ruff/rules/#flake8-async-async
+  "ASYNC",
   # https://docs.astral.sh/ruff/rules/#ruff-specific-rules-ruf
   "RUF",
 ]
-
 ignore = [
-  # https://docs.astral.sh/ruff/rules/missing-type-args/
-  "ANN002",
-  # https://docs.astral.sh/ruff/rules/missing-type-kwargs/
-  "ANN003",
-  # https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function/
-  "ANN201",
-  # https://docs.astral.sh/ruff/rules/missing-return-type-special-method/
-  "ANN204",
-  # https://docs.astral.sh/ruff/rules/any-type/
+  # https://docs.astral.sh/ruff/rules/any-type
   "ANN401",
-  # https://docs.astral.sh/ruff/rules/function-call-in-default-argument/
-  "B008",
-  # https://docs.astral.sh/ruff/rules/raise-without-from-inside-except/
-  "B904",
-  # https://docs.astral.sh/ruff/rules/one-blank-line-before-class/
-  "D203",
-  # https://docs.astral.sh/ruff/rules/multi-line-summary-second-line/
-  "D213",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-module/
+  # https://docs.astral.sh/ruff/rules/missing-type-kwargs
+  "ANN003",
+  # https://docs.astral.sh/ruff/rules/undocumented-public-module
   "D100",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-method/
-  "D102",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-function/
-  "D103",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-package/
+  # https://docs.astral.sh/ruff/rules/undocumented-public-package
   "D104",
-  # https://docs.astral.sh/ruff/rules/undocumented-magic-method/
-  "D105",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-nested-class/
+  # https://docs.astral.sh/ruff/rules/undocumented-public-nested-class
   "D106",
-  # https://docs.astral.sh/ruff/rules/undocumented-public-init/
+  # https://docs.astral.sh/ruff/rules/undocumented-public-init
   "D107",
-  # https://docs.astral.sh/ruff/rules/undefined-local-with-import-star/
-  "F403",
-  # https://docs.astral.sh/ruff/rules/undefined-local-with-import-star-usage/
-  "F405",
-  # https://docs.astral.sh/ruff/rules/assert/
-  "S101",
-  # https://docs.astral.sh/ruff/rules/non-pep695-type-alias/
-  "UP040",
-  # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
-  "DTZ",
+  # https://docs.astral.sh/ruff/rules/raise-vanilla-args
+  "TRY003",
+  # https://docs.astral.sh/ruff/rules/try-consider-else
+  "TRY300",
 ]
-
-
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = [
+  # https://docs.astral.sh/ruff/rules/unused-import
+  "F401",
+]
+"**/tests/*" = [
+  # https://docs.astral.sh/ruff/rules/assert
+  "S101",
+  # https://docs.astral.sh/ruff/rules/hardcoded-password-func-arg
+  "S106",
+  # https://docs.astral.sh/ruff/rules/suspicious-non-cryptographic-random-usage
+  "S311",
+]
+"**/test_*" = [
+  # https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function
+  "ANN201",
+]
 [tool.ruff.lint.isort]
 force-wrap-aliases = true
 split-on-trailing-comma = true
 section-order = [
-  "future",
-  "standard-library",
-  "third-party",
-  "first-party",
-  "local-folder",
+    "future",
+    "standard-library",
+    "third-party",
+    "first-party",
+    "local-folder",
 ]
 
 [tool.ruff.lint.flake8-pytest-style]
@@ -212,29 +195,11 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 
-[tool.ruff.lint.per-file-ignores]
-"**/test_*" = [
-  # https://docs.astral.sh/ruff/rules/missing-return-type-undocumented-public-function/
-  "ANN201",
-]
-"**/__init__.py" = [
-  # https://docs.astral.sh/ruff/rules/unused-import/
-  "F401",
-]
-
 [tool.mypy]
-# mypy configurations: https://mypy.readthedocs.io/en/latest/config_file.html
 # https://mypy.readthedocs.io/en/stable/running_mypy.html#missing-imports
 ignore_missing_imports = true
 strict = false
 warn_no_return = false
-disable_error_code = ["override", "no-redef"]
 check_untyped_defs = true
-exclude = "config|venv|.venv| __init__.py"
 disallow_any_generics = true
-
-[tool.docformatter]
-wrap-descriptions = 0
-wrap-summaries = 100
-in-place = true
-blank = true
+exclude = "venv|/.venv"
