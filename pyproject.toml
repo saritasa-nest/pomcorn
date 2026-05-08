@@ -69,7 +69,7 @@ pytest = ">= 7.4.2"
 [tool.poetry.group.linters.dependencies]
 # Mypy is a static type checker for Python.
 # https://mypy.readthedocs.io/en/stable/
-mypy = "^1.7.0"
+mypy = ">=1.7,<3.0"
 
 [tool.poetry.urls]
 homepage = "https://pypi.org/project/pomcorn/"
