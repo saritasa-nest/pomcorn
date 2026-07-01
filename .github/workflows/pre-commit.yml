@@ -21,7 +21,7 @@ jobs:
     timeout-minutes: 10
 
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - name: Set up Python ${{ matrix.python-version }}
       id: install-python
       uses: actions/setup-python@v6
@@ -38,7 +38,7 @@ jobs:
 
     - name: Cache poetry dependencies
       id: cached-poetry-dependencies
-      uses: actions/cache@v5
+      uses: actions/cache@v6
       with:
         path: .venv
         key: ${{ runner.os }}-poetry-${{ matrix.python-version }}-${{ hashFiles('**/poetry.lock') }}
