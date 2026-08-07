@@ -474,19 +474,18 @@ ipython = {version = ">=7.31.1", markers = "python_version >= \"3.11\""}
 
 [[package]]
 name = "ipython"
-version = "9.15.0"
+version = "9.16.1"
 description = "IPython: Productive Interactive Computing"
 optional = false
 python-versions = ">=3.11"
 groups = ["dev"]
 files = [
-    {file = "ipython-9.15.0-py3-none-any.whl", hash = "sha256:515ad9c3cdf0c932a5a9f6245419e8aba706b7bd03c3e1d3a1c83d9351d6aa6e"},
-    {file = "ipython-9.15.0.tar.gz", hash = "sha256:da2819ce2aa83135257df830660b1176d986c3d2876db24df01974fa955b2756"},
+    {file = "ipython-9.16.1-py3-none-any.whl", hash = "sha256:4acae635506f6d352d94c4899a19d5f85f8bc4d230932342dca556fdab1c69b4"},
+    {file = "ipython-9.16.1.tar.gz", hash = "sha256:5a3d1f9a47ff216d6cf9cf863124f6a2c1a198d1354c546a4d24a370a283b64c"},
 ]
 
 [package.dependencies]
 colorama = {version = ">=0.4.4", markers = "sys_platform == \"win32\""}
-decorator = ">=5.1.0"
 ipython-pygments-lexers = ">=1.0.0"
 jedi = ">=0.18.2"
 matplotlib-inline = ">=0.1.6"
@@ -499,7 +498,7 @@ traitlets = ">=5.13.0"
 typing_extensions = {version = ">=4.6", markers = "python_version < \"3.12\""}
 
 [package.extras]
-all = ["argcomplete (>=3.0)", "ipython[doc,matplotlib,terminal,test,test-extra]", "types-decorator"]
+all = ["argcomplete (>=3.0)", "ipython[doc,matplotlib,test,test-extra]"]
 black = ["black"]
 doc = ["docrepr", "exceptiongroup", "intersphinx_registry", "ipykernel", "ipython[matplotlib,test]", "setuptools (>=80.0)", "sphinx (>=8.0)", "sphinx-rtd-theme (>=0.1.8)", "sphinx_toml (==0.0.4)", "typing_extensions"]
 matplotlib = ["matplotlib (>3.9)"]
@@ -1267,19 +1266,19 @@ files = [
 
 [[package]]
 name = "saritasa-invocations"
-version = "1.12.1"
+version = "1.13.0"
 description = "Collection of invoke commands used by Saritasa"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "saritasa_invocations-1.12.1-py3-none-any.whl", hash = "sha256:8d3389260ec6ec80de71d3f5a6d0593fff6bd0c8972adc5036a610c6e182e973"},
-    {file = "saritasa_invocations-1.12.1.tar.gz", hash = "sha256:ad3cb61852c467e528de0afd629e93de4b1983c47eb289638a8983fb8dba96c4"},
+    {file = "saritasa_invocations-1.13.0-py3-none-any.whl", hash = "sha256:11017f287aafc86c4c449475c7204b53bc51930f4295b6ff76262bcdce45bb3d"},
+    {file = "saritasa_invocations-1.13.0.tar.gz", hash = "sha256:f0cee1b7dee29f4eb624f043862e0d46d2ef393bbe8d35f0fb147a616b5e50e0"},
 ]
 
 [package.dependencies]
-invoke = ">=2,<4"
-rich = ">=13,<16"
+invoke = ">=2"
+rich = ">=13"
 
 [package.extras]
 env-settings = ["python-decouple (>=3)"]
