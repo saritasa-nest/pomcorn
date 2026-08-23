@@ -5,6 +5,7 @@ repo_url: https://github.com/saritasa-nest/pomcorn/
 repo_name: pomcorn
 theme:
   name: material
+  favicon: _static/favicon.png
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -37,6 +38,8 @@ theme:
     - content.code.annotate
     - content.code.copy
     - content.tooltips
+extra_css:
+  - _static/custom_color.css
 plugins:
   - search
   - autorefs
@@ -47,9 +50,7 @@ markdown_extensions:
   - pymdownx.highlight:
       use_pygments: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets:
-      base_path:
-        - .
+  - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.emoji
   - pymdownx.magiclink

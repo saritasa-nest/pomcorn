@@ -305,4 +305,4 @@ class XPathLocator(Locator):
                 "not a valid locator.",
             )
 
-        return self if self else other
+        return self or other

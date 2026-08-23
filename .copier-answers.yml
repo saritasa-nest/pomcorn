@@ -1,0 +1,12 @@
+# Answers what were given during boilerplate initialization
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+# https://copier.readthedocs.io/en/stable/configuring/#the-copier-answersyml-file
+# https://copier.readthedocs.io/en/stable/updating/#never-change-the-answers-file-manually
+# To update, run (from the project root):
+# uvx copier update --vcs-ref main --skip-answered --trust --skip-tasks --data {question}={answer}
+_commit: b8af99b
+_src_path: git@github.com:saritasa-nest/saritasa-python-boilerplate-open-source.git
+folder_name: pomcorn
+min_python_version: 3.12
+package_description: Base implementation of Page Object Model
+package_name: pomcorn
