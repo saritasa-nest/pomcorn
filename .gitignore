@@ -16,5 +16,5 @@ __pycache__/
 # Distribution / packaging
 dist/
 
-# Folder for locally generated documentation
-local-docs/
+# Folder for locally built documentation
+site/
