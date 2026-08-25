@@ -319,12 +319,10 @@ class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
         ).exists_in_dom:
             base_item.wait_until_visible()
 
-        items: list[ListItemType] = []
-        for locator in self.iter_locators(self.base_item_locator):
-            items.append(
-                self._item_class(page=self.page, base_locator=locator),
-            )
-        return items
+        return [
+            self._item_class(page=self.page, base_locator=locator)
+            for locator in self.iter_locators(self.base_item_locator)
+        ]
 
     @classmethod
     def get_list_item_class(cls) -> type[ListItemType] | None:

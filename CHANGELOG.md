@@ -7,6 +7,7 @@ We follow [Semantic Versions](https://semver.org/).
 - Upgrade project/package manager from poetry to UV.
 - Update project maintainers.
 - Update docs system from Sphinx to mkdocs.
+- Manually sync with [Saritasa Python Boilerplate](https://github.com/saritasa-nest/saritasa-python-boilerplate-open-source).
 
 ## 0.10.3 (08.04.26)
 

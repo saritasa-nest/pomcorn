@@ -178,12 +178,9 @@ class Page(WebView):
             relative_url (str): Relative URL
 
         """
-        if app_root.endswith("/"):
-            # https://www.youtube.com/ -> https://www.youtube.com
-            app_root = app_root[:-1]
-
-        if relative_url.startswith("/"):
-            # /watch_list -> watch_list
-            relative_url = relative_url[1:]
+        # https://www.youtube.com/ -> https://www.youtube.com
+        app_root = app_root.removesuffix("/")
+        # /watch_list -> watch_list
+        relative_url = relative_url.removeprefix("/")
 
         return f"{app_root}/{relative_url}"

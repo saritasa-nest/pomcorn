@@ -39,7 +39,7 @@ It implements the basic structure of pages and tests according to **Page Object 
 The project structure looks like this
 (`__init__.py` files were skipped to simplify the structure):
 
-```
+```bash
 │ demo/
 ├── pages/
 │   ├── base/

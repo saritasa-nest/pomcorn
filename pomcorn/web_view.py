@@ -108,19 +108,13 @@ class WebView:
                 counted.
 
         """
-        result = []
         elements_count = len(
             self._get_elements(locator=locator, only_visible=only_visible),
         )
-        for index in range(1, elements_count + 1):
-            # Need to wrap it into parentheses to iterate by index when locator
-            # is complex: https://sqa.stackexchange.com/a/39465
-            result.append(
-                locators.XPathLocator(
-                    query=f"({locator.query})[{index}]",
-                ),
-            )
-        return result
+        return [
+            locators.XPathLocator(query=f"({locator.query})[{index}]")
+            for index in range(1, elements_count + 1)
+        ]
 
     def get_wait(
         self,
