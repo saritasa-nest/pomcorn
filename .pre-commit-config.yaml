@@ -32,11 +32,10 @@ repos:
       - id: gitlint
       - id: gitlint-ci
 
-  - repo: https://github.com/python-poetry/poetry
-    rev: 1.6.1
+  - repo: https://github.com/astral-sh/uv-pre-commit
+    rev: 0.11.22
     hooks:
-      - id: poetry-check
-        args: ["--lock"]
+      - id: uv-lock
 
   # Typo search tool
   - repo: https://github.com/streetsidesoftware/cspell-cli

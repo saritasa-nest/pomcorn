@@ -3,6 +3,11 @@ Version history
 
 We follow `Semantic Versions <https://semver.org/>`_.
 
+Unreleased
+*******************************************************************************
+- Upgrade project/package manager from poetry to UV.
+- Update project maintainers.
+
 0.10.3 (08.04.26)
 *******************************************************************************
 - Extend ``DataTestIdLocator`` arguments with ``exact`` parameter to specify
