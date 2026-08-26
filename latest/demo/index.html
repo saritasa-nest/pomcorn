@@ -1,0 +1,4614 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Base implementation of Page Object Model">
+      
+      
+      
+        <link rel="canonical" href="https://saritasa-nest.github.io/pomcorn/latest/demo/">
+      
+      
+        <link rel="prev" href="../installation/">
+      
+      
+        <link rel="next" href="../objects_hierarchy/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Demo - pomcorn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#demo-autotests-project" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pomcorn" class="md-header__button md-logo" aria-label="pomcorn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pomcorn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Demo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saritasa-nest/pomcorn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pomcorn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pomcorn" class="md-nav__button md-logo" aria-label="pomcorn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pomcorn
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saritasa-nest/pomcorn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pomcorn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-autotests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Autotests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About the project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About the project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Folder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Base Folder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.base.base_components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base_components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="base_components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyPIPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PyPIPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage.navbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        navbar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage.check_page_is_loaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        check_page_is_loaded
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage.click_on_logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        click_on_logo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="click_on_logo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#navigation-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigation Bar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.navigation_bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        navigation_bar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.navigation_bar.Navbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navbar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navbar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.common.navigation_bar.Navbar.open_help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open_help
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open_help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search component
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.search.Search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.common.search.Search.find" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="find">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-page-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Page Folder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Page Folder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-page-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Page Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Page Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package List
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package_list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package_list.PackageList" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageList
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PackageList">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package.Package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package.Package.name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package.Package.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page.SearchPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SearchPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SearchPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page.SearchPage.results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page.SearchPage.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Help Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.help_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        help_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.help_page.HelpPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HelpPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HelpPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.help_page.HelpPage.check_page_is_loaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        check_page_is_loaded
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.help_page.HelpPage.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Index Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.index_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        index_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.index_page.IndexPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IndexPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IndexPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.index_page.IndexPage.search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-details-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Details Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package_details_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page.PackageDetailsPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageDetailsPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PackageDetailsPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page.PackageDetailsPage.header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page.PackageDetailsPage.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Logo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.tests.test_logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        test_logo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.tests.test_logo.test_logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        test_logo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="test_logo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conftest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conftest
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conftest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.help_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        help_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.index_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        index_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.results_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        results_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.webdriver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webdriver
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer_interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../locators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Locators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descriptors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../waits_conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wait conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-autotests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running Autotests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-the-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About the project
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About the project">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Folder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Base Folder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Components
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.base.base_components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base_components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="base_components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Base Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        base_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PyPIPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PyPIPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage.navbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        navbar
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage.check_page_is_loaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        check_page_is_loaded
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.base.base_page.PyPIPage.click_on_logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        click_on_logo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="click_on_logo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Common
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#navigation-bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigation Bar
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.navigation_bar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        navigation_bar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.navigation_bar.Navbar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navbar
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Navbar">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.common.navigation_bar.Navbar.open_help" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open_help
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open_help">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-component" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search component
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.common.search.Search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.common.search.Search.find" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        find
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="find">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-page-folder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Page Folder
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Page Folder">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-page-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Page Components
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Search Page Components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package List
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package_list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package_list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package_list.PackageList" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageList
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PackageList">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package.Package" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package.Package.name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        name
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.components.package.Package.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Search Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page.SearchPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SearchPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SearchPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page.SearchPage.results" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        results
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.search_page.search_page.SearchPage.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#help-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Help Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.help_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        help_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.help_page.HelpPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        HelpPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="HelpPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.help_page.HelpPage.check_page_is_loaded" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        check_page_is_loaded
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.help_page.HelpPage.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="open">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#index-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Index Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.index_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        index_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.index_page.IndexPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IndexPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IndexPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.index_page.IndexPage.search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="search">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#package-details-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Details Page
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        package_details_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page.PackageDetailsPage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PackageDetailsPage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PackageDetailsPage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page.PackageDetailsPage.header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        header
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#demo.pages.package_details_page.PackageDetailsPage.open" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        open
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#test-logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Test Logo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.tests.test_logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        test_logo
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.tests.test_logo.test_logo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        test_logo
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="test_logo">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conftest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conftest
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conftest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.help_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        help_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.index_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        index_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.results_page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        results_page
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#demo.conftest.webdriver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        webdriver
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="demo-autotests-project">Demo Autotests Project<a class="headerlink" href="#demo-autotests-project" title="Permanent link">&para;</a></h1>
+<p>This is a demo autotest project implemented with <code>pomcorn</code> package for <code>PyPI</code> web site.
+To start tests in this project you need to prepare a python virtual environment and install
+according driver for Chrome browser.</p>
+<p>You can get a demo project from
+<a href="https://github.com/saritasa-nest/pomcorn/tree/main/demo">package repository</a>.</p>
+<h2 id="setup">Setup<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<h3 id="environment">Environment<a class="headerlink" href="#environment" title="Permanent link">&para;</a></h3>
+<p>The simplest way to configure a proper Python version and virtual environment
+is using <a href="https://docs.astral.sh/uv/">uv</a>.</p>
+<p>Install dependencies and activate your <code>virtualenv</code></p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync<span class="w"> </span>--only-group<span class="w"> </span>demo
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</code></pre></div>
+<p><a href="https://saritasa-nest.github.io/pomcorn/latest/installation/#chrome-driver">Install Chrome webdriver</a>.</p>
+<h2 id="running-autotests">Running Autotests<a class="headerlink" href="#running-autotests" title="Permanent link">&para;</a></h2>
+<p>To run tests, use invoke command <code>pytest</code>:</p>
+<div class="highlight"><pre><span></span><code>inv<span class="w"> </span>pytest.run
+</code></pre></div>
+<h2 id="about-the-project">About the project<a class="headerlink" href="#about-the-project" title="Permanent link">&para;</a></h2>
+<p>This project is a mini autotesting system for the <a href="https://pypi.org/">PyPI</a> website.
+It implements the basic structure of pages and tests according to <strong>Page Object Model</strong> pattern.</p>
+<p>The project structure looks like this
+(<code>__init__.py</code> files were skipped to simplify the structure):</p>
+<div class="highlight"><pre><span></span><code>│ demo/
+├── pages/
+│   ├── base/
+│   │   ├── base_components.py
+│   │   └── base_page.py
+│   ├── common/
+│   │   ├── navigation_bar.py
+│   │   └── search.py
+│   ├── search_page/
+│   │   ├── components/
+│   │   │   ├── package_list.py
+│   │   │   └── package.py
+│   │   └── search_page.py
+│   ├── help_page.py
+│   ├── index_page.py
+│   └── package_details_page.py
+├── tests
+│   ├── test_logo.py
+│   └── test_search.py
+└── conftest.py
+</code></pre></div>
+<h3 id="pages">Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h3>
+<p>This folder contains the page and component classes required to represent PyPI web pages.
+These classes contain web page interaction logic to make tests free of that implementation.</p>
+<h4 id="base-folder">Base Folder<a class="headerlink" href="#base-folder" title="Permanent link">&para;</a></h4>
+<p>Basic classes for PyPI pages and components are implemented here.</p>
+<h5 id="base-components">Base Components<a class="headerlink" href="#base-components" title="Permanent link">&para;</a></h5>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.base.base_components"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h5 id="base-page">Base Page<a class="headerlink" href="#base-page" title="Permanent link">&para;</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code>check_page_is_loaded</code> method and the <code>APP_ROOT</code> attribute require special attention
+here.</p>
+</div>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.base.base_page"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.base.base_page.PyPIPage" class="doc doc-heading">
+            <code>PyPIPage</code>
+
+
+<a href="#demo.pages.base.base_page.PyPIPage" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;Page&lt;/code&gt; (&lt;code&gt;pomcorn.Page&lt;/code&gt;)" href="../developer_interface/#pomcorn.page.Page">Page</a></code></p>
+
+
+
+        <p>Base representation of the page for PyPI.</p>
+<p>This is the base page for all following pages, so here we have to implement
+only properties and methods common to all pages of application.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/base/base_page.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PyPIPage</span><span class="p">(</span><span class="n">Page</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Base representation of the page for PyPI.</span>
+
+<span class="sd">    This is the base page for all following pages, so here we have to implement</span>
+<span class="sd">    only properties and methods common to all pages of application.</span>
+
+<span class="sd">    """</span>
+
+    <span class="c1"># Be sure to redefine this attribute:</span>
+    <span class="c1"># specify the base domain of your app here.</span>
+    <span class="n">APP_ROOT</span> <span class="o">=</span> <span class="s2">"https://pypi.org/"</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="c1"># Next arguments have default values, so you can delete/specify them.</span>
+        <span class="n">wait_timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="n">poll_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">webdriver</span><span class="p">,</span>
+            <span class="n">app_root</span><span class="o">=</span><span class="n">app_root</span><span class="p">,</span>
+            <span class="n">wait_timeout</span><span class="o">=</span><span class="n">wait_timeout</span><span class="p">,</span>
+            <span class="n">poll_frequency</span><span class="o">=</span><span class="n">poll_frequency</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># The Logo will be on all the pages of the application so we initialize</span>
+        <span class="c1"># it in base page class.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logo</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_element</span><span class="p">(</span>
+            <span class="c1"># The ``locator=`` keyword is optional here, but we recommend using</span>
+            <span class="c1"># it to be consistent with the method of the same name in</span>
+            <span class="c1"># ``Component``. Same with ``init_elements``.</span>
+            <span class="n">locator</span><span class="o">=</span><span class="n">locators</span><span class="o">.</span><span class="n">ClassLocator</span><span class="p">(</span><span class="s2">"site-header__logo"</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="c1"># We recommend adding components to the page as properties, because it</span>
+    <span class="c1"># helps us to run `waits_until_visible` method every time this component is</span>
+    <span class="c1"># accessed. But if you need to perform some actions before manipulating</span>
+    <span class="c1"># this component (e.g. clicking, hovering, etc.), it's better to create</span>
+    <span class="c1"># opening methods on page (like `open_navbar`).</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">navbar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Navbar</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get a component for working with the page navigation panel."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages.common</span><span class="w"> </span><span class="kn">import</span> <span class="n">Navbar</span>
+
+        <span class="k">return</span> <span class="n">Navbar</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="c1"># Some pages can be slow to load and cause problems checking for unloaded</span>
+    <span class="c1"># items. To be sure the page is loaded, this method should return the</span>
+    <span class="c1"># result of checking for the slowest parts of the page.</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_page_is_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the result of checking that the page is loaded.</span>
+
+<span class="sd">        Check that `main` tag is displayed.</span>
+
+<span class="sd">        """</span>
+        <span class="c1"># Be careful with the elements you use to check page load. If you only</span>
+        <span class="c1"># use them to check loading, it's better to initiate them directly in</span>
+        <span class="c1"># this method. Otherwise, it is better to define them as page</span>
+        <span class="c1"># properties or initiate them in the `__init__` method above the</span>
+        <span class="c1"># `super().__init__` call. This is necessary because the</span>
+        <span class="c1"># `wait_until_loaded` method will be called in `super().__init__`, and</span>
+        <span class="c1"># it depends on `check_page_is_loaded`.</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_element</span><span class="p">(</span>
+            <span class="n">locator</span><span class="o">=</span><span class="n">locators</span><span class="o">.</span><span class="n">TagNameLocator</span><span class="p">(</span><span class="s2">"main"</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">wait_until_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">timeout</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">wait_until_loaded</span><span class="p">(</span><span class="n">timeout</span><span class="p">)</span>
+        <span class="c1"># Wait for notification bar became visible: this bar may cause</span>
+        <span class="c1"># click interruption but it doesn't always appear, so it's</span>
+        <span class="c1"># inconvenient to wait for it to appear using the locator</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">click_on_logo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IndexPage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Click on the logo and redirect to `IndexPage`."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexPage</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">logo</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">IndexPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="demo.pages.base.base_page.PyPIPage.navbar" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">navbar</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#demo.pages.base.base_page.PyPIPage.navbar" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get a component for working with the page navigation panel.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.base.base_page.PyPIPage.check_page_is_loaded" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">check_page_is_loaded</span><span class="p">()</span></code>
+
+<a href="#demo.pages.base.base_page.PyPIPage.check_page_is_loaded" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the result of checking that the page is loaded.</p>
+<p>Check that <code>main</code> tag is displayed.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/base/base_page.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_page_is_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the result of checking that the page is loaded.</span>
+
+<span class="sd">    Check that `main` tag is displayed.</span>
+
+<span class="sd">    """</span>
+    <span class="c1"># Be careful with the elements you use to check page load. If you only</span>
+    <span class="c1"># use them to check loading, it's better to initiate them directly in</span>
+    <span class="c1"># this method. Otherwise, it is better to define them as page</span>
+    <span class="c1"># properties or initiate them in the `__init__` method above the</span>
+    <span class="c1"># `super().__init__` call. This is necessary because the</span>
+    <span class="c1"># `wait_until_loaded` method will be called in `super().__init__`, and</span>
+    <span class="c1"># it depends on `check_page_is_loaded`.</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_element</span><span class="p">(</span>
+        <span class="n">locator</span><span class="o">=</span><span class="n">locators</span><span class="o">.</span><span class="n">TagNameLocator</span><span class="p">(</span><span class="s2">"main"</span><span class="p">),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">is_displayed</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.base.base_page.PyPIPage.click_on_logo" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">click_on_logo</span><span class="p">()</span></code>
+
+<a href="#demo.pages.base.base_page.PyPIPage.click_on_logo" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Click on the logo and redirect to <code>IndexPage</code>.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/base/base_page.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">click_on_logo</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IndexPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Click on the logo and redirect to `IndexPage`."""</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexPage</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">logo</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">IndexPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h4 id="common">Common<a class="headerlink" href="#common" title="Permanent link">&para;</a></h4>
+<p>This folder contains components common to multiple pages.</p>
+<h5 id="navigation-bar">Navigation Bar<a class="headerlink" href="#navigation-bar" title="Permanent link">&para;</a></h5>
+<p>This class represents navigation bar on the top side of all PyPI pages.</p>
+<p><img alt="PyPI navigation bar" src="../_static/images/pypi_navbar.png" /></p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.common.navigation_bar"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.common.navigation_bar.Navbar" class="doc doc-heading">
+            <code>Navbar</code>
+
+
+<a href="#demo.pages.common.navigation_bar.Navbar" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="demo.pages.PyPIComponent">PyPIComponent</span></code></p>
+
+
+
+        <p>Component representing navigation bar in the top of web application.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/common/navigation_bar.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Navbar</span><span class="p">(</span><span class="n">PyPIComponent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Component representing navigation bar in the top of web application."""</span>
+
+    <span class="n">base_locator</span> <span class="o">=</span> <span class="n">locators</span><span class="o">.</span><span class="n">ClassLocator</span><span class="p">(</span>
+        <span class="n">class_name</span><span class="o">=</span><span class="s2">"horizontal-menu"</span><span class="p">,</span>
+        <span class="c1"># We specify `container` here because the page has several `nav`</span>
+        <span class="c1"># tags and several elements with a similar class name.</span>
+        <span class="n">container</span><span class="o">=</span><span class="s2">"nav"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">help_button</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span>
+        <span class="n">locator</span><span class="o">=</span><span class="n">locators</span><span class="o">.</span><span class="n">ElementWithTextLocator</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="s2">"Help"</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="s2">"a"</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_help</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HelpPage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Click on `Help` button and redirect to HelpPage."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages.help_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelpPage</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">help_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">HelpPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.common.navigation_bar.Navbar.open_help" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">open_help</span><span class="p">()</span></code>
+
+<a href="#demo.pages.common.navigation_bar.Navbar.open_help" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Click on <code>Help</code> button and redirect to HelpPage.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/common/navigation_bar.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">open_help</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HelpPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Click on `Help` button and redirect to HelpPage."""</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages.help_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">HelpPage</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">help_button</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">HelpPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h5 id="search-component">Search component<a class="headerlink" href="#search-component" title="Permanent link">&para;</a></h5>
+<p>This class represents a search field that can be placed on multiple pages.</p>
+<table>
+<thead>
+<tr>
+<th>Search field examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://pypi.org/">Index page</a></td>
+</tr>
+<tr>
+<td><img alt="Search field on PyPI index page" src="../_static/images/pypi_search_index.png" /></td>
+</tr>
+<tr>
+<td><a href="https://pypi.org/search/">Navbar</a></td>
+</tr>
+<tr>
+<td><img alt="Search field on PyPI navigation bar" src="../_static/images/pypi_search_navbar.png" /></td>
+</tr>
+</tbody>
+</table>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.common.search"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.common.search.Search" class="doc doc-heading">
+            <code>Search</code>
+
+
+<a href="#demo.pages.common.search.Search" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="demo.pages.PyPIComponent">PyPIComponent</span></code></p>
+
+
+
+        <p>Component representing the search input field.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/common/search.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Search</span><span class="p">(</span><span class="n">PyPIComponent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Component representing the search input field."""</span>
+
+    <span class="c1"># If you are not going to write anything in ``__init__`` and only want</span>
+    <span class="c1"># to set up ``base_locator``, you can specify it as a class attribute</span>
+    <span class="n">base_locator</span> <span class="o">=</span> <span class="n">locators</span><span class="o">.</span><span class="n">IdLocator</span><span class="p">(</span><span class="s2">"search"</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SearchPage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Paste the text into the search field and send `Enter` key.</span>
+
+<span class="sd">        Redirect to `SearchPage` and return its instance.</span>
+
+<span class="sd">        """</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages.search_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">SearchPage</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">SearchPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.common.search.Search.find" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">find</span><span class="p">(</span><span class="n">text</span><span class="p">)</span></code>
+
+<a href="#demo.pages.common.search.Search.find" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Paste the text into the search field and send <code>Enter</code> key.</p>
+<p>Redirect to <code>SearchPage</code> and return its instance.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/common/search.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SearchPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Paste the text into the search field and send `Enter` key.</span>
+
+<span class="sd">    Redirect to `SearchPage` and return its instance.</span>
+
+<span class="sd">    """</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages.search_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">SearchPage</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="o">.</span><span class="n">ENTER</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SearchPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h4 id="search-page-folder">Search Page Folder<a class="headerlink" href="#search-page-folder" title="Permanent link">&para;</a></h4>
+<h5 id="search-page-components">Search Page Components<a class="headerlink" href="#search-page-components" title="Permanent link">&para;</a></h5>
+<p>Because a number of additional components needed to be created to implement the search page,
+a separate folder was created for this page. This is where the page itself and its dependent
+components are stored.</p>
+<h6 id="package-list">Package List<a class="headerlink" href="#package-list" title="Permanent link">&para;</a></h6>
+<p>This class represents a list of found packages on the PyPI search page.</p>
+<p><img alt="PyPI Package List" src="../_static/images/pypi_package_list.png" /></p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.search_page.components.package_list"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.search_page.components.package_list.PackageList" class="doc doc-heading">
+            <code>PackageList</code>
+
+
+<a href="#demo.pages.search_page.components.package_list.PackageList" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;ListComponent&lt;/code&gt; (&lt;code&gt;pomcorn.ListComponent&lt;/code&gt;)" href="../developer_interface/#pomcorn.component.ListComponent">ListComponent</a>[<a class="autorefs autorefs-internal" title="&lt;code&gt;Package&lt;/code&gt; (&lt;code&gt;demo.pages.search_page.components.package.Package&lt;/code&gt;)" href="#demo.pages.search_page.components.package.Package">Package</a>, <a class="autorefs autorefs-internal" title="&lt;code&gt;PyPIPage&lt;/code&gt; (&lt;code&gt;demo.pages.PyPIPage&lt;/code&gt;)" href="#demo.pages.base.base_page.PyPIPage">PyPIPage</a>]</code></p>
+
+
+
+        <p>Represent the list of search results on <code>SearchPage</code>.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/search_page/components/package_list.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PackageList</span><span class="p">(</span><span class="n">ListComponent</span><span class="p">[</span><span class="n">Package</span><span class="p">,</span> <span class="n">PyPIPage</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">"""Represent the list of search results on `SearchPage`."""</span>
+
+    <span class="c1"># By default `ListComponent` have `item_class` attribute with stored first</span>
+    <span class="c1"># Generic variable (Package in current case). This attribute is responsible</span>
+    <span class="c1"># for the class that will be used for list items.</span>
+
+    <span class="n">base_locator</span> <span class="o">=</span> <span class="n">locators</span><span class="o">.</span><span class="n">PropertyLocator</span><span class="p">(</span>
+        <span class="n">prop</span><span class="o">=</span><span class="s2">"aria-label"</span><span class="p">,</span>
+        <span class="n">value</span><span class="o">=</span><span class="s2">"Search results"</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Set up ``relative_item_locator`` or ``item_locator`` is required.</span>
+    <span class="c1"># Use ``relative_item_locator`` - if you want locator nested within</span>
+    <span class="c1"># ``base_locator``, ``item_locator`` - otherwise."</span>
+    <span class="c1"># You also may override ``base_item_locator`` property.</span>
+    <span class="n">relative_item_locator</span> <span class="o">=</span> <span class="n">locators</span><span class="o">.</span><span class="n">ClassLocator</span><span class="p">(</span>
+        <span class="n">class_name</span><span class="o">=</span><span class="s2">"package-snippet"</span><span class="p">,</span>
+        <span class="n">container</span><span class="o">=</span><span class="s2">"a"</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h6 id="package">Package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h6>
+<p>This class represents one found package listed on the PyPI search page.</p>
+<p><img alt="PyPI Package" src="../_static/images/pypi_package.png" /></p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.search_page.components.package"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.search_page.components.package.Package" class="doc doc-heading">
+            <code>Package</code>
+
+
+<a href="#demo.pages.search_page.components.package.Package" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><span title="demo.pages.PyPIComponent">PyPIComponent</span></code></p>
+
+
+
+        <p>Represent the single search result (package) on <code>SearchPage</code>.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/search_page/components/package.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Package</span><span class="p">(</span><span class="n">PyPIComponent</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Represent the single search result (package) on `SearchPage`."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get the package name."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_element</span><span class="p">(</span>
+            <span class="n">relative_locator</span><span class="o">=</span><span class="n">locators</span><span class="o">.</span><span class="n">ClassLocator</span><span class="p">(</span><span class="s2">"package-snippet__name"</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PackageDetailsPage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Click on the package and open its details page."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages</span><span class="w"> </span><span class="kn">import</span> <span class="n">PackageDetailsPage</span>
+
+        <span class="c1"># The property `body` is available because the package is descendant of</span>
+        <span class="c1"># `Component`. It allows us to interact with the body of the component</span>
+        <span class="c1"># and we can check that the package is clickable.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">PackageDetailsPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="demo.pages.search_page.components.package.Package.name" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">name</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#demo.pages.search_page.components.package.Package.name" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the package name.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.search_page.components.package.Package.open" class="doc doc-heading">
+            <code class="highlight language-python"><span class="nb">open</span><span class="p">()</span></code>
+
+<a href="#demo.pages.search_page.components.package.Package.open" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Click on the package and open its details page.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/search_page/components/package.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PackageDetailsPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Click on the package and open its details page."""</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages</span><span class="w"> </span><span class="kn">import</span> <span class="n">PackageDetailsPage</span>
+
+    <span class="c1"># The property `body` is available because the package is descendant of</span>
+    <span class="c1"># `Component`. It allows us to interact with the body of the component</span>
+    <span class="c1"># and we can check that the package is clickable.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">PackageDetailsPage</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h6 id="search-page">Search Page<a class="headerlink" href="#search-page" title="Permanent link">&para;</a></h6>
+<p>This class represents the PyPI <a href="https://pypi.org/search/">search page</a>.</p>
+<p><img alt="PyPI Search Page" src="../_static/images/pypi_search_results.png" /></p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.search_page.search_page"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.search_page.search_page.SearchPage" class="doc doc-heading">
+            <code>SearchPage</code>
+
+
+<a href="#demo.pages.search_page.search_page.SearchPage" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;PyPIPage&lt;/code&gt; (&lt;code&gt;demo.pages.PyPIPage&lt;/code&gt;)" href="#demo.pages.base.base_page.PyPIPage">PyPIPage</a></code></p>
+
+
+
+        <p>Representation of the page with search results.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/search_page/search_page.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">SearchPage</span><span class="p">(</span><span class="n">PyPIPage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Representation of the page with search results."""</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SearchPage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Open the search page."""</span>
+        <span class="c1"># Open `IndexPage` and search for an empty query.</span>
+        <span class="c1"># This will redirect us to the `SearchPage'.</span>
+        <span class="k">return</span> <span class="n">IndexPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">results</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PackageList</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get the component for work with the found packages."""</span>
+        <span class="k">return</span> <span class="n">PackageList</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="demo.pages.search_page.search_page.SearchPage.results" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">results</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#demo.pages.search_page.search_page.SearchPage.results" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the component for work with the found packages.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.search_page.search_page.SearchPage.open" class="doc doc-heading">
+            <code class="highlight language-python"><span class="nb">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">app_root</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#demo.pages.search_page.search_page.SearchPage.open" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Open the search page.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/search_page/search_page.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SearchPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Open the search page."""</span>
+    <span class="c1"># Open `IndexPage` and search for an empty query.</span>
+    <span class="c1"># This will redirect us to the `SearchPage'.</span>
+    <span class="k">return</span> <span class="n">IndexPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h4 id="help-page">Help Page<a class="headerlink" href="#help-page" title="Permanent link">&para;</a></h4>
+<p>This class represents the PyPI <a href="https://pypi.org/help/">help page</a>. The <code>title</code> property is
+implemented here to show how you can use page properties to implement the <code>check_page_is_loaded</code>
+method.</p>
+<p><img alt="Help page title" src="../_static/images/pypi_help_title.png" /></p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.help_page"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.help_page.HelpPage" class="doc doc-heading">
+            <code>HelpPage</code>
+
+
+<a href="#demo.pages.help_page.HelpPage" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;PyPIPage&lt;/code&gt; (&lt;code&gt;demo.pages.base.PyPIPage&lt;/code&gt;)" href="#demo.pages.base.base_page.PyPIPage">PyPIPage</a></code></p>
+
+
+
+        <p>Represent the help page.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/help_page.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">HelpPage</span><span class="p">(</span><span class="n">PyPIPage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Represent the help page."""</span>
+
+    <span class="c1"># Define element for title</span>
+    <span class="n">title_element</span> <span class="o">=</span> <span class="n">Element</span><span class="p">(</span><span class="n">locators</span><span class="o">.</span><span class="n">ClassLocator</span><span class="p">(</span><span class="s2">"page-title"</span><span class="p">))</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HelpPage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Open the help page via the index page."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages.index_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexPage</span>
+
+        <span class="c1"># Reusing already implemented methods of opening a page instead of</span>
+        <span class="c1"># overriding `app_root` allows us to be independent from URL changes:</span>
+        <span class="c1"># we move from one page to another, interacting with the page as the</span>
+        <span class="c1"># user does.</span>
+        <span class="k">return</span> <span class="n">IndexPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">,</span> <span class="n">app_root</span><span class="o">=</span><span class="n">app_root</span><span class="p">)</span><span class="o">.</span><span class="n">navbar</span><span class="o">.</span><span class="n">open_help</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_page_is_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Return the check result that the page is loaded.</span>
+
+<span class="sd">        Return whether help page title element are displayed or not.</span>
+
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title_element</span><span class="o">.</span><span class="n">is_displayed</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.help_page.HelpPage.check_page_is_loaded" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">check_page_is_loaded</span><span class="p">()</span></code>
+
+<a href="#demo.pages.help_page.HelpPage.check_page_is_loaded" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Return the check result that the page is loaded.</p>
+<p>Return whether help page title element are displayed or not.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/help_page.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">check_page_is_loaded</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Return the check result that the page is loaded.</span>
+
+<span class="sd">    Return whether help page title element are displayed or not.</span>
+
+<span class="sd">    """</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">title_element</span><span class="o">.</span><span class="n">is_displayed</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.help_page.HelpPage.open" class="doc doc-heading">
+            <code class="highlight language-python"><span class="nb">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">app_root</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#demo.pages.help_page.HelpPage.open" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Open the help page via the index page.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/help_page.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HelpPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Open the help page via the index page."""</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages.index_page</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexPage</span>
+
+    <span class="c1"># Reusing already implemented methods of opening a page instead of</span>
+    <span class="c1"># overriding `app_root` allows us to be independent from URL changes:</span>
+    <span class="c1"># we move from one page to another, interacting with the page as the</span>
+    <span class="c1"># user does.</span>
+    <span class="k">return</span> <span class="n">IndexPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">,</span> <span class="n">app_root</span><span class="o">=</span><span class="n">app_root</span><span class="p">)</span><span class="o">.</span><span class="n">navbar</span><span class="o">.</span><span class="n">open_help</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h4 id="index-page">Index Page<a class="headerlink" href="#index-page" title="Permanent link">&para;</a></h4>
+<p>This class represents the PyPI <a href="https://pypi.org/">start page</a>. This page shows the use
+of the class <a href="#search-component">Search component</a>.</p>
+<p><img alt="Search field on PyPI index page" src="../_static/images/pypi_search_index.png" /></p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.index_page"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.index_page.IndexPage" class="doc doc-heading">
+            <code>IndexPage</code>
+
+
+<a href="#demo.pages.index_page.IndexPage" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;PyPIPage&lt;/code&gt; (&lt;code&gt;demo.pages.base.PyPIPage&lt;/code&gt;)" href="#demo.pages.base.base_page.PyPIPage">PyPIPage</a></code></p>
+
+
+
+        <p>Represent the index page.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/index_page.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">IndexPage</span><span class="p">(</span><span class="n">PyPIPage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Represent the index page."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">wait_timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">poll_frequency</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">webdriver</span><span class="p">,</span>
+            <span class="n">app_root</span><span class="o">=</span><span class="n">app_root</span><span class="p">,</span>
+            <span class="n">wait_timeout</span><span class="o">=</span><span class="n">wait_timeout</span><span class="p">,</span>
+            <span class="n">poll_frequency</span><span class="o">=</span><span class="n">poll_frequency</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Search</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get the search component.</span>
+
+<span class="sd">        Allows to work with the search field at the center of the page.</span>
+
+<span class="sd">        """</span>
+        <span class="k">return</span> <span class="n">Search</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="demo.pages.index_page.IndexPage.search" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">search</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#demo.pages.index_page.IndexPage.search" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the search component.</p>
+<p>Allows to work with the search field at the center of the page.</p>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><h4 id="package-details-page">Package Details Page<a class="headerlink" href="#package-details-page" title="Permanent link">&para;</a></h4>
+<p>This class represents the PyPI
+<a href="https://pypi.org/project/pomcorn/">package details page</a>.</p>
+<p><img alt="Package details page" src="../_static/images/pypi_package_details.png" /></p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.pages.package_details_page"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="demo.pages.package_details_page.PackageDetailsPage" class="doc doc-heading">
+            <code>PackageDetailsPage</code>
+
+
+<a href="#demo.pages.package_details_page.PackageDetailsPage" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+            <p class="doc doc-class-bases">
+              Bases: <code><a class="autorefs autorefs-internal" title="&lt;code&gt;PyPIPage&lt;/code&gt; (&lt;code&gt;demo.pages.base.PyPIPage&lt;/code&gt;)" href="#demo.pages.base.base_page.PyPIPage">PyPIPage</a></code></p>
+
+
+
+        <p>Represent the package details page.</p>
+
+
+
+
+
+
+
+
+              <details class="mkdocstrings-source">
+                <summary>Source code in <code>demo/pages/package_details_page.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">PackageDetailsPage</span><span class="p">(</span><span class="n">PyPIPage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Represent the package details page."""</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">header</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Get the header text."""</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">init_element</span><span class="p">(</span>
+            <span class="n">locator</span><span class="o">=</span><span class="n">locators</span><span class="o">.</span><span class="n">ClassLocator</span><span class="p">(</span><span class="s2">"package-header__name"</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span>
+        <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+        <span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PackageDetailsPage</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">"""Search and open the package details page by its name."""</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexPage</span>
+
+        <span class="n">search_page</span> <span class="o">=</span> <span class="n">IndexPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+            <span class="n">webdriver</span><span class="p">,</span>
+            <span class="n">app_root</span><span class="o">=</span><span class="n">app_root</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">search_page</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">get_item_by_text</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+<div class="doc doc-object doc-attribute">
+
+
+
+<h3 id="demo.pages.package_details_page.PackageDetailsPage.header" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">header</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-property"><code>property</code></small>
+  </span>
+
+<a href="#demo.pages.package_details_page.PackageDetailsPage.header" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Get the header text.</p>
+
+    </div>
+
+</div>
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="demo.pages.package_details_page.PackageDetailsPage.open" class="doc doc-heading">
+            <code class="highlight language-python"><span class="nb">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">,</span> <span class="n">package_name</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">app_root</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-classmethod"><code>classmethod</code></small>
+  </span>
+
+<a href="#demo.pages.package_details_page.PackageDetailsPage.open" class="headerlink" title="Permanent link">&para;</a></h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Search and open the package details page by its name.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/pages/package_details_page.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span>
+    <span class="bp">cls</span><span class="p">,</span>
+    <span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">,</span>
+    <span class="n">package_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">app_root</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">PackageDetailsPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Search and open the package details page by its name."""</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">demo.pages</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexPage</span>
+
+    <span class="n">search_page</span> <span class="o">=</span> <span class="n">IndexPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>
+        <span class="n">webdriver</span><span class="p">,</span>
+        <span class="n">app_root</span><span class="o">=</span><span class="n">app_root</span><span class="p">,</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">search</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">search_page</span><span class="o">.</span><span class="n">results</span><span class="o">.</span><span class="n">get_item_by_text</span><span class="p">(</span><span class="n">package_name</span><span class="p">)</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+  </div>
+
+    </div>
+
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You don't have to implement the <code>check_page_is_loaded</code> page method if this property is set on
+the base page and is appropriate for the current page.</p>
+</div>
+<h3 id="tests">Tests<a class="headerlink" href="#tests" title="Permanent link">&para;</a></h3>
+<p>This folder contains autotests that use pages prepared in <a href="#conftest">fixtures</a> to reproduce
+some scenarios of user interaction with the site.</p>
+<h4 id="test-logo">Test Logo<a class="headerlink" href="#test-logo" title="Permanent link">&para;</a></h4>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.tests.test_logo"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="demo.tests.test_logo.test_logo" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">test_logo</span><span class="p">(</span><span class="n">help_page</span><span class="p">)</span></code>
+
+<a href="#demo.tests.test_logo.test_logo" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Check that click on site logo redirect to index page.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/tests/test_logo.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">test_logo</span><span class="p">(</span><span class="n">help_page</span><span class="p">:</span> <span class="n">HelpPage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Check that click on site logo redirect to index page."""</span>
+    <span class="n">old_url</span> <span class="o">=</span> <span class="n">help_page</span><span class="o">.</span><span class="n">current_url</span>
+    <span class="n">index_page</span> <span class="o">=</span> <span class="n">help_page</span><span class="o">.</span><span class="n">click_on_logo</span><span class="p">()</span>
+    <span class="n">index_page</span><span class="o">.</span><span class="n">wait_until_url_changes</span><span class="p">(</span><span class="n">old_url</span><span class="p">)</span>
+
+    <span class="k">assert</span> <span class="n">help_page</span><span class="o">.</span><span class="n">current_url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">"pypi.org/"</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div><h3 id="conftest">Conftest<a class="headerlink" href="#conftest" title="Permanent link">&para;</a></h3>
+<p>Here are the implemented base <a href="https://docs.pytest.org/en/6.2.x/fixture.html#fixtures">fixtures</a>
+for implemented PyPI pages. This is useful practice to avoid duplicating page opening calls in
+each test.
+Also, the <a href="https://www.selenium.dev/selenium/docs/api/py/api.html#webdriver-chrome">webdriver</a>
+fixture with a given window size (1920×1080) is implemented here.</p>
+
+
+<div class="doc doc-object doc-module">
+
+
+
+<a id="demo.conftest"></a>
+    <div class="doc doc-contents first">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="demo.conftest.help_page" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">help_page</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span></code>
+
+<a href="#demo.conftest.help_page" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Open help page of PyPI and return instance of it.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/conftest.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">help_page</span><span class="p">(</span><span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">HelpPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Open help page of PyPI and return instance of it."""</span>
+    <span class="k">return</span> <span class="n">HelpPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="demo.conftest.index_page" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">index_page</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span></code>
+
+<a href="#demo.conftest.index_page" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Open index page of PyPI and return instance of it.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/conftest.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">index_page</span><span class="p">(</span><span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">IndexPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Open index page of PyPI and return instance of it."""</span>
+    <span class="k">return</span> <span class="n">IndexPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="demo.conftest.results_page" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">results_page</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span></code>
+
+<a href="#demo.conftest.results_page" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Open search results page of PyPI and return instance of it.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/conftest.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">results_page</span><span class="p">(</span><span class="n">webdriver</span><span class="p">:</span> <span class="n">WebDriver</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SearchPage</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Open search results page of PyPI and return instance of it."""</span>
+    <span class="k">return</span> <span class="n">SearchPage</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">webdriver</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h2 id="demo.conftest.webdriver" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">webdriver</span><span class="p">()</span></code>
+
+<a href="#demo.conftest.webdriver" class="headerlink" title="Permanent link">&para;</a></h2>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Initialize <code>Chrome</code> webdriver.</p>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>demo/conftest.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">fixture</span><span class="p">(</span><span class="n">scope</span><span class="o">=</span><span class="s2">"session"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">webdriver</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">WebDriver</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Initialize `Chrome` webdriver."""</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">selenium_webdriver</span><span class="o">.</span><span class="n">ChromeOptions</span><span class="p">()</span>
+
+    <span class="c1"># Set browser's language to English</span>
+    <span class="n">prefs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"intl.accept_languages"</span><span class="p">:</span> <span class="s2">"en,en_U"</span><span class="p">}</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">add_experimental_option</span><span class="p">(</span><span class="s2">"prefs"</span><span class="p">,</span> <span class="n">prefs</span><span class="p">)</span>
+
+    <span class="n">webdriver</span> <span class="o">=</span> <span class="n">selenium_webdriver</span><span class="o">.</span><span class="n">Chrome</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+    <span class="n">webdriver</span><span class="o">.</span><span class="n">set_window_size</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">webdriver</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.path", "content.code.annotate", "content.code.copy", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
