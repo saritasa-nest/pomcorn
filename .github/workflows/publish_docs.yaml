@@ -1,0 +1,27 @@
+name: Publish latest documentation to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Fallback to plain text output for reducing docker output
+  # https://github.com/docker/compose/issues/8753#issuecomment-934473781
+  BUILDKIT_PROGRESS: plain
+  # Disable PTY for Invoke to avoid issues in CI environments and reduce output
+  INVOKE_PTY: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Run
+        uses: saritasa-nest/saritasa-python-open-source-boilerplate/.github/actions/publish_docs@main

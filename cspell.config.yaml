@@ -14,10 +14,9 @@ words:
   - pypi
   - testid
   - webelement
-  - Oboleninov
-  - Gorbil
   - Ruslan
   - Ivanov
+  - Gorbil
 
     # Tools
   - snok
@@ -57,21 +56,14 @@ words:
   - redef
   - prefs
 
-    # RST blocks
-  - autodoc
-  - automodule
-  - autoclass
-  - toctree
-  - literalinclude
-  - undoc
-
-    # Sphinx
-  - bysource
-  - searchbox
-  - globaltoc
-  - viewcode
-  - intersphinx
-  - autosectionlabel
+    # Mkdocs
+  - mkdocs
+  - mkdocstrings
+  - autorefs
+  - pymdownx
+  - inlinehilite
+  - superfences
+  - magiclink
   - bugname
-  - borderless
-  - sphinxcontrib
+  - pygments
+  - BUILDKIT
