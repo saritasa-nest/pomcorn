@@ -20,7 +20,7 @@
         
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="_static/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -52,6 +52,8 @@
     
     
       <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="_static/custom_color.css">
     
     <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -739,9 +741,20 @@
 
 
 <h1 id="pomcorn">Pomcorn<a class="headerlink" href="#pomcorn" title="Permanent link">&para;</a></h1>
-<p><img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/saritasa-nest/pomcorn/pre-commit.yml" /> <img alt="PyPI" src="https://img.shields.io/pypi/v/pomcorn" /> <img alt="PyPI - Status" src="https://img.shields.io/pypi/status/pomcorn" /> <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pomcorn" /> <img alt="PyPI - License" src="https://img.shields.io/pypi/l/pomcorn" /> <img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/pomcorn" /> <a href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" /></a></p>
-<p><strong>Pomcorn</strong>, or <strong>Page Object Model corn</strong>, is a Python package that contains base classes to create systems based on <a href="https://github.com/SeleniumHQ/selenium#selenium">Selenium</a> framework and <strong>Page Object Model</strong> pattern. You can read more about this pattern <a href="https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/">here</a>. The package can be used to create autotesting systems, parsing scripts and anything that requires
-interaction with the browser.</p>
+<p><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/saritasa-nest/pomcorn" />
+<img alt="GitHub Workflow Status (with event)" src="https://img.shields.io/github/actions/workflow/status/saritasa-nest/pomcorn/run_pre_commit.yaml" />
+<img alt="PyPI" src="https://img.shields.io/pypi/v/pomcorn" />
+<img alt="PyPI - Status" src="https://img.shields.io/pypi/status/pomcorn" />
+<img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pomcorn" />
+<img alt="PyPI - License" src="https://img.shields.io/pypi/l/pomcorn" />
+<img alt="PyPI - Downloads" src="https://img.shields.io/pypi/dm/pomcorn" />
+<a href="https://github.com/astral-sh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" /></a>
+<a href="https://github.com/j178/prek"><img alt="prek" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json" /></a></p>
+<p>Check out our other open-source <a href="https://github.com/orgs/saritasa-nest/repositories?q=visibility%3Apublic+archived%3Afalse+fork%3Afalse+language%3APython">projects</a></p>
+<p><strong>Pomcorn</strong>, or <strong>Page Object Model corn</strong>, is a Python package that contains base classes to create systems based on
+<a href="https://github.com/SeleniumHQ/selenium#selenium">Selenium</a> framework and <strong>Page Object Model</strong> pattern.
+You can <a href="https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/">read more about this pattern</a>.
+The package can be used to create autotesting systems, parsing scripts and anything that requires interaction with the browser.</p>
 <p>The package includes next base classes to create Page Object Model (<code>POM</code>) pages:</p>
 <div class="highlight"><pre><span></span><code>  classDiagram
     WebView &lt;|-- Component
@@ -772,7 +785,8 @@ interaction with the browser.</p>
       -query: String
     }
 </code></pre></div>
-<p>It also includes <a href="https://saritasa-nest.github.io/pomcorn/latest/locators/">classes to locate elements</a> on the web page and a number of additional <a href="https://saritasa-nest.github.io/pomcorn/latest/waits_conditions/">waiting conditions</a>.</p>
+<p>It also includes <a href="https://saritasa-nest.github.io/pomcorn/latest/locators/">classes to locate elements</a>
+on the web page and a number of additional <a href="https://saritasa-nest.github.io/pomcorn/latest/waits_conditions/">waiting conditions</a>.</p>
 <h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
 <p>You can install it by <strong>pip</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="w">  </span>pip<span class="w"> </span>install<span class="w"> </span>pomcorn
@@ -784,7 +798,9 @@ interaction with the browser.</p>
 <p>Link to the documentation: <a href="https://saritasa-nest.github.io/pomcorn/latest/">https://saritasa-nest.github.io/pomcorn/latest/</a>.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
 <p>You need to <a href="https://saritasa-nest.github.io/pomcorn/latest/installation/">install pomcorn</a> and <a href="https://saritasa-nest.github.io/pomcorn/latest/installation/#chrome-driver">Chrome webdriver</a>.</p>
-<p>Below is the code that opens <code>PyPI.org</code>, searches for packages by name and prints names of found packages to the terminal. The script contains all base classes contained in <code>pomcorn</code>: <strong>Page</strong>, <strong>Component</strong>, <strong>ListComponent</strong> and <strong>Element</strong>.</p>
+<p>Below is the code that opens <code>PyPI.org</code>, searches for packages by name and prints names of
+found packages to the terminal. The script contains all base classes contained
+in <code>pomcorn</code>: <strong>Page</strong>, <strong>Component</strong>, <strong>ListComponent</strong> and <strong>Element</strong>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Self</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">selenium.webdriver</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chrome</span>
@@ -846,7 +862,8 @@ interaction with the browser.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">search_page</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">"saritasa"</span><span class="p">)</span><span class="o">.</span><span class="n">names</span><span class="p">)</span>
 <span class="n">search_page</span><span class="o">.</span><span class="n">webdriver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </code></pre></div>
-<p>For more information about package classes, you can read in <a href="https://saritasa-nest.github.io/pomcorn/latest/objects_hierarchy/">Object Hierarchy</a> and <a href="https://saritasa-nest.github.io/pomcorn/latest/developer_interface/">Developer Interface</a>.</p>
+<p>For more information about package classes, you can read in <a href="https://saritasa-nest.github.io/pomcorn/latest/objects_hierarchy/">Object Hierarchy</a>
+and <a href="https://saritasa-nest.github.io/pomcorn/latest/developer_interface/">Developer Interface</a>.</p>
 <p>Also you can try our <a href="https://saritasa-nest.github.io/pomcorn/latest/demo/">demo autotests project</a>.</p>
 
 

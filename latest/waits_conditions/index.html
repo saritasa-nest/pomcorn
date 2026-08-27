@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../_static/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -54,6 +54,8 @@
     
     
       <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../_static/custom_color.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -812,8 +814,7 @@ performing the next actions. They are used for synchronization between the test 
 application to ensure that elements or pages are fully loaded and ready for interaction. This helps
 to avoid errors related to elements not yet appearing on the page or not being fully loaded.</p>
 <p>Pomcorn includes several custom waiting conditions that complement the built-in Selenium waiting
-list. About Selenium wait conditions you can read
-<a href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">here</a>.</p>
+list. Read about <a href="https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html">Selenium wait conditions</a>.</p>
 <h2 id="package-wait-conditions">Package wait conditions<a class="headerlink" href="#package-wait-conditions" title="Permanent link">&para;</a></h2>
 
 
@@ -885,7 +886,7 @@ list. About Selenium wait conditions you can read
 <span class="normal">73</span>
 <span class="normal">74</span>
 <span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">element_not_exists_in_dom</span><span class="p">(</span>
-    <span class="n">element</span><span class="p">:</span> <span class="n">PomcornElement</span><span class="p">[</span><span class="n">TLocator</span><span class="p">]</span> <span class="o">|</span> <span class="n">TLocator</span><span class="p">,</span>
+    <span class="n">element</span><span class="p">:</span> <span class="n">PomcornElement</span><span class="p">[</span><span class="n">TLocator_co</span><span class="p">]</span> <span class="o">|</span> <span class="n">TLocator_co</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">WebDriver</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""Represent `wait condition` to check that element not exists in DOM."""</span>
 
@@ -945,7 +946,7 @@ list. About Selenium wait conditions you can read
                 <code>element</code>
             </td>
             <td>
-                  <code><a class="autorefs autorefs-internal" title="&lt;code&gt;PomcornElement&lt;/code&gt; (&lt;code&gt;pomcorn.element.PomcornElement&lt;/code&gt;)" href="../developer_interface/#pomcorn.element.PomcornElement">PomcornElement</a>[<span title="pomcorn.locators.base_locators.TLocator">TLocator</span>] | <span title="pomcorn.locators.base_locators.TLocator">TLocator</span></code>
+                  <code><a class="autorefs autorefs-internal" title="&lt;code&gt;PomcornElement&lt;/code&gt; (&lt;code&gt;pomcorn.element.PomcornElement&lt;/code&gt;)" href="../developer_interface/#pomcorn.element.PomcornElement">PomcornElement</a>[<span title="pomcorn.locators.base_locators.TLocator_co">TLocator_co</span>] | <span title="pomcorn.locators.base_locators.TLocator_co">TLocator_co</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -999,7 +1000,7 @@ list. About Selenium wait conditions you can read
 <span class="normal">46</span>
 <span class="normal">47</span>
 <span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">text_in_element_changes</span><span class="p">(</span>
-    <span class="n">element</span><span class="p">:</span> <span class="n">PomcornElement</span><span class="p">[</span><span class="n">TLocator</span><span class="p">]</span> <span class="o">|</span> <span class="n">TLocator</span><span class="p">,</span>
+    <span class="n">element</span><span class="p">:</span> <span class="n">PomcornElement</span><span class="p">[</span><span class="n">TLocator_co</span><span class="p">]</span> <span class="o">|</span> <span class="n">TLocator_co</span><span class="p">,</span>
     <span class="n">old_text</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">WebDriver</span><span class="p">],</span> <span class="nb">bool</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">"""Represent `wait condition` to check that text doesn't match old text.</span>

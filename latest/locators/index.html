@@ -22,7 +22,7 @@
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../_static/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
@@ -54,6 +54,8 @@
     
     
       <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../_static/custom_color.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -1704,8 +1706,7 @@ specific elements such as buttons, input fields, or links to interact with them.
 <p>The Selenium webdriver methods use tuples <code>(By, query)</code> to find elements, where <code>By</code> is one of
 the <a href="https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators">supported locator</a>
 strategies and <code>query</code> is the query for that strategy.
-About Selenium supported locator strategies you can read
-<a href="https://www.selenium.dev/documentation/webdriver/elements/locators/">here</a>.</p>
+Read about <a href="https://www.selenium.dev/documentation/webdriver/elements/locators/">Selenium supported locator strategies</a>.</p>
 <p>Pomcorn implements its own classes for defining web page elements - <strong>Locators</strong>.
 <a href="https://www.selenium.dev/documentation/webdriver/elements/locators/#xpath">XPath</a> was chosen as the
 only strategy because it eliminated the need to specify the type of strategy and also made it easier
@@ -2523,7 +2524,7 @@ start with <code>//</code>.</p>
                 <span class="s2">"not a valid locator."</span><span class="p">,</span>
             <span class="p">)</span>
 
-        <span class="k">return</span> <span class="bp">self</span> <span class="k">if</span> <span class="bp">self</span> <span class="k">else</span> <span class="n">other</span>
+        <span class="k">return</span> <span class="bp">self</span> <span class="ow">or</span> <span class="n">other</span>
 </code></pre></div></td></tr></table></div>
               </details>
 
@@ -3193,7 +3194,7 @@ level in hierarchy.</p>
             <span class="s2">"not a valid locator."</span><span class="p">,</span>
         <span class="p">)</span>
 
-    <span class="k">return</span> <span class="bp">self</span> <span class="k">if</span> <span class="bp">self</span> <span class="k">else</span> <span class="n">other</span>
+    <span class="k">return</span> <span class="bp">self</span> <span class="ow">or</span> <span class="n">other</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
