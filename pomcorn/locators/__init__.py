@@ -1,7 +1,7 @@
 from pomcorn.locators.base_locators import (
     Locator,
     TInitLocator,
-    TLocator,
+    TLocator_co,
     XPathLocator,
 )
 from pomcorn.locators.xpath_locators import (
@@ -30,7 +30,7 @@ __all__ = (
     "NameLocator",
     "PropertyLocator",
     "TInitLocator",
-    "TLocator",
+    "TLocator_co",
     "TagNameLocator",
     "TextAreaByLabelLocator",
     "XPathLocator",

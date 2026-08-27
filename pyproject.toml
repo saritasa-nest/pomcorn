@@ -214,6 +214,8 @@ ignore = [
   "S101",
   # https://docs.astral.sh/ruff/rules/non-pep695-type-alias/
   "UP040",
+  # https://docs.astral.sh/ruff/rules/non-pep695-generic-class/
+  "UP046",
   # https://docs.astral.sh/ruff/rules/#flake8-datetimez-dtz
   "DTZ",
   # https://docs.astral.sh/ruff/rules/raise-vanilla-args

@@ -29,7 +29,7 @@ class _EmptyValue:
 EmptyValue: Any = _EmptyValue()
 
 
-class Component(Generic[TPage], WebView):
+class Component(WebView, Generic[TPage]):
     """The class to represent a page component that depends on base locator.
 
     It contains page elements, components and utils methods for page
@@ -71,14 +71,14 @@ class Component(Generic[TPage], WebView):
         if wait_until_visible:
             self.wait_until_visible()
 
-    @overload
+    @overload  # type: ignore
     def init_element(
         self,
         *,
         locator: locators.XPathLocator,
     ) -> XPathElement: ...
 
-    @overload
+    @overload  # type: ignore
     def init_element(
         self,
         *,
@@ -107,14 +107,14 @@ class Component(Generic[TPage], WebView):
             ),
         )
 
-    @overload
+    @overload  # type: ignore
     def init_elements(
         self,
         *,
         locator: locators.XPathLocator | None = None,
     ) -> list[XPathElement]: ...
 
-    @overload
+    @overload  # type: ignore
     def init_elements(
         self,
         *,
@@ -200,7 +200,7 @@ class Component(Generic[TPage], WebView):
 ListItemType = TypeVar("ListItemType", bound=Component)  # type: ignore
 
 
-class ListComponent(Generic[ListItemType, TPage], Component[TPage]):
+class ListComponent(Component[TPage], Generic[ListItemType, TPage]):
     """Class to represent a list-like component.
 
     It contains standard properties and methods for working with list-like

@@ -111,6 +111,8 @@ class WebView:
         elements_count = len(
             self._get_elements(locator=locator, only_visible=only_visible),
         )
+        # Need to wrap it into parentheses to iterate by index when locator
+        # is complex: https://sqa.stackexchange.com/a/39465
         return [
             locators.XPathLocator(query=f"({locator.query})[{index}]")
             for index in range(1, elements_count + 1)
@@ -369,7 +371,7 @@ class WebView:
 
     def wait_until_not_exists_in_dom(
         self,
-        element: PomcornElement[locators.TLocator] | locators.TLocator,
+        element: PomcornElement[locators.TLocator_co] | locators.TLocator_co,
         timeout: float | None = None,
     ):
         """Wait until element ceases to exist in DOM.

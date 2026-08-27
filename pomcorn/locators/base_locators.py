@@ -63,7 +63,7 @@ class Locator:
         return self.query
 
 
-TLocator = TypeVar("TLocator", bound=Locator, covariant=True)
+TLocator_co = TypeVar("TLocator_co", bound=Locator, covariant=True)
 
 # This need only for element initialization because covariant generic can't be
 # used as type for parameter of function

@@ -8,6 +8,8 @@ We follow [Semantic Versions](https://semver.org/).
 - Update project maintainers.
 - Update docs system from Sphinx to mkdocs.
 - Manually sync with [Saritasa Python Boilerplate](https://github.com/saritasa-nest/saritasa-python-boilerplate-open-source).
+- Rename typevar `TLocator` to `TLocator_co` to reflect it's covariance.
+- Fix failed checks after boilerplate syncing.
 
 ## 0.10.3 (08.04.26)
 
