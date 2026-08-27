@@ -15,14 +15,14 @@ if TYPE_CHECKING:
     from pomcorn.web_view import WebView
 
 
-class PomcornElement(Generic[locators.TLocator]):
+class PomcornElement(Generic[locators.TLocator_co]):
     """The class to represent a simple element (tag) on the page.
 
     Contains methods for the interaction with an element on the browser page.
 
     """
 
-    def __init__(self, web_view: WebView, locator: locators.TLocator):
+    def __init__(self, web_view: WebView, locator: locators.TLocator_co):
         """Init page element.
 
         Args:
@@ -354,7 +354,7 @@ class PomcornElement(Generic[locators.TLocator]):
 
     def drag_and_drop(
         self,
-        target: PomcornElement[locators.TLocator],
+        target: PomcornElement[locators.TLocator_co],
         only_visible: bool = True,
     ):
         """Drag and drop page object on target object.

@@ -17,7 +17,7 @@ class PackageDetailsPage(PyPIPage):
         ).get_text()
 
     @classmethod
-    def open(
+    def open(  # type: ignore
         cls,
         webdriver: WebDriver,
         package_name: str,

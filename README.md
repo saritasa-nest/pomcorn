@@ -1,10 +1,21 @@
 # Pomcorn
 
-![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/saritasa-nest/pomcorn/pre-commit.yml) ![PyPI](https://img.shields.io/pypi/v/pomcorn) ![PyPI - Status](https://img.shields.io/pypi/status/pomcorn) ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pomcorn) ![PyPI - License](https://img.shields.io/pypi/l/pomcorn) ![PyPI - Downloads](https://img.shields.io/pypi/dm/pomcorn) [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+![GitHub last commit](https://img.shields.io/github/last-commit/saritasa-nest/pomcorn)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/saritasa-nest/pomcorn/run_pre_commit.yaml)
+![PyPI](https://img.shields.io/pypi/v/pomcorn)
+![PyPI - Status](https://img.shields.io/pypi/status/pomcorn)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/pomcorn)
+![PyPI - License](https://img.shields.io/pypi/l/pomcorn)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/pomcorn)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![prek](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/j178/prek/master/docs/assets/badge-v0.json)](https://github.com/j178/prek)
 
+Check out our other open-source [projects](https://github.com/orgs/saritasa-nest/repositories?q=visibility%3Apublic+archived%3Afalse+fork%3Afalse+language%3APython)
 
-**Pomcorn**, or **Page Object Model corn**, is a Python package that contains base classes to create systems based on [Selenium](https://github.com/SeleniumHQ/selenium#selenium) framework and **Page Object Model** pattern. You can read more about this pattern [here](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/). The package can be used to create autotesting systems, parsing scripts and anything that requires
-interaction with the browser.
+**Pomcorn**, or **Page Object Model corn**, is a Python package that contains base classes to create systems based on
+[Selenium](https://github.com/SeleniumHQ/selenium#selenium) framework and **Page Object Model** pattern.
+You can [read more about this pattern](https://www.selenium.dev/documentation/test_practices/encouraged/page_object_models/).
+The package can be used to create autotesting systems, parsing scripts and anything that requires interaction with the browser.
 
 The package includes next base classes to create Page Object Model (``POM``) pages:
 
@@ -40,7 +51,8 @@ The package includes next base classes to create Page Object Model (``POM``) pag
 
 ```
 
-It also includes [classes to locate elements](https://saritasa-nest.github.io/pomcorn/latest/locators/) on the web page and a number of additional [waiting conditions](https://saritasa-nest.github.io/pomcorn/latest/waits_conditions/).
+It also includes [classes to locate elements](https://saritasa-nest.github.io/pomcorn/latest/locators/)
+on the web page and a number of additional [waiting conditions](https://saritasa-nest.github.io/pomcorn/latest/waits_conditions/).
 
 ## Installation
 
@@ -64,7 +76,9 @@ Link to the documentation: [https://saritasa-nest.github.io/pomcorn/latest/](htt
 
 You need to [install pomcorn](https://saritasa-nest.github.io/pomcorn/latest/installation/) and [Chrome webdriver](https://saritasa-nest.github.io/pomcorn/latest/installation/#chrome-driver).
 
-Below is the code that opens ``PyPI.org``, searches for packages by name and prints names of found packages to the terminal. The script contains all base classes contained in ``pomcorn``: **Page**, **Component**, **ListComponent** and **Element**.
+Below is the code that opens ``PyPI.org``, searches for packages by name and prints names of
+found packages to the terminal. The script contains all base classes contained
+in ``pomcorn``: **Page**, **Component**, **ListComponent** and **Element**.
 
 ```python
 from typing import Self
@@ -129,6 +143,7 @@ print(search_page.find("saritasa").names)
 search_page.webdriver.close()
 ```
 
-For more information about package classes, you can read in [Object Hierarchy](https://saritasa-nest.github.io/pomcorn/latest/objects_hierarchy/) and [Developer Interface](https://saritasa-nest.github.io/pomcorn/latest/developer_interface/).
+For more information about package classes, you can read in [Object Hierarchy](https://saritasa-nest.github.io/pomcorn/latest/objects_hierarchy/)
+and [Developer Interface](https://saritasa-nest.github.io/pomcorn/latest/developer_interface/).
 
 Also you can try our [demo autotests project](https://saritasa-nest.github.io/pomcorn/latest/demo/).

@@ -20,12 +20,16 @@ def test_set_item_class_in_parent_class(fake_page: Page) -> None:
 
     """
 
-    class BaseList(Generic[TPage], ListComponent[ItemClass, TPage]):
+    class BaseList(ListComponent[ItemClass, TPage], Generic[TPage]):
         """Base list component with specified item_class in Generic."""
 
         base_locator = locators.XPathLocator("html")  # required
 
-        def wait_until_visible(self, **kwargs) -> None:
+        def wait_until_visible(
+            self,
+            timeout: float | None = None,
+            **kwargs,
+        ) -> None:
             """To not wait anything."""
 
     # Inherit from `BaseList` and specify page generic variable
@@ -39,17 +43,21 @@ def test_set_item_class_in_parent_class(fake_page: Page) -> None:
 def test_no_set_item_class(fake_page: Page) -> None:
     """Check that we can't not specify `item_class`."""
 
-    class BaseList(Generic[TItem, TPage], ListComponent[TItem, TPage]):
+    class BaseList(ListComponent[TItem, TPage], Generic[TItem, TPage]):
         """Base list component without specified Generic variables."""
 
         base_locator = locators.XPathLocator("html")  # required
         relative_item_locator = locators.XPathLocator("body")  # required
 
-        def wait_until_visible(self, **kwargs) -> None:
+        def wait_until_visible(
+            self,
+            timeout: float | None = None,
+            **kwargs,
+        ) -> None:
             """To not wait anything."""
 
     # Inherit from `BaseList` and specify only page generic variable
-    class InheritedList(Generic[TItem], BaseList[TItem, Page]): ...
+    class InheritedList(BaseList[TItem, Page], Generic[TItem]): ...
 
     list_cls = InheritedList(fake_page)  # type: ignore
 
@@ -61,12 +69,16 @@ def test_no_set_item_class(fake_page: Page) -> None:
 def test_set_item_class_in_child_via_generic(fake_page: Page) -> None:
     """Check that we can specify `item_class` only in the child class."""
 
-    class BaseList(Generic[TItem, TPage], ListComponent[TItem, TPage]):
+    class BaseList(ListComponent[TItem, TPage], Generic[TItem, TPage]):
         """Base list component without specified Generic variables."""
 
         base_locator = locators.XPathLocator("html")  # required
 
-        def wait_until_visible(self, **kwargs) -> None:
+        def wait_until_visible(
+            self,
+            timeout: float | None = None,
+            **kwargs,
+        ) -> None:
             """To not wait anything."""
 
     # Prepare base list component without specified Generic variables
@@ -83,7 +95,11 @@ def test_specify_all_generic_variables(fake_page: Page) -> None:
     class List(ListComponent[ItemClass, Page]):
         base_locator = locators.XPathLocator("html")  # required
 
-        def wait_until_visible(self, **kwargs) -> None:
+        def wait_until_visible(
+            self,
+            timeout: float | None = None,
+            **kwargs,
+        ) -> None:
             """To not wait anything."""
 
     list_cls = List(fake_page)
@@ -94,12 +110,16 @@ def test_set_item_class_with_extra_generic_variable(fake_page: Page) -> None:
     """Check that item_class will be correct if add new generic variable."""
     TParam = TypeVar("TParam")
 
-    class BaseList(Generic[TParam], ListComponent[ItemClass, Page]):
+    class BaseList(ListComponent[ItemClass, Page], Generic[TParam]):
         """Base list component with new generic variable."""
 
         base_locator = locators.XPathLocator("html")  # required
 
-        def wait_until_visible(self, **kwargs) -> None:
+        def wait_until_visible(
+            self,
+            timeout: float | None = None,
+            **kwargs,
+        ) -> None:
             """To not wait anything."""
 
     # Inherit from `BaseList` and specify new generic variable
@@ -115,13 +135,17 @@ def test_set_item_class_with_extra_generic_variable(fake_page: Page) -> None:
 def test_set_item_class_without_inheritance(fake_page: Page) -> None:
     """Check that item_class will be correct in not inherited class."""
 
-    class BaseList(Generic[TItem, TPage], ListComponent[TItem, TPage]):
+    class BaseList(ListComponent[TItem, TPage], Generic[TItem, TPage]):
         """Base list component without specified Generic variables."""
 
         base_locator = locators.XPathLocator("html")  # required
         relative_item_locator = locators.XPathLocator("body")  # required
 
-        def wait_until_visible(self, **kwargs) -> None:
+        def wait_until_visible(
+            self,
+            timeout: float | None = None,
+            **kwargs,
+        ) -> None:
             """To not wait anything."""
 
     # Prepare base list component without specified Generic variables
@@ -140,7 +164,11 @@ def test_item_class_can_be_type_alias(fake_page: Page) -> None:
     class List(ListComponent[TypeAliasItemClass, Page]):
         base_locator = locators.XPathLocator("html")  # required
 
-        def wait_until_visible(self, **kwargs) -> None:
+        def wait_until_visible(
+            self,
+            timeout: float | None = None,
+            **kwargs,
+        ) -> None:
             """To not wait anything."""
 
     list_cls = List(fake_page)

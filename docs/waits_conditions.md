@@ -6,8 +6,7 @@ application to ensure that elements or pages are fully loaded and ready for inte
 to avoid errors related to elements not yet appearing on the page or not being fully loaded.
 
 Pomcorn includes several custom waiting conditions that complement the built-in Selenium waiting
-list. About Selenium wait conditions you can read
-[here](https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html).
+list. Read about [Selenium wait conditions](https://www.selenium.dev/selenium/docs/api/py/webdriver_support/selenium.webdriver.support.expected_conditions.html).
 
 ## Package wait conditions
 

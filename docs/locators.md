@@ -6,8 +6,7 @@ specific elements such as buttons, input fields, or links to interact with them.
 The Selenium webdriver methods use tuples `(By, query)` to find elements, where `By` is one of
 the [supported locator](https://www.selenium.dev/documentation/webdriver/elements/locators/#traditional-locators)
 strategies and `query` is the query for that strategy.
-About Selenium supported locator strategies you can read
-[here](https://www.selenium.dev/documentation/webdriver/elements/locators/).
+Read about [Selenium supported locator strategies](https://www.selenium.dev/documentation/webdriver/elements/locators/).
 
 Pomcorn implements its own classes for defining web page elements - **Locators**.
 [XPath](https://www.selenium.dev/documentation/webdriver/elements/locators/#xpath) was chosen as the
@@ -40,7 +39,7 @@ classDiagram
   ElementWithTextLocator <|-- ButtonWithTextLocator
 ```
 
-* you can zoom it
+- you can zoom it
 
 :::pomcorn.locators.Locator
 
