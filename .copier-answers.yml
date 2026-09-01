@@ -5,7 +5,7 @@
 # To update, run (from the project root):
 # uvx copier update --vcs-ref main --skip-answered --trust --skip-tasks --data {question}={answer}
 _commit: b8af99b
-_src_path: git@github.com:saritasa-nest/saritasa-python-boilerplate-open-source.git
+_src_path: https://github.com/saritasa-nest/saritasa-python-boilerplate-open-source.git
 folder_name: pomcorn
 min_python_version: 3.12
 package_description: Base implementation of Page Object Model
