@@ -1,0 +1,1792 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Base implementation of Page Object Model">
+      
+      
+      
+        <link rel="canonical" href="https://saritasa-nest.github.io/pomcorn/0.11.0/changelog/">
+      
+      
+        <link rel="prev" href="../development/">
+      
+      
+        <link rel="next" href="../contributing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../_static/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Changelog - pomcorn</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../_static/custom_color.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#version-history" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="pomcorn" class="md-header__button md-logo" aria-label="pomcorn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            pomcorn
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/saritasa-nest/pomcorn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pomcorn
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="pomcorn" class="md-nav__button md-logo" aria-label="pomcorn" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    pomcorn
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/saritasa-nest/pomcorn/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pomcorn
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Demo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../objects_hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Object Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer_interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Developer Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../locators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Locators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../descriptors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Descriptors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../waits_conditions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wait conditions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unreleased
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0110-030926" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.11.0 (03.09.26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0103-080426" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.3 (08.04.26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0102-241125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.2 (24.11.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0101-311025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.1 (31.10.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0100-211025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.0 (21.10.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#093-220525" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.3 (22.05.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#092-070525" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.2 (07.05.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#091-050525" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.1 (05.05.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#090-170425" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.0 (17.04.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#087-200325" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.7 (20.03.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#086-130325" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.6 (13.03.25)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.6 (13.03.25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-086" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.8.6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#085-100225" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.5 (10.02.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#084-300125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.4 (30.01.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#083-201224" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.3 (20.12.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#082-191224" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.2 (19.12.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#081-251124" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.1 (25.11.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#080-050724" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.0 (05.07.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#075" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#074" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#073" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#072" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#071" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.7.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#060" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.6.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-060" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.6.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.5.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.4.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#031" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.3.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#030" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.3.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-030" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.3.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#020" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.2.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-020" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.2.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#010" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unreleased
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0110-030926" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.11.0 (03.09.26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0103-080426" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.3 (08.04.26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0102-241125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.2 (24.11.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0101-311025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.1 (31.10.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#0100-211025" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.10.0 (21.10.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#093-220525" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.3 (22.05.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#092-070525" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.2 (07.05.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#091-050525" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.1 (05.05.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#090-170425" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.9.0 (17.04.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#087-200325" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.7 (20.03.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#086-130325" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.6 (13.03.25)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.8.6 (13.03.25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-086" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.8.6
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#085-100225" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.5 (10.02.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#084-300125" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.4 (30.01.25)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#083-201224" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.3 (20.12.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#082-191224" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.2 (19.12.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#081-251124" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.1 (25.11.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#080-050724" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.8.0 (05.07.24)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#075" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.5
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#074" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.4
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#073" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.3
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#072" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.2
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#071" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.7.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.7.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-070" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.7.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#060" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.6.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.6.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-060" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.6.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.5.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.4.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#031" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.3.1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#030" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.3.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.3.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-030" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.3.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#020" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.2.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="0.2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backwards-incompatible-changes-in-020" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backwards incompatible changes in 0.2.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#010" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.1.0
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="version-history">Version history<a class="headerlink" href="#version-history" title="Permanent link">&para;</a></h1>
+<p>We follow <a href="https://semver.org/">Semantic Versions</a>.</p>
+<h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
+<h2 id="0110-030926">0.11.0 (03.09.26)<a class="headerlink" href="#0110-030926" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Upgrade project/package manager from poetry to <a href="https://docs.astral.sh/uv/">UV</a>.</li>
+<li>Update project maintainers.</li>
+<li>Update docs system from Sphinx to <a href="http://www.mkdocs.org">MkDocs</a>.</li>
+<li>Manually sync with <a href="https://github.com/saritasa-nest/saritasa-python-boilerplate-open-source">Saritasa Python Boilerplate</a>.</li>
+<li>Rename typevar <code>TLocator</code> to <code>TLocator_co</code> to reflect it's covariance.</li>
+<li>Fix failed checks after boilerplate syncing.</li>
+</ul>
+<h2 id="0103-080426">0.10.3 (08.04.26)<a class="headerlink" href="#0103-080426" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Extend <code>DataTestIdLocator</code> arguments with <code>exact</code> parameter to specify
+  whether to use exact match or contains match for <code>data-testid</code> attribute.</li>
+<li>Remove <code>test_search</code> after issues with captcha bypassing.</li>
+<li>Extend <code>PomcornElement.click()</code> arguments with <code>center_element</code> parameter
+  to specify whether to scroll to element before click.</li>
+</ul>
+<p>By default, webdriver scrolls to element before clicking if the element container
+  not in screen space or behind of <code>header/footer</code> elements, but in some cases element
+  can be inside screen space but overlapped by another element (e.g. by custom header/footer
+  that made using <code>div</code> tags) and at that case we might need to use pomcorn custom scroll
+  method which scrolling to element until it will be in center of screen.</p>
+<h2 id="0102-241125">0.10.2 (24.11.25)<a class="headerlink" href="#0102-241125" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Update Component's <code>init_element</code> and <code>init_elements</code> methods</li>
+</ul>
+<p>They now use <code>self.page.{method name}</code> instead of <code>super().{method name}</code>.
+  This should help in cases where it is necessary to override <code>PomcornElement</code>.
+  Now it is possible via overriding <code>Page.init_element / Page.init_elements</code> methods.</p>
+<h2 id="0101-311025">0.10.1 (31.10.25)<a class="headerlink" href="#0101-311025" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add auto publishing releases to PyPI via GitHub Actions</li>
+</ul>
+<h2 id="0100-211025">0.10.0 (21.10.25)<a class="headerlink" href="#0100-211025" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add timeout argument for all wait methods to add ability to change default
+  wait timeout for specific cases</li>
+<li>Extend <code>get_item_by_text</code> method with <code>exact</code> parameter (03.07.25)</li>
+</ul>
+<h2 id="093-220525">0.9.3 (22.05.25)<a class="headerlink" href="#093-220525" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Extend <code>/</code> and <code>//</code> operations to support combining <code>XPathLocator</code> with raw <code>str</code> queries</li>
+<li>Fix typo in README</li>
+</ul>
+<h2 id="092-070525">0.9.2 (07.05.25)<a class="headerlink" href="#092-070525" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix mistake with <code>CONTROL</code> and <code>COMMAND</code> in <code>PomcornElement.clear</code></li>
+</ul>
+<h2 id="091-050525">0.9.1 (05.05.25)<a class="headerlink" href="#091-050525" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix <code>PomcornElement.clear</code> method: remove redundant string and add passing
+  <code>only_visible</code> argument to <code>send_keys</code></li>
+</ul>
+<h2 id="090-170425">0.9.0 (17.04.25)<a class="headerlink" href="#090-170425" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add xpath expressions and locator object support for square brackets of
+  <code>XPathLocator</code></li>
+</ul>
+<h2 id="087-200325">0.8.7 (20.03.25)<a class="headerlink" href="#087-200325" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add <code>InputInLabelLocator</code> to locators.__init__</li>
+</ul>
+<h2 id="086-130325">0.8.6 (13.03.25)<a class="headerlink" href="#086-130325" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Replace isort, black, flake with Ruff</li>
+<li>Replace error message handling via try-except block in wait methods with built-in
+  selenium's message attribute of the <code>wait.until</code> method.</li>
+</ul>
+<h3 id="backwards-incompatible-changes-in-086">Backwards incompatible changes in 0.8.6<a class="headerlink" href="#backwards-incompatible-changes-in-086" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Remove custom errors. Custom errors were used only in <code>wait.until</code> that wrapped try-except block.
+  Since the error message can be set directly in <code>wait.until</code>, these errors have been removed.</li>
+</ul>
+<h2 id="085-100225">0.8.5 (10.02.25)<a class="headerlink" href="#085-100225" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add ability to get related xpath locators by index for <code>XPathLocator</code></li>
+</ul>
+<h2 id="084-300125">0.8.4 (30.01.25)<a class="headerlink" href="#084-300125" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add escaping single and double quotes in the: <code>ElementWithTextLocator</code>,
+  <code>InputInLabelLocator</code>, <code>InputByLabelLocator</code>, <code>TextAreaByLabelLocator</code>.</li>
+<li>Add escaping single and double quotes in the <code>get_item_by_text</code> method of
+  the <code>ListComponent</code></li>
+</ul>
+<h2 id="083-201224">0.8.3 (20.12.24)<a class="headerlink" href="#083-201224" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Rename <code>__parameters__</code> in <code>ListComponent</code> to <code>__generic__parameters</code>
+  to avoid problems with Python build-in functions</li>
+</ul>
+<h2 id="082-191224">0.8.2 (19.12.24)<a class="headerlink" href="#082-191224" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add ability to specify <code>TypeAlias</code> as <code>_item class</code> and use
+  <code>ListComponent</code> as a parameterized type</li>
+</ul>
+<h2 id="081-251124">0.8.1 (25.11.24)<a class="headerlink" href="#081-251124" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Improve getting <code>item class</code> from first <code>ListComponent</code> generic variable.
+  There were several cases where this didn't work correctly (for multiple generic variables
+  and inheritance). Examples of such cases are presented in <a href="https://github.com/saritasa-nest/pomcorn/pull/98#issuecomment-2485811259">this PR</a>.</li>
+</ul>
+<p><strong>Warning</strong>: The <code>item_class</code> class attribute was removed.</p>
+<h2 id="080-050724">0.8.0 (05.07.24)<a class="headerlink" href="#080-050724" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add ability to not specify <code>item_class</code> in <code>ListComponent</code>. Instead, it
+  will be automatically filled with value passed in <code>Generic[ListItemType]</code>.</li>
+</ul>
+<p><strong>Warning</strong>: The <code>item_class</code> specification is still available, but it is
+deprecated and will be removed soon.</p>
+<h2 id="075">0.7.5<a class="headerlink" href="#075" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Remove redundant call of <code>scroll_to</code> in <code>PomcornElement.click()</code>.
+  This is redundant, as webdriver by default scrolls to element before click (<a href="https://www.w3.org/TR/webdriver2/#element-click">docs</a>).</li>
+</ul>
+<h2 id="074">0.7.4<a class="headerlink" href="#074" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Improve <code>Page.click_on_page()</code> method to click the page coordinates instead
+  of offset relative to  current mouse position</li>
+</ul>
+<h2 id="073">0.7.3<a class="headerlink" href="#073" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add ability to not specify <code>app_root</code> in <code>Page.open_from_url()</code> as in <code>Page.open()</code></li>
+</ul>
+<h2 id="072">0.7.2<a class="headerlink" href="#072" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Improve <code>Page.click_on_page()</code> method to click on <html> tag</li>
+<li>Improve <code>Page.open_from_url()</code> to support kwargs</li>
+<li>Fix <code>\</code> related problems in <code>Page._get_full_relative_url()</code></li>
+</ul>
+<h2 id="071">0.7.1<a class="headerlink" href="#071" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add ability to <code>Element</code> to specify simple and relative locators using the
+  <code>locator</code> or <code>relative_locator</code> arguments, as in <a href="https://github.com/saritasa-nest/pomcorn/blob/main/pomcorn/component.py">Component.init_element</a>.</li>
+<li>Fix some possible xpath errors depending on empty locators queries and
+  brackets.</li>
+</ul>
+<h2 id="070">0.7.0<a class="headerlink" href="#070" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Update diagrams with <a href="https://mermaid.js.org/intro/">mermaid</a></li>
+<li>Add invocation <strong>inv docs.serve</strong> to run docs on localhost</li>
+<li>Add auto-scroll to element before click</li>
+<li>Add page class name to <code>PageDidNotLoadedError</code></li>
+<li>Add method <code>contains()</code> to <code>XPathLocator</code> for search by contained text</li>
+</ul>
+<h3 id="backwards-incompatible-changes-in-070">Backwards incompatible changes in 0.7.0<a class="headerlink" href="#backwards-incompatible-changes-in-070" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Remove simple <code>Component</code> class</li>
+<li>
+<p>Rename <code>ComponentWithBaseLocator</code> to <code>Component</code></p>
+</li>
+<li>
+<p>Rename <code>Element</code> class to <code>PomcornElement</code></p>
+</li>
+<li>Add descriptor <code>Element</code> to simplify adding element-attributes to <strong>Pages</strong>
+  and <strong>Components</strong></li>
+</ul>
+<h2 id="060">0.6.0<a class="headerlink" href="#060" title="Permanent link">&para;</a></h2>
+<h3 id="backwards-incompatible-changes-in-060">Backwards incompatible changes in 0.6.0<a class="headerlink" href="#backwards-incompatible-changes-in-060" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Updating the <code>Page.click_on_page</code> method: now it clicks on (1, 1) page
+  coordinates, because clicking on the html tag was done in the center of the
+  page, which led to unexpected situations</li>
+<li><code>InputByLabelLocator</code> is split into <code>InputByLabelLocator</code> (for non-nested
+  case) and <code>InputInLabelLocator</code> (for nested case)</li>
+</ul>
+<h2 id="050">0.5.0<a class="headerlink" href="#050" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add ability to specify <code>base_locator</code> for <code>ComponentWithBaseLocator</code> as a
+  class attribute, so as not to override <code>__init__</code> (Issue: <a href="https://github.com/saritasa-nest/pomcorn/issues/34">#34</a>)</li>
+<li>Add ability to specify <code>base_item_locator</code> via <code>item_locator</code> and
+  <code>relative_item_locator</code> attributes for <code>ListComponent</code> to avoid
+  overriding <code>property</code> each time and simplify creation of nested items
+  locators</li>
+</ul>
+<h2 id="040">0.4.0<a class="headerlink" href="#040" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add <code>|</code> (or) operator for XPathLocators</li>
+<li>Add <code>Page.click_on_page</code> method</li>
+<li>Add recommendation for use keyword when specifying the <code>locator</code> argument
+  in <code>init_element</code> and <code>init_elements</code> methods whenever possible to be
+  consistent with the method of the same name in <code>ComponentWithBaseLocator</code></li>
+<li>Improve <code>WebView.scroll_to()</code></li>
+</ul>
+<h2 id="031">0.3.1<a class="headerlink" href="#031" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix type hints after <a href="https://github.com/SeleniumHQ/selenium/commit/10adfe88a2b2870e3e61546b9e2a9233c9f74657">update Selenium</a></li>
+</ul>
+<h2 id="030">0.3.0<a class="headerlink" href="#030" title="Permanent link">&para;</a></h2>
+<h3 id="backwards-incompatible-changes-in-030">Backwards incompatible changes in 0.3.0<a class="headerlink" href="#backwards-incompatible-changes-in-030" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Update <code>InputByLabelLocator</code> from a single-level to a nested implementation</li>
+</ul>
+<h2 id="020">0.2.0<a class="headerlink" href="#020" title="Permanent link">&para;</a></h2>
+<h3 id="backwards-incompatible-changes-in-020">Backwards incompatible changes in 0.2.0<a class="headerlink" href="#backwards-incompatible-changes-in-020" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Replace <code>is_loaded</code> property to <code>check_page_is_loaded</code> method</li>
+</ul>
+<h2 id="010">0.1.0<a class="headerlink" href="#010" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Init release</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["search.suggest", "search.highlight", "search.share", "navigation.instant", "navigation.instant.progress", "navigation.tracking", "navigation.path", "content.code.annotate", "content.code.copy", "content.tooltips"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
