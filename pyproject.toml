@@ -1,6 +1,6 @@
 [project]
 name = "pomcorn"
-version = "0.10.3"
+version = "0.11.0"
 description = "Base implementation of Page Object Model"
 authors = [
   { name = "Saritasa", email = "pypi@saritasa.com" },

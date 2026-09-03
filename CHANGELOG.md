@@ -4,9 +4,11 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
-- Upgrade project/package manager from poetry to UV.
+## 0.11.0 (03.09.26)
+
+- Upgrade project/package manager from poetry to [UV](https://docs.astral.sh/uv/).
 - Update project maintainers.
-- Update docs system from Sphinx to mkdocs.
+- Update docs system from Sphinx to [MkDocs](http://www.mkdocs.org).
 - Manually sync with [Saritasa Python Boilerplate](https://github.com/saritasa-nest/saritasa-python-boilerplate-open-source).
 - Rename typevar `TLocator` to `TLocator_co` to reflect it's covariance.
 - Fix failed checks after boilerplate syncing.

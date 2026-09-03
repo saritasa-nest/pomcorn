@@ -74,7 +74,7 @@ Link to the documentation: [https://saritasa-nest.github.io/pomcorn/latest/](htt
 
 ## Usage
 
-You need to [install pomcorn](https://saritasa-nest.github.io/pomcorn/latest/installation/) and [Chrome webdriver](https://saritasa-nest.github.io/pomcorn/latest/installation/#chrome-driver).
+Install pomcorn using [installation guide](https://saritasa-nest.github.io/pomcorn/latest/installation/).
 
 Below is the code that opens ``PyPI.org``, searches for packages by name and prints names of
 found packages to the terminal. The script contains all base classes contained
