@@ -21,8 +21,6 @@ env:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
-    environment:
-      name: pypi
     permissions:
       id-token: write  # For Trusted Publishing
       contents: write
