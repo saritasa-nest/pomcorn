@@ -2,7 +2,17 @@
 
 We follow [Semantic Versions](https://semver.org/).
 
-## Unreleased
+## 0.11.1 (27.10.26)
+
+- Add `WebView.wait_until_locator_invisible_with_delay` (accepts element or
+  locator) and `wait_until_invisible_with_delay` to `PomcornElement` and
+  `Component` to wait for transient elements (loading spinners, progress
+  bars, etc.) that may not appear immediately after the triggering action.
+
+  The method waits for the element to appear within `appearance_timeout`
+  seconds (by default, `WebView.appearance_timeout`, which can be overridden
+  in subclasses), and if it appears, waits until it becomes invisible.
+  If the element doesn't appear, execution continues without error.
 
 ## 0.11.0 (03.09.26)
 

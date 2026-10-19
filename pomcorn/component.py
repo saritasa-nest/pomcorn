@@ -194,6 +194,24 @@ class Component(WebView, Generic[TPage]):
         """
         self.body.wait_until_invisible(timeout)
 
+    def wait_until_invisible_with_delay(
+        self,
+        appearance_timeout: float | None = None,
+        timeout: float | None = None,
+        **kwargs,
+    ):
+        """Wait until component appears and then becomes invisible.
+
+        If component doesn't appear within `appearance_timeout` seconds,
+        the method returns without error. Otherwise, it waits until component
+        becomes invisible for `timeout` seconds.
+
+        """
+        self.body.wait_until_invisible_with_delay(
+            appearance_timeout=appearance_timeout,
+            timeout=timeout,
+        )
+
 
 # Here type ignore added because we can't specify TPage as generic for
 # Component, but specifying Page is incorrect
