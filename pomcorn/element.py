@@ -72,8 +72,8 @@ class PomcornElement(Generic[locators.TLocator_co]):
 
     def wait_until_invisible_with_delay(
         self,
-        appearance_timeout: float | None = None,
         timeout: float | None = None,
+        appearance_timeout: float | None = None,
     ):
         """Wait until element appears and then becomes invisible.
 

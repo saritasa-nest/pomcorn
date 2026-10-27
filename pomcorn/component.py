@@ -196,8 +196,8 @@ class Component(WebView, Generic[TPage]):
 
     def wait_until_invisible_with_delay(
         self,
-        appearance_timeout: float | None = None,
         timeout: float | None = None,
+        appearance_timeout: float | None = None,
         **kwargs,
     ):
         """Wait until component appears and then becomes invisible.
@@ -208,8 +208,8 @@ class Component(WebView, Generic[TPage]):
 
         """
         self.body.wait_until_invisible_with_delay(
-            appearance_timeout=appearance_timeout,
             timeout=timeout,
+            appearance_timeout=appearance_timeout,
         )
 
 

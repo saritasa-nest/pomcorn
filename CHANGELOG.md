@@ -2,6 +2,8 @@
 
 We follow [Semantic Versions](https://semver.org/).
 
+## Unreleased
+
 ## 0.11.1 (27.10.26)
 
 - Add `WebView.wait_until_locator_invisible_with_delay` (accepts element or
