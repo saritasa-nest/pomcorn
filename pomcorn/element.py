@@ -70,6 +70,29 @@ class PomcornElement(Generic[locators.TLocator_co]):
             timeout=timeout,
         )
 
+    def wait_until_invisible_with_delay(
+        self,
+        timeout: float | None = None,
+        appearance_timeout: float | None = None,
+    ):
+        """Wait until element appears and then becomes invisible.
+
+        If element doesn't appear within `appearance_timeout` seconds
+        (by default, `self.web_view.appearance_timeout`), the method returns
+        without error. Otherwise, it waits until element becomes invisible
+        for `timeout` seconds (by default, `self.web_view.wait_timeout`).
+
+        Raises:
+            TimeoutException: If the element appeared and after `timeout`
+                seconds it is still visible.
+
+        """
+        self.web_view.wait_until_locator_invisible_with_delay(
+            locator=self.locator,
+            appearance_timeout=appearance_timeout,
+            timeout=timeout,
+        )
+
     def wait_until_clickable(
         self,
         timeout: float | None = None,

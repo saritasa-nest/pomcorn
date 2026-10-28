@@ -1,5 +1,6 @@
 from contextlib import contextmanager
 
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
@@ -14,6 +15,11 @@ from .locators.base_locators import TInitLocator
 
 class WebView:
     """Class for storing basic shortcuts for interacting with the browser."""
+
+    # Default number of seconds to wait for the element to appear in
+    # `wait_until_locator_invisible_with_delay` method. Can be overridden in
+    # subclasses.
+    appearance_timeout: float = 2.0
 
     def __init__(
         self,
@@ -279,9 +285,7 @@ class WebView:
             method=expected_conditions.visibility_of_element_located(
                 locator=(locator.by, locator.query),
             ),
-            message=(
-                f"Unable to locate {locator} in {wait._timeout} seconds!"
-            ),
+            message=f"Unable to locate {locator} in {wait._timeout} seconds!",
         )
 
     def wait_until_locator_invisible(
@@ -310,6 +314,46 @@ class WebView:
                 f"{locator} is still visible in {wait._timeout} seconds!"
             ),
         )
+
+    def wait_until_locator_invisible_with_delay(
+        self,
+        locator: locators.Locator,
+        appearance_timeout: float | None = None,
+        timeout: float | None = None,
+    ) -> None:
+        """Wait until element appears and then becomes invisible.
+
+        Useful for transient elements (loading spinners, progress bars, etc.)
+        that may not appear immediately after the triggering action. In such
+        cases a plain `wait_until_locator_invisible` succeeds immediately
+        because the element is not displayed yet.
+
+        The method waits for the element to become visible for
+        `appearance_timeout` seconds. If it appears, waits until it becomes
+        invisible. If it doesn't appear, execution continues without error.
+
+        Args:
+            locator: Instance of a class to locate the element in the browser.
+            appearance_timeout: Number of seconds to wait for the element to
+                appear. By default, `self.appearance_timeout` is used.
+            timeout: Number of seconds to wait for the element to become
+                invisible after it appeared. By default, method waits for
+                `self.wait_timeout` seconds.
+
+        Raises:
+            TimeoutException: If the element appeared and after `timeout`
+                seconds it is still visible.
+
+        """
+        try:
+            self.wait_until_locator_visible(
+                locator=locator,
+                timeout=appearance_timeout or self.appearance_timeout,
+            )
+        except TimeoutException:
+            # Element didn't appear, so there is nothing to wait for
+            return
+        self.wait_until_locator_invisible(locator=locator, timeout=timeout)
 
     def wait_until_clickable(
         self,

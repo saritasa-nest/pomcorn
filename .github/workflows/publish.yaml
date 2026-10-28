@@ -26,6 +26,7 @@ jobs:
     permissions:
       id-token: write  # For Trusted Publishing
       contents: write
+      issues: write  # For reporting failures
     steps:
       - name: Run
         uses: saritasa-nest/saritasa-python-open-source-boilerplate/.github/actions/publish@main
