@@ -4,7 +4,7 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
-## 0.11.1 (27.10.26)
+## 0.12.0 (28.10.26)
 
 - Add `WebView.wait_until_locator_invisible_with_delay` (accepts element or
   locator) and `wait_until_invisible_with_delay` to `PomcornElement` and
