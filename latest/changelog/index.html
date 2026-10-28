@@ -599,6 +599,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#0120-281026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.12.0 (28.10.26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0110-030926" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1086,6 +1097,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#0120-281026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        0.12.0 (28.10.26)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#0110-030926" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1531,6 +1553,17 @@
 <h1 id="version-history">Version history<a class="headerlink" href="#version-history" title="Permanent link">&para;</a></h1>
 <p>We follow <a href="https://semver.org/">Semantic Versions</a>.</p>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
+<h2 id="0120-281026">0.12.0 (28.10.26)<a class="headerlink" href="#0120-281026" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add <code>WebView.wait_until_locator_invisible_with_delay</code> (accepts element or
+  locator) and <code>wait_until_invisible_with_delay</code> to <code>PomcornElement</code> and
+  <code>Component</code> to wait for transient elements (loading spinners, progress
+  bars, etc.) that may not appear immediately after the triggering action.</li>
+</ul>
+<p>The method waits for the element to appear within <code>appearance_timeout</code>
+  seconds (by default, <code>WebView.appearance_timeout</code>, which can be overridden
+  in subclasses), and if it appears, waits until it becomes invisible.
+  If the element doesn't appear, execution continues without error.</p>
 <h2 id="0110-030926">0.11.0 (03.09.26)<a class="headerlink" href="#0110-030926" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Upgrade project/package manager from poetry to <a href="https://docs.astral.sh/uv/">UV</a>.</li>
