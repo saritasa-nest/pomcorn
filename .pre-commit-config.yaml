@@ -66,6 +66,16 @@ repos:
     hooks:
       - id: add-trailing-comma
 
+  # Should run before `uv-lock`, so lock file picks up the fixed version
+  - repo: local
+    hooks:
+      - id: sync-version
+        name: Check CHANGELOG.md release date and sync pyproject.toml version
+        entry: python custom_linters/sync_version.py
+        language: python
+        files: "^(CHANGELOG\\.md|pyproject\\.toml)$"
+        pass_filenames: false
+
   - repo: https://github.com/astral-sh/uv-pre-commit
     rev: 0.12.23
     hooks:

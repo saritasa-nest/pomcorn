@@ -4,6 +4,11 @@ We follow [Semantic Versions](https://semver.org/).
 
 ## Unreleased
 
+- Add `sync-version` pre-commit hook, which checks the latest release in
+  `CHANGELOG.md`: sets today's date if release date is missing, reports
+  invalid date or date earlier than previous release one, and syncs project
+  version in `pyproject.toml` with the latest released version.
+
 ## 0.12.0 (28.10.26)
 
 - Add `WebView.wait_until_locator_invisible_with_delay` (accepts element or
