@@ -1553,6 +1553,12 @@
 <h1 id="version-history">Version history<a class="headerlink" href="#version-history" title="Permanent link">&para;</a></h1>
 <p>We follow <a href="https://semver.org/">Semantic Versions</a>.</p>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Add <code>sync-version</code> pre-commit hook, which checks the latest release in
+  <code>CHANGELOG.md</code>: sets today's date if release date is missing, reports
+  invalid date or date earlier than previous release one, and syncs project
+  version in <code>pyproject.toml</code> with the latest released version.</li>
+</ul>
 <h2 id="0120-281026">0.12.0 (28.10.26)<a class="headerlink" href="#0120-281026" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Add <code>WebView.wait_until_locator_invisible_with_delay</code> (accepts element or
